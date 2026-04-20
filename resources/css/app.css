@@ -748,6 +748,28 @@ a:hover {
     color: var(--sabenta-text);
 }
 
+.btn-accent {
+    background-color: #fff;
+    border-color: #fff;
+    color: var(--sabenta-primary-dark);
+    font-weight: 700;
+}
+
+.btn-accent:hover, .btn-accent:focus {
+    background-color: #e8f0ff;
+    border-color: #e8f0ff;
+    color: var(--sabenta-primary-dark);
+}
+
+/* Headings dentro de seções escuras (hero, CTA) herdam branco */
+.hero-headline,
+.cta-section h1, .cta-section h2, .cta-section h3,
+.plan-hero h1, .plan-hero h2,
+.booking-hero h1, .booking-hero h2,
+.privacy-hero h1, .privacy-hero h2 {
+    color: #fff;
+}
+
 /* Formulários */
 .form-control, .form-select {
     border-radius: 8px;

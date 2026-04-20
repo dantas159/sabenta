@@ -27,6 +27,7 @@ Route::prefix('painel')->name('painel.')->group(function () {
     Route::get('/automacoes', fn() => view('automacoes.index'))->name('automacoes.index');
     Route::get('/configuracoes', fn() => view('configuracoes.index'))->name('configuracoes.index');
     Route::get('/minha-pagina', fn() => view('pagina-publica.editor'))->name('pagina.editor');
+    Route::get('/equipe', fn() => view('equipe.index'))->name('equipe.index');
 });
 
 // ---- Agendamento público (paciente) ----

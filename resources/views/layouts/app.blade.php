@@ -107,6 +107,14 @@
                 <span>Minha Página</span>
             </a>
 
+            {{-- Equipe --}}
+            <a href="{{ route('painel.equipe.index') }}"
+               class="sidebar-nav-item {{ request()->routeIs('painel.equipe.*') ? 'active' : '' }}"
+               @click="sidebarOpen = false">
+                <i class="bi bi-person-workspace"></i>
+                <span>Equipe</span>
+            </a>
+
             <div class="section-separator" style="margin: 1rem 1.25rem 0; color: rgba(255,255,255,0.25);">
                 <div style="flex:1;height:1px;background:rgba(255,255,255,0.1);"></div>
             </div>
