@@ -95,7 +95,6 @@
                     ['#isolamento','Isolamento de dados'],
                     ['#coleta','O que coletamos'],
                     ['#uso','Como usamos'],
-                    ['#cfp','Conformidade CFP'],
                     ['#lgpd','Seus direitos (LGPD)'],
                     ['#infra','Infraestrutura'],
                     ['#faq','Perguntas frequentes'],
@@ -111,10 +110,10 @@
 
             <div class="privacy-section" id="criptografia">
                 <h2><i class="bi bi-lock-fill"></i> Criptografia</h2>
-                <p>Todos os dados transmitidos entre seu navegador e nossos servidores são protegidos com TLS 1.3. Os dados sensíveis armazenados (anotações clínicas, informações de pagamento) são criptografados em repouso com AES-256.</p>
+                <p>Todos os dados transmitidos entre seu navegador e nossos servidores são protegidos com TLS 1.3. Os dados armazenados (informações de contato de pacientes, dados de pagamento da assinatura) são criptografados em repouso.</p>
                 <div class="privacy-highlight">
                     <i class="bi bi-shield-check me-2"></i>
-                    As anotações clínicas são criptografadas individualmente — nem nossa equipe de suporte pode acessar seu conteúdo.
+                    Os dados de contato dos seus pacientes são armazenados de forma segura — apenas você e sua equipe têm acesso.
                 </div>
             </div>
 
@@ -123,7 +122,6 @@
                 <p>Cada clínica ou profissional opera em um ambiente de dados completamente isolado. Não existe compartilhamento de dados entre diferentes contas — nem para fins de análise interna.</p>
                 <ul>
                     <li>Bancos de dados particionados por tenant</li>
-                    <li>Chaves de criptografia únicas por conta</li>
                     <li>Logs de acesso auditáveis</li>
                 </ul>
             </div>
@@ -132,8 +130,8 @@
                 <h2><i class="bi bi-collection"></i> O que coletamos</h2>
                 <p>Coletamos apenas o mínimo necessário para o funcionamento da plataforma:</p>
                 <ul>
-                    <li><strong>Dados do profissional:</strong> nome, e-mail, CRP/CRM, dados de pagamento da assinatura</li>
-                    <li><strong>Dados dos pacientes:</strong> nome, e-mail, telefone, data de nascimento, anotações de sessão (inseridos pelo profissional)</li>
+                    <li><strong>Dados do profissional:</strong> nome, e-mail, dados de pagamento da assinatura</li>
+                    <li><strong>Dados dos pacientes:</strong> nome, e-mail e telefone (inseridos pelo profissional para fins de agendamento)</li>
                     <li><strong>Dados de uso:</strong> logs de acesso, IP, navegador — usados exclusivamente para segurança</li>
                 </ul>
                 <p>Não vendemos, trocamos ou compartilhamos seus dados com terceiros para fins comerciais.</p>
@@ -147,16 +145,6 @@
                     <li>Processar pagamentos da assinatura</li>
                     <li>Gerar relatórios financeiros dentro da plataforma</li>
                     <li>Manter a segurança e integridade do sistema</li>
-                </ul>
-            </div>
-
-            <div class="privacy-section" id="cfp">
-                <h2><i class="bi bi-patch-check"></i> Conformidade com o CFP</h2>
-                <p>O Sabenta foi desenvolvido com base nas <strong>Resoluções CFP nº 11/2018</strong> (prontuário eletrônico) e <strong>nº 06/2019</strong> (atendimento online). Garantimos:</p>
-                <ul>
-                    <li>Sigilo profissional — anotações acessíveis apenas ao profissional responsável</li>
-                    <li>Armazenamento mínimo de 5 anos para prontuários eletrônicos</li>
-                    <li>Controle de acesso com autenticação multifator (disponível nos planos Clínica)</li>
                 </ul>
             </div>
 
@@ -186,10 +174,10 @@
             <div class="privacy-section" id="faq">
                 <h2><i class="bi bi-question-circle"></i> Perguntas frequentes</h2>
                 @foreach([
-                    ['O Sabenta pode ver minhas anotações?','Não. As anotações clínicas são criptografadas com sua chave única. Nossa equipe não tem acesso ao conteúdo.'],
+                    ['A equipe do Sabenta pode ver os dados dos meus pacientes?','Não. Os dados de seus pacientes ficam isolados na sua conta. Nossa equipe de suporte não acessa informações de pacientes.'],
                     ['O que acontece com meus dados se eu cancelar?','Você pode exportar todos os dados antes de cancelar. Após o cancelamento, os dados são mantidos por 90 dias (para eventual reativação) e então excluídos permanentemente.'],
                     ['Os dados dos pacientes são compartilhados?','Nunca. Os dados de seus pacientes são de sua responsabilidade e não são acessados por outros profissionais ou pela equipe Sabenta.'],
-                    ['Posso usar o Sabenta para terapia de grupos?','Sim. Cada participante precisa consentir separadamente com o uso de seus dados, o que o sistema facilita no momento do cadastro.'],
+                    ['Posso usar o Sabenta com múltiplos clientes simultâneos?','Sim. O sistema suporta múltiplos agendamentos e clientes. Cada pessoa consente com o uso de seus dados no momento do agendamento.'],
                 ] as [$q,$r])
                 <div class="faq-mini">
                     <strong>{{ $q }}</strong>

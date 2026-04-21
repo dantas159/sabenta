@@ -232,7 +232,7 @@ $roleLabels = [
                     <div>
                         <div style="font-weight:700;font-size:0.875rem;font-family:var(--font-heading);">Profissional</div>
                         <div style="font-size:0.78rem;color:var(--sabenta-text-muted);line-height:1.5;">
-                            Acessa sua própria agenda, seus pacientes e suas anotações clínicas. Não vê dados de outros profissionais.
+                            Acessa sua própria agenda e seus clientes. Não vê dados de outros membros da equipe.
                         </div>
                     </div>
                 </label>
@@ -244,7 +244,7 @@ $roleLabels = [
                     <div>
                         <div style="font-weight:700;font-size:0.875rem;font-family:var(--font-heading);">Recepcionista</div>
                         <div style="font-size:0.78rem;color:var(--sabenta-text-muted);line-height:1.5;">
-                            Acessa todas as agendas e pode cadastrar pacientes. Sem acesso a anotações clínicas, financeiro ou configurações.
+                            Acessa todas as agendas e pode cadastrar clientes. Sem acesso ao financeiro ou configurações.
                         </div>
                     </div>
                 </label>

@@ -25,9 +25,6 @@
                 <a href="{{ route('painel.agenda.dia') }}" class="btn btn-primary btn-sm">
                     <i class="bi bi-calendar-plus me-1"></i>Agendar sessão
                 </a>
-                <a href="{{ route('painel.pacientes.notas') }}" class="btn btn-outline-secondary btn-sm">
-                    <i class="bi bi-journal-text me-1"></i>Anotações privadas
-                </a>
             </div>
         </div>
         <div style="border-top:1px solid var(--sabenta-border);padding:1.25rem;">
@@ -65,9 +62,6 @@
                 <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#historico">
                     <i class="bi bi-calendar-check me-1"></i>Histórico
                 </button></li>
-                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#anotacoes">
-                    <i class="bi bi-journal-lock me-1"></i>Anotações
-                </button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#proximas">
                     <i class="bi bi-calendar-event me-1"></i>Próximas
                 </button></li>
@@ -79,11 +73,11 @@
             <div style="overflow-x:auto;">
             @php
             $hist = [
-                ['17/04/2025','09:00','Terapia Individual','realizado','R$ 200','Pix'],
-                ['10/04/2025','09:00','Terapia Individual','realizado','R$ 200','Pix'],
-                ['03/04/2025','09:00','Terapia Individual','faltou','R$ 200','—'],
-                ['27/03/2025','09:00','Terapia Individual','realizado','R$ 200','Transferência'],
-                ['20/03/2025','09:00','Terapia Individual','realizado','R$ 200','Pix'],
+                ['17/04/2025','09:00','Consulta Individual','realizado','R$ 200','Pix'],
+                ['10/04/2025','09:00','Consulta Individual','realizado','R$ 200','Pix'],
+                ['03/04/2025','09:00','Consulta Individual','faltou','R$ 200','—'],
+                ['27/03/2025','09:00','Consulta Individual','realizado','R$ 200','Transferência'],
+                ['20/03/2025','09:00','Consulta Individual','realizado','R$ 200','Pix'],
             ];
             @endphp
             <table class="sabenta-table">
@@ -104,36 +98,14 @@
             </div>
             </div>
 
-            {{-- Anotações --}}
-            <div class="tab-pane fade" id="anotacoes">
-            <div style="padding:1.25rem;">
-                <div class="d-flex align-items-start gap-2 p-3 mb-3 rounded-3" style="background:rgba(30,91,173,.06);border:1px solid rgba(30,91,173,.15);">
-                    <i class="bi bi-shield-lock-fill" style="color:var(--sabenta-primary);font-size:1rem;flex-shrink:0;margin-top:.1rem;"></i>
-                    <div style="font-size:.8rem;color:var(--sabenta-primary);">
-                        <strong>Suas anotações são privadas e criptografadas.</strong> Apenas você tem acesso a este conteúdo — nem nossa equipe consegue visualizá-las.
-                    </div>
-                </div>
-                <textarea class="form-control" rows="10" placeholder="Digite suas anotações clínicas aqui...&#10;&#10;Este espaço é privado e seguro. Nenhuma outra pessoa tem acesso."
-                          style="min-height:280px;font-size:.9rem;line-height:1.7;">Primeira consulta: paciente relata ansiedade crônica desde adolescência, relacionada a episódios de pressão familiar. Apresenta bom insight...
-
-Sessão 3: significativa abertura sobre relação com mãe. Abordar na próxima sessão vínculos primários.
-
-Sessão 5: progresso visível na regulação emocional. Continuar com técnicas de respiração.</textarea>
-                <div class="d-flex justify-content-between align-items-center mt-2" style="font-size:.8rem;color:var(--sabenta-text-muted);">
-                    <span>Última edição: 17/04/2025 às 10:32</span>
-                    <button class="btn btn-primary btn-sm"><i class="bi bi-check-lg me-1"></i>Salvar anotações</button>
-                </div>
-            </div>
-            </div>
-
             {{-- Próximas --}}
             <div class="tab-pane fade" id="proximas">
             <div style="padding:1.25rem;">
                 @php
                 $proximas = [
-                    ['24/04/2025','Qui','09:00','Terapia Individual','50 min'],
-                    ['01/05/2025','Qui','09:00','Terapia Individual','50 min'],
-                    ['08/05/2025','Qui','09:00','Terapia Individual','50 min'],
+                    ['24/04/2025','Qui','09:00','Consulta Individual','50 min'],
+                    ['01/05/2025','Qui','09:00','Consulta Individual','50 min'],
+                    ['08/05/2025','Qui','09:00','Consulta Individual','50 min'],
                 ];
                 @endphp
                 @foreach($proximas as $p)
@@ -172,7 +144,7 @@ Sessão 5: progresso visível na regulação emocional. Continuar com técnicas 
 <div class="modal-body">
     <div class="p-3 mb-3 rounded-3" style="background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.2);">
         <strong style="font-size:.875rem;color:var(--status-faltou);">Atenção: esta ação é irreversível.</strong>
-        <p style="font-size:.8rem;color:var(--sabenta-text-muted);margin-top:.35rem;margin-bottom:0;">Todo o histórico, sessões e anotações de <strong>Mariana Costa</strong> serão permanentemente excluídos.</p>
+        <p style="font-size:.8rem;color:var(--sabenta-text-muted);margin-top:.35rem;margin-bottom:0;">Todo o histórico e sessões de <strong>Mariana Costa</strong> serão permanentemente excluídos.</p>
     </div>
     <label class="form-label" style="font-size:.875rem;">Para confirmar, digite <strong>EXCLUIR</strong> abaixo:</label>
     <input type="text" class="form-control" placeholder="EXCLUIR" x-data x-bind:class="$el.value === 'EXCLUIR' ? 'is-valid' : ''">

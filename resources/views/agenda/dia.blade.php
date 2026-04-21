@@ -68,7 +68,7 @@
         <div style="position:absolute;top:{{ (1)*120 }}px;left:8px;right:8px;height:100px;background:rgba(30,91,173,.08);border:1.5px solid var(--sabenta-primary);border-radius:10px;padding:.625rem .875rem;cursor:pointer;" onclick="document.getElementById('modalDetalhe').querySelector('.modal').classList; new bootstrap.Modal(document.getElementById('modalDetalhe')).show();" data-bs-toggle="modal" data-bs-target="#modalDetalhe">
             <div style="font-family:var(--font-heading);font-size:.8rem;font-weight:700;color:var(--sabenta-primary);">09:00 – 09:50</div>
             <div style="font-size:.875rem;font-weight:600;color:var(--sabenta-text);margin-top:.2rem;">Mariana Costa</div>
-            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Terapia Individual</div>
+            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Consulta Individual</div>
             <span class="sabenta-badge badge-confirmado" style="font-size:.68rem;margin-top:.25rem;">Confirmada</span>
         </div>
 
@@ -76,7 +76,7 @@
         <div style="position:absolute;top:{{ (3)*120 }}px;left:8px;right:8px;height:100px;background:rgba(139,92,246,.08);border:1.5px solid #8B5CF6;border-radius:10px;padding:.625rem .875rem;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalDetalhe">
             <div style="font-family:var(--font-heading);font-size:.8rem;font-weight:700;color:#8B5CF6;">11:00 – 12:00</div>
             <div style="font-size:.875rem;font-weight:600;color:var(--sabenta-text);margin-top:.2rem;">Pedro Alves</div>
-            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Avaliação Psicológica</div>
+            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Avaliação Inicial</div>
             <span class="sabenta-badge badge-pendente" style="font-size:.68rem;margin-top:.25rem;">Pendente</span>
         </div>
 
@@ -90,7 +90,7 @@
         <div style="position:absolute;top:{{ (6)*120+60 }}px;left:8px;right:8px;height:100px;background:rgba(29,158,117,.08);border:1.5px solid var(--status-confirmado);border-radius:10px;padding:.625rem .875rem;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalDetalhe">
             <div style="font-family:var(--font-heading);font-size:.8rem;font-weight:700;color:var(--status-confirmado);">14:30 – 15:20</div>
             <div style="font-size:.875rem;font-weight:600;color:var(--sabenta-text);margin-top:.2rem;">Fernanda Lima</div>
-            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Terapia Individual</div>
+            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Consulta Individual</div>
             <span class="sabenta-badge badge-confirmado" style="font-size:.68rem;margin-top:.25rem;">Confirmada</span>
         </div>
     </div>
@@ -121,8 +121,8 @@
         <label class="form-label">Serviço</label>
         <select class="form-select">
             <option value="">Selecionar serviço...</option>
-            <option>Terapia Individual</option><option>Terapia de Casal</option>
-            <option>Avaliação Psicológica</option><option>Psicoterapia Infantil</option>
+            <option>Consulta Individual</option><option>Consulta em Dupla</option>
+            <option>Avaliação Inicial</option><option>Consulta Online</option>
         </select>
     </div>
     <div class="col-md-4">
@@ -160,7 +160,7 @@
     </div>
     <div class="col-12">
         <label class="form-label">Observações</label>
-        <textarea class="form-control" rows="2" placeholder="Anotações internas sobre esta sessão..."></textarea>
+        <textarea class="form-control" rows="2" placeholder="Ex: endereço do atendimento, preferências do cliente..."></textarea>
     </div>
 </div>
 </form>
@@ -184,7 +184,7 @@
         <div class="sabenta-avatar avatar-lg">MC</div>
         <div>
             <div style="font-family:var(--font-heading);font-weight:700;font-size:1rem;">Mariana Costa</div>
-            <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Terapia Individual · 50 min</div>
+            <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Consulta Individual · 50 min</div>
             <div style="margin-top:.35rem;"><span class="sabenta-badge badge-confirmado">Confirmada</span></div>
         </div>
     </div>

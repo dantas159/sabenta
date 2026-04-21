@@ -45,12 +45,12 @@ $dias = [
 ];
 $sessoesSemana = [
     // [diaIndex, hora, minuto, duracao_slots, paciente, servico, cor, badge]
-    [0, 9, 0, 2, 'Mariana C.', 'Terapia', 'var(--sabenta-primary)', 'badge-confirmado'],
+    [0, 9, 0, 2, 'Mariana C.', 'Consulta', 'var(--sabenta-primary)', 'badge-confirmado'],
     [1, 10, 0, 2, 'Pedro A.', 'Avaliação', '#8B5CF6', 'badge-pendente'],
-    [2, 14, 0, 2, 'Fernanda L.', 'Terapia', 'var(--status-confirmado)', 'badge-confirmado'],
-    [3, 9, 0, 2, 'Mariana C.', 'Terapia', 'var(--sabenta-primary)', 'badge-confirmado'],
-    [3, 14, 30, 2, 'Lucas M.', 'Terapia', 'var(--sabenta-primary)', 'badge-confirmado'],
-    [4, 11, 0, 3, 'Juliana F.', 'Casal', 'var(--status-pendente)', 'badge-pendente'],
+    [2, 14, 0, 2, 'Fernanda L.', 'Consulta', 'var(--status-confirmado)', 'badge-confirmado'],
+    [3, 9, 0, 2, 'Mariana C.', 'Consulta', 'var(--sabenta-primary)', 'badge-confirmado'],
+    [3, 14, 30, 2, 'Lucas M.', 'Consulta', 'var(--sabenta-primary)', 'badge-confirmado'],
+    [4, 11, 0, 3, 'Juliana F.', 'Consulta em Dupla', 'var(--status-pendente)', 'badge-pendente'],
 ];
 @endphp
 
@@ -107,7 +107,7 @@ $sessoesSemana = [
     <div class="col-12"><label class="form-label">Paciente</label>
     <select class="form-select"><option>Selecionar...</option><option>Mariana Costa</option><option>Pedro Alves</option></select></div>
     <div class="col-12"><label class="form-label">Serviço</label>
-    <select class="form-select"><option>Terapia Individual</option><option>Avaliação</option></select></div>
+    <select class="form-select"><option>Consulta Individual</option><option>Avaliação Inicial</option></select></div>
     <div class="col-6"><label class="form-label">Data</label><input type="date" class="form-control" value="2025-04-17"></div>
     <div class="col-6"><label class="form-label">Horário</label><input type="time" class="form-control" value="09:00"></div>
     <div class="col-6"><label class="form-label">Duração</label>
@@ -131,7 +131,7 @@ $sessoesSemana = [
     <div class="d-flex gap-3 align-items-center p-3 mb-3" style="background:var(--sabenta-bg);border-radius:12px;">
         <div class="sabenta-avatar avatar-lg">MC</div>
         <div><div style="font-family:var(--font-heading);font-weight:700;font-size:1rem;">Mariana Costa</div>
-        <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Terapia Individual · 50 min</div>
+        <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Consulta Individual · 50 min</div>
         <div style="margin-top:.35rem;"><span class="sabenta-badge badge-confirmado">Confirmada</span></div></div>
     </div>
     <div class="row g-2">

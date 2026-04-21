@@ -232,7 +232,7 @@
                 Tudo que você precisa para<br>organizar sua prática
             </h2>
             <p style="color:var(--sabenta-text-muted);max-width:500px;margin:0 auto;">
-                Desenvolvido por e para profissionais de saúde mental, com foco em privacidade e praticidade.
+                Desenvolvido para profissionais autônomos que precisam de organização, automação e produtividade.
             </p>
         </div>
         <div class="row g-4">
@@ -240,8 +240,8 @@
                 ['bi-calendar-check','#3b82f6','#eff6ff','Agenda online 24/7','Seus pacientes agendam pelo link público. Você recebe notificação e confirma com um toque.'],
                 ['bi-whatsapp','#10b981','#f0fdf4','Lembretes automáticos','Reduza faltas em até 40% com confirmações e lembretes via WhatsApp.'],
                 ['bi-bar-chart-line','#8b5cf6','#faf5ff','Gestão financeira','Controle sessões pagas, pendentes e emita cobranças diretamente pelo WhatsApp.'],
-                ['bi-shield-lock','#f59e0b','#fffbeb','Privacidade total','Dados criptografados, isolamento por clínica e conformidade com CFP e LGPD.'],
-                ['bi-person-lines-fill','#0ea5e9','#f0f9ff','Prontuário digital','Anotações de sessão com controle de acesso e histórico completo por paciente.'],
+                ['bi-shield-lock','#f59e0b','#fffbeb','Privacidade total','Dados protegidos, ambiente isolado por clínica e conformidade com a LGPD.'],
+                ['bi-clock-history','#0ea5e9','#f0f9ff','Histórico completo','Visualize todas as sessões realizadas, faltas e pagamentos por paciente em um só lugar.'],
                 ['bi-globe','#f43f5e','#fff1f2','Página de perfil','Link público profissional para divulgar no Instagram, LinkedIn e Google.'],
             ] as [$icon,$cor,$bg,$titulo,$desc])
             <div class="col-md-6 col-lg-4">

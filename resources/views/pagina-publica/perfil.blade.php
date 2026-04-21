@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', 'Dra. Ana Souza — Psicóloga Clínica')
+@section('title', 'Dra. Ana Souza — Agenda Online')
 
 @push('styles')
 <style>
@@ -55,10 +55,10 @@
         <div class="col-md-8">
             <h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1rem;">Sobre mim</h2>
             <p style="font-size:.9375rem;line-height:1.8;color:var(--sabenta-text-muted);">
-                Psicóloga clínica formada pela USP, com especialização em Terapia Cognitivo-Comportamental e abordagem psicodinâmica. Tenho 8 anos de experiência atendendo adultos e casais em questões relacionadas à ansiedade, depressão, relacionamentos e autoconhecimento.
+                Profissional com ampla experiência na área, atendo de forma presencial e online. Ofereço um serviço organizado, pontual e personalizado para cada cliente.
             </p>
             <p style="font-size:.9375rem;line-height:1.8;color:var(--sabenta-text-muted);">
-                Acredito em um atendimento acolhedor, ético e personalizado, onde cada pessoa é tratada em sua singularidade. Meu objetivo é criar um espaço seguro de escuta e construção de novas perspectivas.
+                Meu compromisso é com a qualidade do atendimento e com a satisfação de quem me procura. Agende seu horário pelo link abaixo e escolha o dia e horário que melhor se encaixam na sua rotina.
             </p>
         </div>
         <div class="col-md-4">
@@ -79,9 +79,9 @@
     <h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">Tipos de sessão</h2>
     <div class="row g-3">
         @php $servicos = [
-            ['Terapia Individual','50 min','R$ 200,00','Sessão individual focada nas suas necessidades e objetivos terapêuticos.','person'],
-            ['Terapia de Casal','90 min','R$ 400,00','Acompanhamento para casais que buscam melhorar a comunicação e o relacionamento.','people'],
-            ['Avaliação Psicológica','60 min','R$ 350,00','Avaliação estruturada para entender demandas específicas e traçar plano terapêutico.','clipboard-check'],
+            ['Consulta Individual','50 min','R$ 200,00','Atendimento individual focado nos seus objetivos e necessidades.','person'],
+            ['Consulta em Dupla','90 min','R$ 400,00','Atendimento para duas pessoas que buscam melhorar a comunicação e o relacionamento.','people'],
+            ['Avaliação Inicial','60 min','R$ 350,00','Sessão de avaliação para entender suas necessidades e definir os próximos passos.','clipboard-check'],
         ]; @endphp
         @foreach($servicos as $s)
         <div class="col-md-4">

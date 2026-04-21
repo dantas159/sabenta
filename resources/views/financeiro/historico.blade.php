@@ -36,16 +36,16 @@
 <div style="overflow-x:auto;">
 @php
 $hist = [
-    ['07/04/2025','07/04/2025','Mariana Costa','Terapia Individual','R$ 200','Pix','pago'],
-    ['07/04/2025','07/04/2025','Pedro Alves','Avaliação Psicológica','R$ 350','Transferência','pago'],
-    ['09/04/2025','09/04/2025','Lucas Mendes','Terapia Individual','R$ 200','Pix','pago'],
-    ['14/04/2025','14/04/2025','Mariana Costa','Terapia Individual','R$ 200','Pix','pago'],
-    ['08/04/2025','—','Fernanda Lima','Terapia Individual','R$ 200','—','pendente'],
-    ['10/04/2025','—','Juliana Ferreira','Terapia de Casal','R$ 400','—','pendente'],
-    ['15/04/2025','—','Pedro Alves','Avaliação Psicológica','R$ 350','—','pendente'],
-    ['03/04/2025','—','Fernanda Lima','Terapia Individual','R$ 200','—','pendente'],
-    ['28/03/2025','28/03/2025','Mariana Costa','Terapia Individual','R$ 200','Pix','pago'],
-    ['27/03/2025','27/03/2025','Lucas Mendes','Terapia Individual','R$ 200','Dinheiro','pago'],
+    ['07/04/2025','07/04/2025','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['07/04/2025','07/04/2025','Pedro Alves','Avaliação Inicial','R$ 350','Transferência','pago'],
+    ['09/04/2025','09/04/2025','Lucas Mendes','Consulta Individual','R$ 200','Pix','pago'],
+    ['14/04/2025','14/04/2025','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['08/04/2025','—','Fernanda Lima','Consulta Individual','R$ 200','—','pendente'],
+    ['10/04/2025','—','Juliana Ferreira','Consulta em Dupla','R$ 400','—','pendente'],
+    ['15/04/2025','—','Pedro Alves','Avaliação Inicial','R$ 350','—','pendente'],
+    ['03/04/2025','—','Fernanda Lima','Consulta Individual','R$ 200','—','pendente'],
+    ['28/03/2025','28/03/2025','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['27/03/2025','27/03/2025','Lucas Mendes','Consulta Individual','R$ 200','Dinheiro','pago'],
 ];
 @endphp
 <table class="sabenta-table">

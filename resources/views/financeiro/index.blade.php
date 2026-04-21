@@ -66,14 +66,14 @@
 <div style="overflow-x:auto;">
 @php
 $sessoes = [
-    ['07/04','Mariana Costa','Terapia Individual','R$ 200','Pix','pago'],
-    ['07/04','Pedro Alves','Avaliação Psicológica','R$ 350','Transferência','pago'],
-    ['08/04','Fernanda Lima','Terapia Individual','R$ 200','—','pendente'],
-    ['09/04','Lucas Mendes','Terapia Individual','R$ 200','Pix','pago'],
-    ['10/04','Juliana Ferreira','Terapia de Casal','R$ 400','—','pendente'],
-    ['14/04','Mariana Costa','Terapia Individual','R$ 200','Pix','pago'],
-    ['15/04','Pedro Alves','Avaliação Psicológica','R$ 350','—','pendente'],
-    ['16/04','Lucas Mendes','Terapia Individual','R$ 200','Pix','pago'],
+    ['07/04','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['07/04','Pedro Alves','Avaliação Inicial','R$ 350','Transferência','pago'],
+    ['08/04','Fernanda Lima','Consulta Individual','R$ 200','—','pendente'],
+    ['09/04','Lucas Mendes','Consulta Individual','R$ 200','Pix','pago'],
+    ['10/04','Juliana Ferreira','Consulta em Dupla','R$ 400','—','pendente'],
+    ['14/04','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['15/04','Pedro Alves','Avaliação Inicial','R$ 350','—','pendente'],
+    ['16/04','Lucas Mendes','Consulta Individual','R$ 200','Pix','pago'],
 ];
 @endphp
 <table class="sabenta-table">
@@ -122,7 +122,7 @@ $sessoes = [
 </div>
 <div class="modal-body">
 <div class="p-3 mb-3 rounded-3" style="background:var(--sabenta-bg);">
-    <div style="font-size:.875rem;font-weight:600;">Fernanda Lima — Terapia Individual</div>
+    <div style="font-size:.875rem;font-weight:600;">Fernanda Lima — Consulta Individual</div>
     <div style="font-size:.8rem;color:var(--sabenta-text-muted);margin-top:.2rem;">08/04/2025 · 50 min · Valor: R$ 200,00</div>
 </div>
 <div class="row g-3">
@@ -162,7 +162,7 @@ $sessoes = [
     <h5 class="modal-title"><i class="bi bi-send me-2" style="color:var(--sabenta-primary);"></i>Enviar cobrança por WhatsApp</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
-<div class="modal-body" x-data="{ msg: 'Olá Fernanda! Passando para lembrar sobre o valor de R$ 200,00 referente à sessão de terapia do dia 08/04. Quando puder, pode realizar o pagamento via Pix: 11.222.333/0001-44. Qualquer dúvida, fico à disposição! 😊 — Dra. Ana' }">
+<div class="modal-body" x-data="{ msg: 'Olá Fernanda! Passando para lembrar sobre o valor de R$ 200,00 referente à consulta do dia 08/04. Quando puder, pode realizar o pagamento via Pix: 11.222.333/0001-44. Qualquer dúvida, fico à disposição! 😊 — Dra. Ana' }">
     <div class="row g-3">
         <div class="col-md-6">
             <label class="form-label">Mensagem de cobrança</label>

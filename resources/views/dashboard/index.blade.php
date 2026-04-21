@@ -104,12 +104,12 @@
                     <tbody>
                         @php
                             $sessoes = [
-                                ['hora' => '08:00', 'paciente' => 'Mariana Costa',    'iniciais' => 'MC', 'servico' => 'Terapia Individual',  'duracao' => '50 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
-                                ['hora' => '09:00', 'paciente' => 'Pedro Alves',      'iniciais' => 'PA', 'servico' => 'Avaliação Psicológica','duracao' => '60 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
-                                ['hora' => '10:30', 'paciente' => 'Fernanda Lima',    'iniciais' => 'FL', 'servico' => 'Terapia Individual',  'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
-                                ['hora' => '14:00', 'paciente' => 'Lucas Mendes',     'iniciais' => 'LM', 'servico' => 'Terapia Individual',  'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
-                                ['hora' => '15:30', 'paciente' => 'Juliana Ferreira', 'iniciais' => 'JF', 'servico' => 'Terapia de Casal',   'duracao' => '90 min', 'status' => 'pendente',  'cor' => '#D97706'],
-                                ['hora' => '17:30', 'paciente' => 'Rafael Santos',    'iniciais' => 'RS', 'servico' => 'Terapia Individual',  'duracao' => '50 min', 'status' => 'faltou',   'cor' => '#DC2626'],
+                                ['hora' => '08:00', 'paciente' => 'Mariana Costa',    'iniciais' => 'MC', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
+                                ['hora' => '09:00', 'paciente' => 'Pedro Alves',      'iniciais' => 'PA', 'servico' => 'Avaliação Inicial',   'duracao' => '60 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
+                                ['hora' => '10:30', 'paciente' => 'Fernanda Lima',    'iniciais' => 'FL', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
+                                ['hora' => '14:00', 'paciente' => 'Lucas Mendes',     'iniciais' => 'LM', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
+                                ['hora' => '15:30', 'paciente' => 'Juliana Ferreira', 'iniciais' => 'JF', 'servico' => 'Consulta em Dupla',  'duracao' => '90 min', 'status' => 'pendente',  'cor' => '#D97706'],
+                                ['hora' => '17:30', 'paciente' => 'Rafael Santos',    'iniciais' => 'RS', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'faltou',   'cor' => '#DC2626'],
                             ];
                         @endphp
 

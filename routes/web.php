@@ -21,7 +21,6 @@ Route::prefix('painel')->name('painel.')->group(function () {
     Route::get('/agenda/lista', fn() => view('agenda.lista'))->name('agenda.lista');
     Route::get('/pacientes', fn() => view('pacientes.index'))->name('pacientes.index');
     Route::get('/pacientes/1', fn() => view('pacientes.show'))->name('pacientes.show');
-    Route::get('/pacientes/1/notas', fn() => view('pacientes.notas'))->name('pacientes.notas');
     Route::get('/financeiro', fn() => view('financeiro.index'))->name('financeiro.index');
     Route::get('/financeiro/historico', fn() => view('financeiro.historico'))->name('financeiro.historico');
     Route::get('/automacoes', fn() => view('automacoes.index'))->name('automacoes.index');

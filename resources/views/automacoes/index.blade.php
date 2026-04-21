@@ -154,7 +154,7 @@ $logs = [
             <label class="form-label">Preview ao vivo</label>
             <div style="background:#e5ddd5;border-radius:12px;padding:1rem;min-height:160px;">
                 <div style="background:#fff;border-radius:8px 8px 8px 0;padding:.75rem;font-size:.85rem;line-height:1.6;box-shadow:0 1px 2px rgba(0,0,0,.1);"
-                     x-text="msg.replace('{nome}', 'Mariana').replace('{data}', '16/04/2025').replace('{hora}', '09:00').replace('{servico}', 'Terapia Individual')"></div>
+                     x-text="msg.replace('{nome}', 'Mariana').replace('{data}', '16/04/2025').replace('{hora}', '09:00').replace('{servico}', 'Consulta Individual')"></div>
             </div>
         </div>
     </div>

@@ -128,7 +128,7 @@
                 <div class="auth-feature-icon"><i class="bi bi-shield-lock"></i></div>
                 <div>
                     <div class="auth-feature-title">Privacidade total</div>
-                    <div class="auth-feature-desc">Dados criptografados, em conformidade com o CFP e LGPD.</div>
+                    <div class="auth-feature-desc">Dados protegidos e em conformidade com a LGPD.</div>
                 </div>
             </div>
         </div>

@@ -91,10 +91,10 @@
     </div>
     @php
     $servicos = [
-        ['Terapia Individual','50 min','R$ 200,00','Sim',true],
-        ['Terapia de Casal','90 min','R$ 400,00','Sim',true],
-        ['Avaliação Psicológica','60 min','R$ 350,00','Não',true],
-        ['Psicoterapia Infantil','45 min','R$ 220,00','Sim',false],
+        ['Consulta Individual','50 min','R$ 200,00','Sim',true],
+        ['Consulta em Dupla','90 min','R$ 400,00','Sim',true],
+        ['Avaliação Inicial','60 min','R$ 350,00','Não',true],
+        ['Consulta Online','45 min','R$ 180,00','Sim',false],
     ];
     @endphp
     <table class="sabenta-table">
@@ -254,7 +254,7 @@ Para reagendamentos, entre em contato por WhatsApp.</textarea>
             ['Agenda — visualizar própria',       true,  true,  true],
             ['Agenda — criar/editar sessões',     true,  true,  true],
             ['Pacientes — cadastrar/editar',      true,  true,  true],
-            ['Pacientes — anotações clínicas',    true,  true,  false],
+            ['Clientes — observações',             true,  true,  false],
             ['Financeiro — visualizar tudo',      true,  false, false],
             ['Financeiro — visualizar próprio',   true,  true,  false],
             ['Financeiro — registrar pagamentos', true,  true,  true],
@@ -322,7 +322,7 @@ Para reagendamentos, entre em contato por WhatsApp.</textarea>
 <div class="modal-body">
 <div class="row g-3">
     <div class="col-12"><label class="form-label">Nome do serviço</label>
-    <input type="text" class="form-control" placeholder="Ex: Terapia Individual"></div>
+    <input type="text" class="form-control" placeholder="Ex: Consulta Individual"></div>
     <div class="col-md-6"><label class="form-label">Duração padrão</label>
     <select class="form-select"><option>30 min</option><option>45 min</option><option selected>50 min</option><option>60 min</option><option>90 min</option></select></div>
     <div class="col-md-6"><label class="form-label">Valor padrão</label>

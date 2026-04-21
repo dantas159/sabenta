@@ -86,7 +86,6 @@ $pacientes = [
             <div class="dropdown">
                 <button class="btn btn-sm btn-outline-secondary" style="padding:.25rem .55rem;" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="{{ route('painel.pacientes.notas') }}"><i class="bi bi-journal-text"></i>Anotações</a></li>
                     <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i>Editar dados</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i>Excluir</a></li>
@@ -140,17 +139,16 @@ $pacientes = [
         <label class="form-label">Como chegou até mim?</label>
         <select class="form-select">
             <option value="">Selecionar...</option>
-            <option>Indicação de paciente</option>
+            <option>Indicação de cliente</option>
             <option>Google/Internet</option>
             <option>Redes sociais</option>
-            <option>Plano de saúde</option>
             <option>Outro</option>
         </select>
     </div>
     <div class="col-12">
-        <label class="form-label">Observações iniciais</label>
-        <textarea class="form-control" rows="3" placeholder="Queixas, histórico breve, observações relevantes..."></textarea>
-        <div class="form-text"><i class="bi bi-lock-fill me-1"></i>Visível apenas para você</div>
+        <label class="form-label">Observações</label>
+        <textarea class="form-control" rows="3" placeholder="Ex: prefere horários pela manhã, veio por indicação..."></textarea>
+        <div class="form-text">Use para anotar preferências e informações operacionais.</div>
     </div>
 </div>
 </form>

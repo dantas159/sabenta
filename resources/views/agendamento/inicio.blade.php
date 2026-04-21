@@ -129,9 +129,9 @@
             {{ $profissional->nome ?? 'Dra. Mariana Costa' }}
         </h1>
         <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:0;">
-            {{ $profissional->especialidade ?? 'Psicóloga Clínica' }}
-            @if(!empty($profissional->crp))
-                &nbsp;·&nbsp; CRP {{ $profissional->crp }}
+            {{ $profissional->especialidade ?? 'Profissional' }}
+            @if(!empty($profissional->registro))
+                &nbsp;·&nbsp; {{ $profissional->registro }}
             @endif
         </p>
     </div>
@@ -166,9 +166,9 @@
         <div class="d-flex flex-column gap-3">
             @php
             $servicos = $servicos ?? [
-                ['id'=>1,'nome'=>'Consulta de Avaliação','duracao'=>60,'valor'=>250],
-                ['id'=>2,'nome'=>'Sessão de Psicoterapia','duracao'=>50,'valor'=>200],
-                ['id'=>3,'nome'=>'Psicoterapia Online','duracao'=>50,'valor'=>180],
+                ['id'=>1,'nome'=>'Avaliação Inicial','duracao'=>60,'valor'=>250],
+                ['id'=>2,'nome'=>'Consulta Individual','duracao'=>50,'valor'=>200],
+                ['id'=>3,'nome'=>'Consulta Online','duracao'=>50,'valor'=>180],
             ];
             @endphp
 

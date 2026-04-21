@@ -42,8 +42,8 @@
         <label class="form-label">Serviço</label>
         <select class="form-select">
             <option value="">Todos</option>
-            <option>Terapia Individual</option><option>Terapia de Casal</option>
-            <option>Avaliação Psicológica</option>
+            <option>Consulta Individual</option><option>Consulta em Dupla</option>
+            <option>Avaliação Inicial</option>
         </select>
     </div>
     <div class="col-md-1">
@@ -62,16 +62,16 @@
 <div style="overflow-x:auto;">
 @php
 $sessoes = [
-    ['2025-04-07','09:00','Mariana Costa','Terapia Individual','50 min','confirmado','R$ 200','Pix'],
-    ['2025-04-07','11:00','Pedro Alves','Avaliação Psicológica','60 min','realizado','R$ 350','Transferência'],
-    ['2025-04-08','14:00','Fernanda Lima','Terapia Individual','50 min','faltou','R$ 200','—'],
-    ['2025-04-09','09:30','Lucas Mendes','Terapia Individual','50 min','confirmado','R$ 200','Pix'],
-    ['2025-04-10','10:00','Juliana Ferreira','Terapia de Casal','90 min','pendente','R$ 400','—'],
-    ['2025-04-14','09:00','Mariana Costa','Terapia Individual','50 min','realizado','R$ 200','Pix'],
-    ['2025-04-14','14:30','Rafael Santos','Terapia Individual','50 min','cancelado','R$ 200','—'],
-    ['2025-04-15','11:00','Pedro Alves','Avaliação Psicológica','60 min','confirmado','R$ 350','—'],
-    ['2025-04-16','09:30','Lucas Mendes','Terapia Individual','50 min','confirmado','R$ 200','—'],
-    ['2025-04-17','09:00','Mariana Costa','Terapia Individual','50 min','confirmado','R$ 200','—'],
+    ['2025-04-07','09:00','Mariana Costa','Consulta Individual','50 min','confirmado','R$ 200','Pix'],
+    ['2025-04-07','11:00','Pedro Alves','Avaliação Inicial','60 min','realizado','R$ 350','Transferência'],
+    ['2025-04-08','14:00','Fernanda Lima','Consulta Individual','50 min','faltou','R$ 200','—'],
+    ['2025-04-09','09:30','Lucas Mendes','Consulta Individual','50 min','confirmado','R$ 200','Pix'],
+    ['2025-04-10','10:00','Juliana Ferreira','Consulta em Dupla','90 min','pendente','R$ 400','—'],
+    ['2025-04-14','09:00','Mariana Costa','Consulta Individual','50 min','realizado','R$ 200','Pix'],
+    ['2025-04-14','14:30','Rafael Santos','Consulta Individual','50 min','cancelado','R$ 200','—'],
+    ['2025-04-15','11:00','Pedro Alves','Avaliação Inicial','60 min','confirmado','R$ 350','—'],
+    ['2025-04-16','09:30','Lucas Mendes','Consulta Individual','50 min','confirmado','R$ 200','—'],
+    ['2025-04-17','09:00','Mariana Costa','Consulta Individual','50 min','confirmado','R$ 200','—'],
 ];
 @endphp
 <table class="sabenta-table">
@@ -137,7 +137,7 @@ $sessoes = [
     <div class="col-12"><label class="form-label">Paciente</label>
     <select class="form-select"><option>Selecionar...</option><option>Mariana Costa</option><option>Pedro Alves</option></select></div>
     <div class="col-12"><label class="form-label">Serviço</label>
-    <select class="form-select"><option>Terapia Individual</option><option>Avaliação</option></select></div>
+    <select class="form-select"><option>Consulta Individual</option><option>Avaliação Inicial</option></select></div>
     <div class="col-6"><label class="form-label">Data</label><input type="date" class="form-control"></div>
     <div class="col-6"><label class="form-label">Horário</label><input type="time" class="form-control"></div>
     <div class="col-6"><label class="form-label">Duração</label>
