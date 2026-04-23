@@ -143,7 +143,7 @@
                     &nbsp;
                 </p>
                 <a href="{{ route('register') }}" class="btn btn-outline-primary w-100 mb-3">Começar grátis</a>
-                @foreach(['1 profissional','Até 60 pacientes','Agenda online 24h','Lembretes WhatsApp','Página de perfil','Gestão financeira básica'] as $f)
+                @foreach(['1 profissional','Até 60 clientes','Agenda online 24h','Lembretes WhatsApp','Página de perfil','Gestão financeira básica'] as $f)
                 <div class="plan-feature">
                     <i class="bi bi-check-circle-fill"></i>
                     <span>{{ $f }}</span>
@@ -152,12 +152,12 @@
             </div>
         </div>
 
-        {{-- Clínica Pequena --}}
+        {{-- Equipe Pequena --}}
         <div class="col-md-4 col-lg-3">
             <div class="plan-card popular">
                 <div class="popular-badge">Mais popular</div>
-                <div class="plan-name" style="color:var(--sabenta-primary);">Clínica Pequena</div>
-                <p style="font-size:0.8125rem;color:var(--sabenta-text-muted);">Para clínicas em crescimento</p>
+                <div class="plan-name" style="color:var(--sabenta-primary);">Equipe Pequena</div>
+                <p style="font-size:0.8125rem;color:var(--sabenta-text-muted);">Para negócios em crescimento</p>
                 <div class="plan-price">
                     <sup>R$</sup>
                     <span x-text="anual ? '159' : '199'"></span>
@@ -170,7 +170,7 @@
                     &nbsp;
                 </p>
                 <a href="{{ route('register') }}" class="btn btn-primary w-100 mb-3">Começar grátis</a>
-                @foreach(['Até 5 profissionais','Pacientes ilimitados','Tudo do plano Solo','Painel da clínica','Relatórios avançados','Suporte prioritário','Múltiplas salas/locais'] as $f)
+                @foreach(['Até 5 profissionais','Clientes ilimitados','Tudo do plano Solo','Painel do negócio','Relatórios avançados','Suporte prioritário','Múltiplas salas/locais'] as $f)
                 <div class="plan-feature">
                     <i class="bi bi-check-circle-fill"></i>
                     <span>{{ $f }}</span>
@@ -179,11 +179,11 @@
             </div>
         </div>
 
-        {{-- Clínica Média --}}
+        {{-- Equipe Grande --}}
         <div class="col-md-4 col-lg-3">
             <div class="plan-card">
-                <div class="plan-name">Clínica Média</div>
-                <p style="font-size:0.8125rem;color:var(--sabenta-text-muted);">Para clínicas consolidadas</p>
+                <div class="plan-name">Equipe Grande</div>
+                <p style="font-size:0.8125rem;color:var(--sabenta-text-muted);">Para negócios consolidados</p>
                 <div class="plan-price">
                     <sup>R$</sup>
                     <span x-text="anual ? '279' : '349'"></span>
@@ -196,7 +196,7 @@
                     &nbsp;
                 </p>
                 <a href="{{ route('register') }}" class="btn btn-outline-primary w-100 mb-3">Começar grátis</a>
-                @foreach(['Até 20 profissionais','Pacientes ilimitados','Tudo do plano Clínica','API de integração','Gestor de receita','Gerente de conta dedicado','SLA de suporte'] as $f)
+                @foreach(['Até 20 profissionais','Clientes ilimitados','Tudo do plano Equipe','API de integração','Gestor de receita','Gerente de conta dedicado','SLA de suporte'] as $f)
                 <div class="plan-feature">
                     <i class="bi bi-check-circle-fill"></i>
                     <span>{{ $f }}</span>
@@ -219,8 +219,8 @@
                 <tr>
                     <th style="width:40%;">Funcionalidade</th>
                     <th class="text-center">Solo</th>
-                    <th class="text-center" style="background:var(--sabenta-primary-light);color:var(--sabenta-primary);">Clínica P.</th>
-                    <th class="text-center">Clínica M.</th>
+                    <th class="text-center" style="background:var(--sabenta-primary-light);color:var(--sabenta-primary);">Equipe P.</th>
+                    <th class="text-center">Equipe G.</th>
                 </tr>
             </thead>
             <tbody>
@@ -231,7 +231,7 @@
                     ['Página de perfil público', true, true, true],
                     ['Gestão financeira', 'Básica', 'Completa', 'Completa'],
                     ['Múltiplos profissionais', false, '5', '20'],
-                    ['Painel da clínica', false, true, true],
+                    ['Painel do negócio', false, true, true],
                     ['Relatórios avançados', false, true, true],
                     ['API de integração', false, false, true],
                     ['Gerente de conta', false, false, true],
@@ -268,7 +268,7 @@
         @foreach([
             ['Como funciona o período grátis?','Você tem 14 dias para testar todos os recursos sem precisar cadastrar cartão de crédito. Ao final, escolhe o plano que melhor se encaixa.'],
             ['Posso mudar de plano depois?','Sim, a qualquer momento. O upgrade é imediato e o crédito do mês anterior é abatido automaticamente.'],
-            ['Meus dados são seguros?','Todos os dados são criptografados em trânsito e em repouso. Cada clínica tem seu ambiente isolado.'],
+            ['Meus dados são seguros?','Todos os dados são criptografados em trânsito e em repouso. Cada conta tem seu ambiente isolado.'],
             ['Como funciona o cancelamento?','Você pode cancelar a qualquer momento pelo painel, sem multa. Seu acesso permanece até o fim do período pago.'],
             ['Preciso instalar alguma coisa?','Não. O Sabenta é 100% online, acessível de qualquer dispositivo com navegador.'],
         ] as $i => [$q, $r])

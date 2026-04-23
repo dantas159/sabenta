@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', 'Dra. Ana Souza — Agenda Online')
+@section('title', 'Ana Souza — Agenda Online')
 
 @push('styles')
 <style>
@@ -25,10 +25,10 @@
         <div class="d-flex align-items-center gap-4 flex-wrap">
             <div class="sabenta-avatar" style="width:100px;height:100px;font-size:2rem;border-radius:24px;flex-shrink:0;box-shadow:0 8px 24px rgba(30,91,173,.2);">AS</div>
             <div>
-                <h1 style="font-family:var(--font-heading);font-size:1.875rem;font-weight:800;color:var(--sabenta-text);margin-bottom:.35rem;">Dra. Ana Souza</h1>
-                <p style="font-size:1rem;color:var(--sabenta-text-muted);margin-bottom:.75rem;">Psicóloga Clínica · <span style="color:var(--sabenta-primary);font-weight:600;">CRP 06/123456</span></p>
+                <h1 style="font-family:var(--font-heading);font-size:1.875rem;font-weight:800;color:var(--sabenta-text);margin-bottom:.35rem;">Ana Souza</h1>
+                <p style="font-size:1rem;color:var(--sabenta-text-muted);margin-bottom:.75rem;">Profissional autônoma · <span style="color:var(--sabenta-primary);font-weight:600;">8 anos de experiência</span></p>
                 <div class="d-flex gap-2 flex-wrap">
-                    @foreach(['Ansiedade','Depressão','TCC','Relacionamentos','Autoestima'] as $t)
+                    @foreach(['Presencial','Online','Individual','Em grupo','Consultoria'] as $t)
                     <span style="background:rgba(30,91,173,.1);color:var(--sabenta-primary);padding:.3rem .875rem;border-radius:20px;font-size:.8rem;font-weight:600;">{{ $t }}</span>
                     @endforeach
                 </div>
@@ -37,7 +37,7 @@
     </div>
     <div class="col-md-4 text-md-end">
         <a href="#agendar" class="btn btn-primary btn-lg">
-            <i class="bi bi-calendar-check me-2"></i>Agendar consulta
+            <i class="bi bi-calendar-check me-2"></i>Agendar atendimento
         </a>
         <div style="font-size:.8rem;color:var(--sabenta-text-muted);margin-top:.75rem;">
             <i class="bi bi-shield-lock me-1"></i>Seus dados são protegidos
@@ -67,7 +67,7 @@
                     <div class="d-flex gap-2"><i class="bi bi-geo-alt" style="color:var(--sabenta-primary);"></i><span>São Paulo – SP (e online)</span></div>
                     <div class="d-flex gap-2"><i class="bi bi-clock" style="color:var(--sabenta-primary);"></i><span>Seg–Sex: 08h–18h · Sáb: 09h–12h</span></div>
                     <div class="d-flex gap-2"><i class="bi bi-translate" style="color:var(--sabenta-primary);"></i><span>Português</span></div>
-                    <div class="d-flex gap-2"><i class="bi bi-camera-video" style="color:var(--sabenta-primary);"></i><span>Sessões presenciais e online</span></div>
+                    <div class="d-flex gap-2"><i class="bi bi-camera-video" style="color:var(--sabenta-primary);"></i><span>Atendimentos presenciais e online</span></div>
                 </div>
             </div>
         </div>
@@ -76,12 +76,12 @@
 
 {{-- Serviços --}}
 <section class="perfil-section">
-    <h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">Tipos de sessão</h2>
+    <h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">Tipos de atendimento</h2>
     <div class="row g-3">
         @php $servicos = [
-            ['Consulta Individual','50 min','R$ 200,00','Atendimento individual focado nos seus objetivos e necessidades.','person'],
-            ['Consulta em Dupla','90 min','R$ 400,00','Atendimento para duas pessoas que buscam melhorar a comunicação e o relacionamento.','people'],
-            ['Avaliação Inicial','60 min','R$ 350,00','Sessão de avaliação para entender suas necessidades e definir os próximos passos.','clipboard-check'],
+            ['Atendimento Individual','50 min','R$ 200,00','Atendimento individual focado nos seus objetivos e necessidades.','person'],
+            ['Atendimento em Dupla','90 min','R$ 400,00','Atendimento para duas pessoas que buscam um resultado conjunto.','people'],
+            ['Avaliação Inicial','60 min','R$ 350,00','Encontro de avaliação para entender suas necessidades e definir os próximos passos.','clipboard-check'],
         ]; @endphp
         @foreach($servicos as $s)
         <div class="col-md-4">
@@ -157,7 +157,7 @@
 <section class="perfil-section">
     <h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1rem;">Política de cancelamento</h2>
     <div class="p-3 rounded-3" style="background:var(--sabenta-bg);border:1px solid var(--sabenta-border);font-size:.9rem;line-height:1.8;color:var(--sabenta-text-muted);">
-        Cancelamentos devem ser realizados com no mínimo <strong>24 horas de antecedência</strong>. Cancelamentos tardios ou ausências sem aviso podem estar sujeitos à cobrança de 50% do valor da sessão.
+        Cancelamentos devem ser realizados com no mínimo <strong>24 horas de antecedência</strong>. Cancelamentos tardios ou ausências sem aviso podem estar sujeitos à cobrança de 50% do valor do atendimento.
         <br>Para reagendamentos, entre em contato por WhatsApp.
     </div>
 </section>

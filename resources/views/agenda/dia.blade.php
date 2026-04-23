@@ -32,7 +32,7 @@
             <i class="bi bi-lock"></i> Bloquear
         </button>
         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalNovaSessao">
-            <i class="bi bi-plus-lg"></i> Nova sessão
+            <i class="bi bi-plus-lg"></i> Novo atendimento
         </button>
     </div>
 </div>
@@ -58,7 +58,7 @@
         @endforeach
     </div>
 
-    {{-- Coluna de sessões --}}
+    {{-- Coluna de atendimentos --}}
     <div style="flex:1;position:relative;">
         @foreach($slots as $i => $slot)
         <div style="height:60px;border-bottom:{{ $slot['m']==0 ? '1px solid var(--sabenta-border)' : '1px dashed rgba(221,228,240,.5)' }};"></div>
@@ -68,7 +68,7 @@
         <div style="position:absolute;top:{{ (1)*120 }}px;left:8px;right:8px;height:100px;background:rgba(30,91,173,.08);border:1.5px solid var(--sabenta-primary);border-radius:10px;padding:.625rem .875rem;cursor:pointer;" onclick="document.getElementById('modalDetalhe').querySelector('.modal').classList; new bootstrap.Modal(document.getElementById('modalDetalhe')).show();" data-bs-toggle="modal" data-bs-target="#modalDetalhe">
             <div style="font-family:var(--font-heading);font-size:.8rem;font-weight:700;color:var(--sabenta-primary);">09:00 – 09:50</div>
             <div style="font-size:.875rem;font-weight:600;color:var(--sabenta-text);margin-top:.2rem;">Mariana Costa</div>
-            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Consulta Individual</div>
+            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Atendimento Individual</div>
             <span class="sabenta-badge badge-confirmado" style="font-size:.68rem;margin-top:.25rem;">Confirmada</span>
         </div>
 
@@ -90,7 +90,7 @@
         <div style="position:absolute;top:{{ (6)*120+60 }}px;left:8px;right:8px;height:100px;background:rgba(29,158,117,.08);border:1.5px solid var(--status-confirmado);border-radius:10px;padding:.625rem .875rem;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalDetalhe">
             <div style="font-family:var(--font-heading);font-size:.8rem;font-weight:700;color:var(--status-confirmado);">14:30 – 15:20</div>
             <div style="font-size:.875rem;font-weight:600;color:var(--sabenta-text);margin-top:.2rem;">Fernanda Lima</div>
-            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Consulta Individual</div>
+            <div style="font-size:.775rem;color:var(--sabenta-text-muted);"><i class="bi bi-card-text me-1"></i>Atendimento Individual</div>
             <span class="sabenta-badge badge-confirmado" style="font-size:.68rem;margin-top:.25rem;">Confirmada</span>
         </div>
     </div>
@@ -102,16 +102,16 @@
 <div class="modal-dialog modal-lg modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-    <h5 class="modal-title"><i class="bi bi-calendar-plus me-2" style="color:var(--sabenta-primary);"></i>Nova sessão</h5>
+    <h5 class="modal-title"><i class="bi bi-calendar-plus me-2" style="color:var(--sabenta-primary);"></i>Novo atendimento</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
 <form method="POST" action="#" x-data="{ recorrente: false }">@csrf
 <div class="row g-3">
     <div class="col-md-6">
-        <label class="form-label">Paciente</label>
+        <label class="form-label">Cliente</label>
         <select class="form-select">
-            <option value="">Selecionar paciente...</option>
+            <option value="">Selecionar cliente...</option>
             <option>Mariana Costa</option><option>Pedro Alves</option>
             <option>Fernanda Lima</option><option>Lucas Mendes</option>
             <option>Juliana Ferreira</option><option>Rafael Santos</option>
@@ -121,8 +121,8 @@
         <label class="form-label">Serviço</label>
         <select class="form-select">
             <option value="">Selecionar serviço...</option>
-            <option>Consulta Individual</option><option>Consulta em Dupla</option>
-            <option>Avaliação Inicial</option><option>Consulta Online</option>
+            <option>Atendimento Individual</option><option>Atendimento em Dupla</option>
+            <option>Avaliação Inicial</option><option>Atendimento Online</option>
         </select>
     </div>
     <div class="col-md-4">
@@ -167,7 +167,7 @@
 </div>
 <div class="modal-footer">
     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar sessão</button>
+    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar atendimento</button>
 </div>
 </div></div></div>
 
@@ -176,7 +176,7 @@
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-    <h5 class="modal-title">Detalhe da sessão</h5>
+    <h5 class="modal-title">Detalhe do atendimento</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
@@ -184,7 +184,7 @@
         <div class="sabenta-avatar avatar-lg">MC</div>
         <div>
             <div style="font-family:var(--font-heading);font-weight:700;font-size:1rem;">Mariana Costa</div>
-            <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Consulta Individual · 50 min</div>
+            <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Atendimento Individual · 50 min</div>
             <div style="margin-top:.35rem;"><span class="sabenta-badge badge-confirmado">Confirmada</span></div>
         </div>
     </div>
@@ -246,13 +246,13 @@
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-    <h5 class="modal-title text-danger"><i class="bi bi-trash me-2"></i>Excluir sessão</h5>
+    <h5 class="modal-title text-danger"><i class="bi bi-trash me-2"></i>Excluir atendimento</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
-    <p style="font-size:.9rem;color:var(--sabenta-text-muted);">Esta sessão faz parte de uma série recorrente. O que deseja excluir?</p>
+    <p style="font-size:.9rem;color:var(--sabenta-text-muted);">Este atendimento faz parte de uma série recorrente. O que deseja excluir?</p>
     <div class="d-flex flex-column gap-2 mt-3">
-        @foreach([['esta','Apenas esta sessão','Qui, 17/04 às 09:00'],['futuras','Esta e as futuras','A partir de hoje'],['todas','Todas as sessões da série','Inclui passadas e futuras']] as $opt)
+        @foreach([['esta','Apenas este atendimento','Qui, 17/04 às 09:00'],['futuras','Este e os futuros','A partir de hoje'],['todas','Todos os atendimentos da série','Inclui passados e futuros']] as $opt)
         <label class="d-flex align-items-start gap-3 p-3 rounded-3" style="border:1.5px solid var(--sabenta-border);cursor:pointer;">
             <input type="radio" name="excluir" value="{{ $opt[0] }}" class="form-check-input mt-1" {{ $loop->first ? 'checked' : '' }}>
             <div><div style="font-weight:600;font-size:.875rem;">{{ $opt[1] }}</div>

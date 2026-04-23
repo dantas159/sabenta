@@ -102,7 +102,7 @@
             </a>
 
             <h2 style="font-family: var(--font-heading); font-size: 1.625rem; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 0.75rem;">
-                Organize sua clínica.<br>Foque nos seus pacientes.
+                Organize seu Negócio.<br>Foque nos seus clientes.
             </h2>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; line-height: 1.65;">
                 Agenda inteligente, lembretes automáticos e gestão financeira em um só lugar.
@@ -112,7 +112,7 @@
                 <div class="auth-feature-icon"><i class="bi bi-calendar-check"></i></div>
                 <div>
                     <div class="auth-feature-title">Agenda online 24h</div>
-                    <div class="auth-feature-desc">Seus pacientes agendam sozinhos, você só confirma.</div>
+                    <div class="auth-feature-desc">Seus clientes agendam sozinhos, você só confirma.</div>
                 </div>
             </div>
 

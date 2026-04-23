@@ -1,14 +1,14 @@
 @extends('layouts.app')
-@section('title', 'Pacientes')
+@section('title', 'Clientes')
 @section('breadcrumb')
 <nav aria-label="breadcrumb"><ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="{{ route('painel.dashboard') }}">Painel</a></li>
-<li class="breadcrumb-item active">Pacientes</li>
+<li class="breadcrumb-item active">Clientes</li>
 </ol></nav>
 @endsection
 @section('content')
 
-<x-page-header titulo="Pacientes" botao="Novo paciente" botaoIcone="person-plus" botaoTarget="#modalNovoPaciente" botaoHref="#" />
+<x-page-header titulo="Clientes" botao="Novo cliente" botaoIcone="person-plus" botaoTarget="#modalNovoCliente" botaoHref="#" />
 
 {{-- Busca e filtros --}}
 <div class="sabenta-card mb-3">
@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-3">
         <select class="form-select">
-            <option value="">Todos os pacientes</option>
+            <option value="">Todos os clientes</option>
             <option>Ativos</option>
             <option>Inativos</option>
             <option>Novos (este mês)</option>
@@ -32,8 +32,8 @@
         <select class="form-select">
             <option value="">Ordenar por...</option>
             <option>Nome A–Z</option>
-            <option>Última sessão</option>
-            <option>Próxima sessão</option>
+            <option>Último atendimento</option>
+            <option>Próximo atendimento</option>
         </select>
     </div>
 </div>
@@ -43,7 +43,7 @@
 {{-- Tabela --}}
 <div class="sabenta-card">
 <div class="card-header">
-    <span class="card-header-title">18 pacientes ativos</span>
+    <span class="card-header-title">18 clientes ativos</span>
     <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-download me-1"></i>Exportar</button>
 </div>
 <div style="overflow-x:auto;">
@@ -61,7 +61,7 @@ $pacientes = [
 @endphp
 <table class="sabenta-table">
 <thead><tr>
-    <th>Paciente</th><th>WhatsApp</th><th>Total sessões</th><th>Última sessão</th><th>Próxima sessão</th><th>Status</th><th></th>
+    <th>Cliente</th><th>WhatsApp</th><th>Total atendimentos</th><th>Último atendimento</th><th>Próximo atendimento</th><th>Status</th><th></th>
 </tr></thead>
 <tbody>
 @foreach($pacientes as $p)
@@ -82,7 +82,7 @@ $pacientes = [
     <td>
         <div class="d-flex gap-1">
             <a href="{{ route('painel.pacientes.show') }}" class="btn btn-sm btn-outline-secondary" style="padding:.25rem .55rem;" title="Ver perfil"><i class="bi bi-person"></i></a>
-            <a href="{{ route('painel.agenda.dia') }}" class="btn btn-sm btn-outline-secondary" style="padding:.25rem .55rem;" title="Agendar sessão"><i class="bi bi-calendar-plus"></i></a>
+            <a href="{{ route('painel.agenda.dia') }}" class="btn btn-sm btn-outline-secondary" style="padding:.25rem .55rem;" title="Agendar atendimento"><i class="bi bi-calendar-plus"></i></a>
             <div class="dropdown">
                 <button class="btn btn-sm btn-outline-secondary" style="padding:.25rem .55rem;" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -99,7 +99,7 @@ $pacientes = [
 </table>
 </div>
 <div class="card-footer d-flex align-items-center justify-content-between">
-    <span style="font-size:.8125rem;">Exibindo 8 de 18 pacientes</span>
+    <span style="font-size:.8125rem;">Exibindo 8 de 18 clientes</span>
     <nav><ul class="pagination pagination-sm mb-0">
         <li class="page-item active"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -108,12 +108,12 @@ $pacientes = [
 </div>
 </div>
 
-{{-- Modal 4-A: Novo paciente --}}
-<div class="modal fade" id="modalNovoPaciente" tabindex="-1">
+{{-- Modal 4-A: Novo cliente --}}
+<div class="modal fade" id="modalNovoCliente" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-    <h5 class="modal-title"><i class="bi bi-person-plus me-2" style="color:var(--sabenta-primary);"></i>Novo paciente</h5>
+    <h5 class="modal-title"><i class="bi bi-person-plus me-2" style="color:var(--sabenta-primary);"></i>Novo cliente</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
@@ -121,7 +121,7 @@ $pacientes = [
 <div class="row g-3">
     <div class="col-12">
         <label class="form-label">Nome completo</label>
-        <input type="text" class="form-control" placeholder="Nome do paciente" required>
+        <input type="text" class="form-control" placeholder="Nome do cliente" required>
     </div>
     <div class="col-md-6">
         <label class="form-label">WhatsApp</label>
@@ -155,7 +155,7 @@ $pacientes = [
 </div>
 <div class="modal-footer">
     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Cadastrar paciente</button>
+    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Cadastrar cliente</button>
 </div>
 </div></div></div>
 

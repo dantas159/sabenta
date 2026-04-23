@@ -132,7 +132,7 @@
                         <p style="font-family:var(--font-heading);font-weight:700;font-size:0.875rem;margin-bottom:1rem;">Resumo</p>
                         <div class="summary-row">
                             <span class="summary-label">Serviço</span>
-                            <span class="summary-value">Consulta Individual</span>
+                            <span class="summary-value">Atendimento Individual</span>
                         </div>
                         <div class="summary-row">
                             <span class="summary-label">Data</span>
@@ -193,7 +193,7 @@
                     <div class="col-auto">
                         <div style="background:var(--sabenta-primary-light);border-radius:12px;padding:1rem 1.5rem;text-align:left;">
                             <div style="font-size:0.75rem;color:var(--sabenta-text-muted);margin-bottom:0.125rem;">Serviço</div>
-                            <div style="font-weight:700;font-family:var(--font-heading);">Consulta Individual · 50 min</div>
+                            <div style="font-weight:700;font-family:var(--font-heading);">Atendimento Individual · 50 min</div>
                         </div>
                     </div>
                 </div>

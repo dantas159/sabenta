@@ -37,7 +37,7 @@ Resultado esperado → Como saber que a task está pronta
 | 6 | Seeders e Factories | T-110 a T-117 |
 | 7 | Dashboard | T-120 a T-123 |
 | 8 | Módulo Agenda | T-130 a T-140 |
-| 9 | Módulo Pacientes | T-150 a T-154 |
+| 9 | Módulo Clientes | T-150 a T-154 |
 | 10 | Módulo Financeiro | T-160 a T-165 |
 | 11 | Módulo Automações | T-170 a T-175 |
 | 12 | Módulo Configurações | T-180 a T-188 |
@@ -196,7 +196,7 @@ app/
 │       ├── Configuracoes/
 │       ├── Equipe/
 │       ├── Financeiro/
-│       ├── Pacientes/
+│       ├── Clientes/
 │       └── PaginaPublica/
 ├── Models/
 ├── Services/
@@ -522,7 +522,7 @@ app/
 
 ## T-022 — Migration: `clientes`
 
-**Objetivo:** Cadastro operacional de clientes do profissional. Dados de contato apenas — sem dados clínicos.
+**Objetivo:** Cadastro operacional de clientes do profissional. Dados de contato apenas — sem informações pessoais sensíveis.
 
 **Dependências:** T-012.
 
@@ -566,7 +566,7 @@ app/
 
 ## T-024 — Migration: `recorrencias`
 
-**Objetivo:** Regra de repetição de sessões periódicas. Armazena a "instrução" — as sessões reais são geradas por um job.
+**Objetivo:** Regra de repetição de atendimentos periódicos. Armazena a "instrução" — os atendimentos reais são gerados por um job.
 
 **Dependências:** T-012, T-022, T-017, T-018, T-021.
 
@@ -637,7 +637,7 @@ app/
                AND fim_em > NEW.inicio_em
            ) THEN
                SIGNAL SQLSTATE '45000'
-               SET MESSAGE_TEXT = 'Conflito de horário: já existe uma sessão neste período para este profissional';
+               SET MESSAGE_TEXT = 'Conflito de horário: já existe um atendimento neste período para este profissional';
            END IF;
        END
    ");
@@ -906,7 +906,7 @@ Crie `app/Enums/TipoConsentimento.php` com `termos_uso`, `receber_whatsapp`.
 
 ## T-042 — Enums de Agenda
 
-**Objetivo:** Representar frequências de recorrência e status de sessões.
+**Objetivo:** Representar frequências de recorrência e status de atendimentos.
 
 **O que fazer:**
 
@@ -1274,7 +1274,7 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 # FASE 6 — Seeders e Factories
 
-> **Objetivo da fase:** Criar dados iniciais obrigatórios (planos) e dados de teste (usuários, clientes, sessões) para que o desenvolvimento dos módulos seja feito com dados reais.
+> **Objetivo da fase:** Criar dados iniciais obrigatórios (planos) e dados de teste (usuários, clientes, atendimentos) para que o desenvolvimento dos módulos seja feito com dados reais.
 
 ---
 
@@ -1324,7 +1324,7 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 ## T-112 — Seeder: Dados de desenvolvimento
 
-**Objetivo:** Criar um profissional de teste com clientes e sessões para usar durante o desenvolvimento.
+**Objetivo:** Criar um profissional de teste com clientes e atendimentos para usar durante o desenvolvimento.
 
 **Dependências:** T-110, T-111.
 
@@ -1332,11 +1332,11 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 1. Crie `database/seeders/DevSeeder.php` que:
    - Cria um `Usuario` com email `dev@sabenta.com` e senha `password`
-   - Cria um `Profissional` vinculado com nome "Dr. Teste"
+   - Cria um `Profissional` vinculado com nome "Profissional Teste"
    - Cria a `Assinatura` trial no plano Equipe
    - Cria 20 `Clientes` usando a factory
    - Cria `HorarioAtendimento` para segunda a sexta (08:00 às 18:00)
-   - Cria 30 `Sessoes` distribuídas entre os clientes nas últimas 4 semanas
+   - Cria 30 atendimentos (modelo `Sessao`) distribuídos entre os clientes nas últimas 4 semanas
 
 **Resultado esperado:** `php artisan db:seed --class=DevSeeder` e login com `dev@sabenta.com` mostra um painel com dados reais.
 
@@ -1352,7 +1352,7 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 ## T-120 — Livewire: DashboardStats
 
-**Objetivo:** Carregar os 4 stat cards do dashboard (sessões hoje, sessões semana, receita do mês, clientes ativos) com dados reais.
+**Objetivo:** Carregar os 4 stat cards do dashboard (atendimentos hoje, atendimentos semana, receita do mês, clientes ativos) com dados reais.
 
 **Dependências:** T-112.
 
@@ -1386,16 +1386,16 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 ---
 
-## T-121 — Livewire: SessoesHoje
+## T-121 — Livewire: AtendimentosHoje
 
-**Objetivo:** Listar as sessões do dia atual com dados reais, com capacidade de atualizar o status de cada sessão.
+**Objetivo:** Listar os atendimentos do dia atual com dados reais, com capacidade de atualizar o status de cada atendimento.
 
 **Dependências:** T-120.
 
 **O que fazer:**
 
-1. Crie `app/Livewire/Painel/SessoesHoje.php`.
-2. Carregue as sessões do dia com `eager loading` dos relacionamentos:
+1. Crie `app/Livewire/Painel/AtendimentosHoje.php`.
+2. Carregue os atendimentos do dia com `eager loading` dos relacionamentos:
    ```php
    Sessao::with(['cliente', 'servico'])
        ->whereDate('inicio_em', today())
@@ -1405,22 +1405,22 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 3. Implemente o método `atualizarStatus(int $sessaoId, string $novoStatus)` que valida o status com o Enum e salva.
 4. Atualize a view correspondente do componente Livewire.
 
-**Resultado esperado:** Lista de sessões do dia com dados reais e botão funcional de atualização de status.
+**Resultado esperado:** Lista de atendimentos do dia com dados reais e botão funcional de atualização de status.
 
 ---
 
 ## T-122 — Livewire: AlertasDashboard
 
-**Objetivo:** Exibir alertas contextuais: sessões com falta, clientes sem próxima sessão, confirmações pendentes.
+**Objetivo:** Exibir alertas contextuais: atendimentos com falta, clientes sem próximo atendimento, confirmações pendentes.
 
 **Dependências:** T-121.
 
 **O que fazer:**
 
 1. Crie `app/Livewire/Painel/AlertasDashboard.php` com as queries:
-   - Sessões com `status = 'faltou'` nos últimos 7 dias
-   - Clientes com a última sessão há mais de 14 dias sem futura agendada
-   - Sessões dos próximos 2 dias com `status = 'agendado'` (não confirmado)
+   - Atendimentos com `status = 'faltou'` nos últimos 7 dias
+   - Clientes com o último atendimento há mais de 14 dias sem futuro agendado
+   - Atendimentos dos próximos 2 dias com `status = 'agendado'` (não confirmado)
 2. Limite cada categoria a 3 alertas no máximo para não sobrecarregar o dashboard.
 
 **Resultado esperado:** Painel de alertas exibe situações reais dos dados de teste.
@@ -1431,13 +1431,13 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 # FASE 8 — Módulo Agenda
 
-> **Objetivo da fase:** Implementar as três views de agenda (dia, semana, lista) com funcionalidade completa de criação, edição, visualização e cancelamento de sessões.
+> **Objetivo da fase:** Implementar as três views de agenda (dia, semana, lista) com funcionalidade completa de criação, edição, visualização e cancelamento de atendimentos.
 
 ---
 
 ## T-130 — Service: VerificadorDeDisponibilidade
 
-**Objetivo:** Criar o serviço que verifica se um horário está disponível antes de criar uma sessão. Esta é a primeira camada de proteção contra double-booking.
+**Objetivo:** Criar o serviço que verifica se um horário está disponível antes de criar um atendimento. Esta é a primeira camada de proteção contra double-booking.
 
 **Dependências:** T-075.
 
@@ -1477,7 +1477,7 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 ## T-131 — Service: SlotCalculator
 
-**Objetivo:** Calcular os horários disponíveis de um profissional em um dia específico, cruzando horários de atendimento, sessões existentes e bloqueios.
+**Objetivo:** Calcular os horários disponíveis de um profissional em um dia específico, cruzando horários de atendimento, atendimentos existentes e bloqueios.
 
 **Dependências:** T-130.
 
@@ -1489,7 +1489,7 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
      1. Busca o `HorarioAtendimento` do dia da semana correspondente
      2. Gera todos os slots possíveis entre `hora_inicio` e `hora_fim`, espaçados por `duracao + intervalo_minutos`
      3. Remove slots que colidem com o período de almoço (`almoco_inicio`/`almoco_fim`)
-     4. Remove slots que colidem com sessões existentes (usa `VerificadorDeDisponibilidade`)
+     4. Remove slots que colidem com atendimentos existentes (usa `VerificadorDeDisponibilidade`)
      5. Remove slots que colidem com bloqueios de agenda
      6. Retorna array de `Carbon` representando os slots disponíveis
 
@@ -1510,20 +1510,20 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
    - Carrega sessões do dia com `with(['cliente', 'servico', 'sala'])`
    - Métodos `proximoDia()` e `diaAnterior()` que alteram `$data` e re-renderizam
 
-2. Crie o subcomponente Livewire `NovaSessaoModal`:
+2. Crie o subcomponente Livewire `NovoAtendimentoModal`:
    - Formulário com: cliente (busca por nome), serviço, data, horário (lista de slots calculados pelo `SlotCalculator`), observações
    - Validação com `validate()` do Livewire
-   - Ao salvar: verifica disponibilidade → cria sessão → fecha modal → emite evento para atualizar a lista
+   - Ao salvar: verifica disponibilidade → cria atendimento → fecha modal → emite evento para atualizar a lista
 
-3. Crie o subcomponente `DetalhesSessaoModal`:
-   - Exibe dados da sessão
+3. Crie o subcomponente `DetalhesAtendimentoModal`:
+   - Exibe dados do atendimento
    - Botões de ação: Confirmar presença, Marcar como realizado, Registrar falta, Cancelar
 
 4. Atualize `routes/web.php` para a rota do painel usar `AgendaDia` em vez de `fn() => view(...)`.
 
-**Conceito-chave — Comunicação entre componentes Livewire:** Quando `NovaSessaoModal` salva uma sessão, ele precisa informar `AgendaDia` para atualizar a lista. Isso é feito com eventos: `$this->dispatch('sessao-criada')` no modal e `#[On('sessao-criada')]` no componente pai.
+**Conceito-chave — Comunicação entre componentes Livewire:** Quando `NovoAtendimentoModal` salva um atendimento, ele precisa informar `AgendaDia` para atualizar a lista. Isso é feito com eventos: `$this->dispatch('atendimento-criado')` no modal e `#[On('atendimento-criado')]` no componente pai.
 
-**Resultado esperado:** Agenda do dia funcional com navegação entre dias, criação e atualização de sessões.
+**Resultado esperado:** Agenda do dia funcional com navegação entre dias, criação e atualização de atendimentos.
 
 ---
 
@@ -1535,9 +1535,9 @@ Com esse cast, ao acessar `$sessao->status`, você recebe um objeto `StatusSessa
 
 **O que fazer:**
 
-1. Crie `AgendaSemana.php`: exibe 7 colunas (um por dia da semana), carregando as sessões de cada dia em uma única query com `whereBetween('inicio_em', [$inicioDaSemana, $fimDaSemana])`.
+1. Crie `AgendaSemana.php`: exibe 7 colunas (um por dia da semana), carregando os atendimentos de cada dia em uma única query com `whereBetween('inicio_em', [$inicioDaSemana, $fimDaSemana])`.
 
-2. Crie `AgendaLista.php`: exibe sessões em formato tabular com filtros por período, status e cliente. Implemente busca em tempo real com `wire:model.live`.
+2. Crie `AgendaLista.php`: exibe atendimentos em formato tabular com filtros por período, status e cliente. Implemente busca em tempo real com `wire:model.live`.
 
 **Resultado esperado:** Três views de agenda funcionais e navegáveis.
 
@@ -1559,44 +1559,44 @@ Crie o componente com formulário para: título (opcional), data/hora de início
 
 ---
 
-# FASE 9 — Módulo Pacientes
+# FASE 9 — Módulo Clientes
 
 ---
 
-## T-150 — Livewire: ListaPacientes
+## T-150 — Livewire: ListaClientes
 
-**Objetivo:** Listar pacientes com busca em tempo real e filtros.
+**Objetivo:** Listar clientes com busca em tempo real e filtros.
 
 **Dependências:** T-072, T-112.
 
 **O que fazer:**
 
-1. Crie `app/Livewire/Painel/Pacientes/ListaPacientes.php`:
+1. Crie `app/Livewire/Painel/Clientes/ListaClientes.php`:
    - Propriedade `public string $busca = ''`
    - Query com `when($this->busca, fn($q) => $q->where('nome', 'like', "%{$this->busca}%"))` — o `wire:model.live` no input atualiza automaticamente
    - Paginação com `paginate(20)` do Eloquent
 
 2. Conecte a view `resources/views/pacientes/index.blade.php` a este componente.
 
-**Resultado esperado:** Busca de pacientes funcional em tempo real.
+**Resultado esperado:** Busca de clientes funcional em tempo real.
 
 ---
 
-## T-151 — Livewire: PerfilPaciente
+## T-151 — Livewire: PerfilCliente
 
-**Objetivo:** Exibir o perfil completo do paciente com histórico de sessões, próximas sessões e ações (agendar, excluir).
+**Objetivo:** Exibir o perfil completo do cliente com histórico de atendimentos, próximos atendimentos e ações (agendar, excluir).
 
 **Dependências:** T-150.
 
 **O que fazer:**
 
-1. Crie `app/Livewire/Painel/Pacientes/PerfilPaciente.php`:
+1. Crie `app/Livewire/Painel/Clientes/PerfilCliente.php`:
    - Recebe `$clienteId` como parâmetro de URL
    - Carrega o cliente com todos os relacionamentos necessários
    - Método `excluir()` que faz soft delete e redireciona para a lista
 2. Atualize a rota de `/pacientes/{cliente}` para usar este componente.
 
-**Resultado esperado:** Perfil do paciente com dados reais, histórico e ações funcionais.
+**Resultado esperado:** Perfil do cliente com dados reais, histórico e ações funcionais.
 
 ---
 
@@ -1608,7 +1608,7 @@ Crie o componente com formulário para: título (opcional), data/hora de início
 
 ## T-160 — Livewire: FinanceiroIndex
 
-**Objetivo:** Exibir resumo financeiro do período com stat cards, gráfico e tabela de sessões.
+**Objetivo:** Exibir resumo financeiro do período com stat cards, gráfico e tabela de atendimentos.
 
 **Dependências:** T-076, T-112.
 
@@ -1617,7 +1617,7 @@ Crie o componente com formulário para: título (opcional), data/hora de início
 1. Crie `app/Livewire/Painel/Financeiro/FinanceiroIndex.php`:
    - Propriedades: `public string $periodo = 'mes_atual'`
    - Método `getPeriodo()` que retorna as datas de início e fim baseado no período selecionado
-   - Queries: receita confirmada, a receber (pendente), sessões realizadas, ticket médio
+   - Queries: receita confirmada, a receber (pendente), atendimentos realizados, ticket médio
 
 2. Os dados do gráfico devem ser retornados como JSON para o Chart.js via `wire:init` ou `$this->dispatch('dados-grafico', dados: [...])`.
 
@@ -1627,7 +1627,7 @@ Crie o componente com formulário para: título (opcional), data/hora de início
 
 ## T-161 — Livewire: RegistrarPagamentoModal
 
-**Objetivo:** Modal para registrar o pagamento de uma sessão, criando uma `Transacao`.
+**Objetivo:** Modal para registrar o pagamento de um atendimento, criando uma `Transacao`.
 
 **Dependências:** T-160.
 
@@ -1639,7 +1639,7 @@ Crie o componente com formulário para: título (opcional), data/hora de início
    - Atualiza `sessao.status_pagamento = pago`
 3. Use `DB::transaction()` para garantir que os dois registros sejam consistentes.
 
-**Resultado esperado:** Pagamento registrado aparece na tabela de transações e o status da sessão muda.
+**Resultado esperado:** Pagamento registrado aparece na tabela de transações e o status do atendimento muda.
 
 ---
 
@@ -1863,7 +1863,7 @@ Crie `app/Livewire/Painel/PaginaPublica/EditorPagina.php` com:
 
 ## T-220 — Job: GerarSessoesDaRecorrencia
 
-**Objetivo:** Gerar automaticamente as sessões futuras de recorrências ativas, com até 60 dias de antecedência.
+**Objetivo:** Gerar automaticamente os atendimentos futuros de recorrências ativas, com até 60 dias de antecedência.
 
 **Dependências:** T-074, T-075, T-130.
 
@@ -1875,16 +1875,16 @@ Crie `app/Livewire/Painel/PaginaPublica/EditorPagina.php` com:
    ```
 2. Na classe, implemente:
    - Busca todas as `Recorrencia` com `ativo = true` (sem Global Scope)
-   - Para cada recorrência, calcula as datas das próximas sessões até 60 dias à frente baseado na `frequencia` e `dia_semana`
-   - Para cada data, verifica se a sessão já existe (evita duplicata) e se há disponibilidade
-   - Cria as sessões que faltam, copiando `politica_cancelamento_id` da recorrência
+   - Para cada recorrência, calcula as datas dos próximos atendimentos até 60 dias à frente baseado na `frequencia` e `dia_semana`
+   - Para cada data, verifica se o atendimento já existe (evita duplicata) e se há disponibilidade
+   - Cria os atendimentos que faltam, copiando `politica_cancelamento_id` da recorrência
 
 3. Registre no scheduler em `routes/console.php`:
    ```php
    Schedule::job(new GerarSessoesDaRecorrencia)->dailyAt('06:00');
    ```
 
-**Resultado esperado:** Job cria sessões futuras corretamente sem duplicatas.
+**Resultado esperado:** Job cria atendimentos futuros corretamente sem duplicatas.
 
 ---
 
@@ -1907,9 +1907,9 @@ Crie `app/Livewire/Painel/PaginaPublica/EditorPagina.php` com:
 
 ---
 
-## T-222 — Job: LembretesSessoes
+## T-222 — Job: LembretesAtendimentos
 
-**Objetivo:** Disparar mensagens automáticas de lembrete para sessões futuras.
+**Objetivo:** Disparar mensagens automáticas de lembrete para atendimentos futuros.
 
 **Dependências:** T-078, T-079, T-073.
 
@@ -1919,7 +1919,7 @@ Crie `app/Livewire/Painel/PaginaPublica/EditorPagina.php` com:
    - Busca automações com `tipo IN ('lembrete_48h', 'lembrete_dia')` e `ativo = true`
    - Para `lembrete_48h`: busca sessões que começam entre 47h e 49h à frente
    - Para `lembrete_dia`: busca sessões do dia atual cuja `hora_disparo` já passou
-   - Para cada sessão e automação, verifica em `logs_automacao` se já foi enviado (evita duplicata)
+   - Para cada atendimento e automação, verifica em `logs_automacao` se já foi enviado (evita duplicata)
    - Verifica `consentimentos_cliente` com `tipo = receber_whatsapp` e `concedido = true`
    - Se tudo ok, cria o `LogAutomacao` com `status = pendente` (o envio real é delegado a outro serviço)
 
@@ -2032,7 +2032,7 @@ Crie `tests/Feature/Auth/LoginTest.php`:
 
 ## T-241 — Testes: Proteção contra Double-booking
 
-**Objetivo:** Verificar que o sistema impede a criação de sessões sobrepostas.
+**Objetivo:** Verificar que o sistema impede a criação de atendimentos sobrepostos.
 
 **Dependências:** T-130.
 
@@ -2043,7 +2043,7 @@ Crie `tests/Feature/Agenda/SobreposicaoTest.php`:
 - `test_permite_criar_sessao_em_horario_diferente()`
 - `test_trigger_impede_sobreposicao_mesmo_com_race_condition()`
 
-**Resultado esperado:** Tentativa de criar sessão sobreposta lança exceção.
+**Resultado esperado:** Tentativa de criar atendimento sobreposto lança exceção.
 
 ---
 
@@ -2086,7 +2086,7 @@ Crie `tests/Feature/Seguranca/TenancyTest.php`:
 
 ## T-244 — Testes: Financeiro
 
-**Objetivo:** Verificar que o registro de pagamentos funciona corretamente e atualiza o status da sessão.
+**Objetivo:** Verificar que o registro de pagamentos funciona corretamente e atualiza o status do atendimento.
 
 **Dependências:** T-161.
 
@@ -2111,9 +2111,9 @@ Antes de considerar o projeto pronto para produção, verifique:
 - [ ] `php artisan migrate:fresh --seed` — banco recriado do zero sem erros
 - [ ] Login e cadastro funcionais com criação de `usuario + profissional + assinatura`
 - [ ] Global Scope testado: profissional A não vê dados do profissional B
-- [ ] Trigger de sobreposição testada: duas sessões no mesmo horário geram erro
-- [ ] Agenda do dia: criar, confirmar, marcar como realizado, cancelar sessão
-- [ ] Financeiro: registrar pagamento atualiza `status_pagamento` da sessão
+- [ ] Trigger de sobreposição testada: dois atendimentos no mesmo horário geram erro
+- [ ] Agenda do dia: criar, confirmar, marcar como realizado, cancelar atendimento
+- [ ] Financeiro: registrar pagamento atualiza `status_pagamento` do atendimento
 - [ ] Jobs agendados configurados no scheduler (`routes/console.php`)
 - [ ] `.env.example` atualizado com todas as variáveis necessárias
 - [ ] `config/session.php` usando tabela `http_sessions`

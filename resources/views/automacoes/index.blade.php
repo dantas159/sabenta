@@ -40,12 +40,12 @@
 {{-- Cards de mensagens --}}
 @php
 $mensagens = [
-    ['bi-calendar-check','Confirmação de agendamento','Enviada logo após o paciente agendar uma sessão','1','pendente'],
-    ['bi-clock-history','Lembrete 48h antes','Enviado 2 dias antes da sessão para confirmar presença','1','pendente'],
-    ['bi-alarm','Lembrete no dia','Enviado na manhã do dia da sessão','1','pendente'],
-    ['bi-x-circle','Cancelamento','Enviada quando uma sessão é cancelada pelo profissional','0','cancelado'],
-    ['bi-cash-coin','Cobrança de pagamento','Enviada 3 dias após a sessão sem pagamento registrado','1','pendente'],
-    ['bi-star','Solicitação de avaliação','Enviada 24h após sessão realizada','0','cancelado'],
+    ['bi-calendar-check','Confirmação de agendamento','Enviada logo após o cliente agendar um atendimento','1','pendente'],
+    ['bi-clock-history','Lembrete 48h antes','Enviado 2 dias antes do atendimento para confirmar presença','1','pendente'],
+    ['bi-alarm','Lembrete no dia','Enviado na manhã do dia do atendimento','1','pendente'],
+    ['bi-x-circle','Cancelamento','Enviada quando um atendimento é cancelado pelo profissional','0','cancelado'],
+    ['bi-cash-coin','Cobrança de pagamento','Enviada 3 dias após o atendimento sem pagamento registrado','1','pendente'],
+    ['bi-star','Solicitação de avaliação','Enviada 24h após atendimento realizado','0','cancelado'],
 ];
 @endphp
 
@@ -100,7 +100,7 @@ $logs = [
 ];
 @endphp
 <table class="sabenta-table">
-<thead><tr><th>Data/hora</th><th>Paciente</th><th>Número</th><th>Mensagem</th><th>Status</th></tr></thead>
+<thead><tr><th>Data/hora</th><th>Cliente</th><th>Número</th><th>Mensagem</th><th>Status</th></tr></thead>
 <tbody>
 @foreach($logs as $l)
 <tr>
@@ -137,7 +137,7 @@ $logs = [
     <h5 class="modal-title"><i class="bi bi-pencil me-2" style="color:var(--sabenta-primary);"></i>Editar mensagem — Lembrete 48h antes</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
-<div class="modal-body" x-data="{ msg: 'Olá {nome}! Lembrando que você tem uma sessão amanhã, {data} às {hora}. Para confirmar, responda SIM. Para cancelar ou reagendar, entre em contato. — Dra. Ana Souza 😊' }">
+<div class="modal-body" x-data="{ msg: 'Olá {nome}! Lembrando que você tem um atendimento amanhã, {data} às {hora}. Para confirmar, responda SIM. Para cancelar ou reagendar, entre em contato. — Ana Souza 😊' }">
     <div class="row g-3">
         <div class="col-md-7">
             <label class="form-label">Texto da mensagem</label>
@@ -154,7 +154,7 @@ $logs = [
             <label class="form-label">Preview ao vivo</label>
             <div style="background:#e5ddd5;border-radius:12px;padding:1rem;min-height:160px;">
                 <div style="background:#fff;border-radius:8px 8px 8px 0;padding:.75rem;font-size:.85rem;line-height:1.6;box-shadow:0 1px 2px rgba(0,0,0,.1);"
-                     x-text="msg.replace('{nome}', 'Mariana').replace('{data}', '16/04/2025').replace('{hora}', '09:00').replace('{servico}', 'Consulta Individual')"></div>
+                     x-text="msg.replace('{nome}', 'Mariana').replace('{data}', '16/04/2025').replace('{hora}', '09:00').replace('{servico}', 'Atendimento Individual')"></div>
             </div>
         </div>
     </div>

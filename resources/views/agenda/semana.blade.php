@@ -28,7 +28,7 @@
         </div>
     </div>
     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalNovaSessaoSemana">
-        <i class="bi bi-plus-lg"></i> Nova sessão
+        <i class="bi bi-plus-lg"></i> Novo atendimento
     </button>
 </div>
 
@@ -44,13 +44,13 @@ $dias = [
     ['abrev'=>'Dom','num'=>20,'hoje'=>false],
 ];
 $sessoesSemana = [
-    // [diaIndex, hora, minuto, duracao_slots, paciente, servico, cor, badge]
-    [0, 9, 0, 2, 'Mariana C.', 'Consulta', 'var(--sabenta-primary)', 'badge-confirmado'],
+    // [diaIndex, hora, minuto, duracao_slots, cliente, servico, cor, badge]
+    [0, 9, 0, 2, 'Mariana C.', 'Atendimento', 'var(--sabenta-primary)', 'badge-confirmado'],
     [1, 10, 0, 2, 'Pedro A.', 'Avaliação', '#8B5CF6', 'badge-pendente'],
-    [2, 14, 0, 2, 'Fernanda L.', 'Consulta', 'var(--status-confirmado)', 'badge-confirmado'],
-    [3, 9, 0, 2, 'Mariana C.', 'Consulta', 'var(--sabenta-primary)', 'badge-confirmado'],
-    [3, 14, 30, 2, 'Lucas M.', 'Consulta', 'var(--sabenta-primary)', 'badge-confirmado'],
-    [4, 11, 0, 3, 'Juliana F.', 'Consulta em Dupla', 'var(--status-pendente)', 'badge-pendente'],
+    [2, 14, 0, 2, 'Fernanda L.', 'Atendimento', 'var(--status-confirmado)', 'badge-confirmado'],
+    [3, 9, 0, 2, 'Mariana C.', 'Atendimento', 'var(--sabenta-primary)', 'badge-confirmado'],
+    [3, 14, 30, 2, 'Lucas M.', 'Atendimento', 'var(--sabenta-primary)', 'badge-confirmado'],
+    [4, 11, 0, 3, 'Juliana F.', 'Atendimento em Dupla', 'var(--status-pendente)', 'badge-pendente'],
 ];
 @endphp
 
@@ -94,20 +94,20 @@ $sessoesSemana = [
 </div>
 </div>
 
-{{-- Modal nova sessão (reutilizado) --}}
+{{-- Modal novo atendimento (reutilizado) --}}
 <div class="modal fade" id="modalNovaSessaoSemana" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-    <h5 class="modal-title"><i class="bi bi-calendar-plus me-2" style="color:var(--sabenta-primary);"></i>Nova sessão</h5>
+    <h5 class="modal-title"><i class="bi bi-calendar-plus me-2" style="color:var(--sabenta-primary);"></i>Novo atendimento</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
 <div class="row g-3">
-    <div class="col-12"><label class="form-label">Paciente</label>
+    <div class="col-12"><label class="form-label">Cliente</label>
     <select class="form-select"><option>Selecionar...</option><option>Mariana Costa</option><option>Pedro Alves</option></select></div>
     <div class="col-12"><label class="form-label">Serviço</label>
-    <select class="form-select"><option>Consulta Individual</option><option>Avaliação Inicial</option></select></div>
+    <select class="form-select"><option>Atendimento Individual</option><option>Avaliação Inicial</option></select></div>
     <div class="col-6"><label class="form-label">Data</label><input type="date" class="form-control" value="2025-04-17"></div>
     <div class="col-6"><label class="form-label">Horário</label><input type="time" class="form-control" value="09:00"></div>
     <div class="col-6"><label class="form-label">Duração</label>
@@ -118,20 +118,20 @@ $sessoesSemana = [
 </div>
 <div class="modal-footer">
     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar sessão</button>
+    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar atendimento</button>
 </div>
 </div></div></div>
 
 {{-- Modal detalhe --}}
 <div class="modal fade" id="modalDetalhe" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
-<div class="modal-header"><h5 class="modal-title">Detalhe da sessão</h5>
+<div class="modal-header"><h5 class="modal-title">Detalhe do atendimento</h5>
 <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
 <div class="modal-body">
     <div class="d-flex gap-3 align-items-center p-3 mb-3" style="background:var(--sabenta-bg);border-radius:12px;">
         <div class="sabenta-avatar avatar-lg">MC</div>
         <div><div style="font-family:var(--font-heading);font-weight:700;font-size:1rem;">Mariana Costa</div>
-        <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Consulta Individual · 50 min</div>
+        <div style="font-size:.8375rem;color:var(--sabenta-text-muted);">Atendimento Individual · 50 min</div>
         <div style="margin-top:.35rem;"><span class="sabenta-badge badge-confirmado">Confirmada</span></div></div>
     </div>
     <div class="row g-2">

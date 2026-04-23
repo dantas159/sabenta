@@ -12,7 +12,7 @@
 
 <x-page-header
     titulo="Equipe"
-    sub="Gerencie os membros e permissões da sua clínica"
+    sub="Gerencie os membros e permissões do seu negócio"
     botao="Convidar membro"
     botaoIcone="person-plus"
     botaoHref="#"
@@ -22,11 +22,11 @@
 {{-- Stats rápidos --}}
 @php
 $membros = [
-    ['nome' => 'Dra. Ana Souza',     'email' => 'ana.souza@psicologia.com.br',   'role' => 'admin',         'status' => 'ativo',    'ultimo' => 'Agora',         'iniciais' => 'AS', 'cor' => '#3b82f6'],
-    ['nome' => 'Dr. Carlos Mendes',  'email' => 'carlos.mendes@psicologia.com',  'role' => 'profissional',  'status' => 'ativo',    'ultimo' => 'Há 2 horas',    'iniciais' => 'CM', 'cor' => '#8b5cf6'],
-    ['nome' => 'Dra. Juliana Lima',  'email' => 'juliana.lima@clinica.com.br',   'role' => 'profissional',  'status' => 'ativo',    'ultimo' => 'Há 1 dia',      'iniciais' => 'JL', 'cor' => '#10b981'],
-    ['nome' => 'Fernanda Rocha',     'email' => 'fernanda.rocha@clinica.com.br', 'role' => 'recepcionista', 'status' => 'ativo',    'ultimo' => 'Há 3 horas',    'iniciais' => 'FR', 'cor' => '#f59e0b'],
-    ['nome' => 'Roberto Alves',      'email' => 'roberto.alves@clinica.com.br',  'role' => 'recepcionista', 'status' => 'inativo',  'ultimo' => 'Há 5 dias',     'iniciais' => 'RA', 'cor' => '#94a3b8'],
+    ['nome' => 'Ana Souza',           'email' => 'ana.souza@empresa.com.br',      'role' => 'admin',         'status' => 'ativo',    'ultimo' => 'Agora',         'iniciais' => 'AS', 'cor' => '#3b82f6'],
+    ['nome' => 'Carlos Mendes',      'email' => 'carlos.mendes@empresa.com',     'role' => 'profissional',  'status' => 'ativo',    'ultimo' => 'Há 2 horas',    'iniciais' => 'CM', 'cor' => '#8b5cf6'],
+    ['nome' => 'Juliana Lima',       'email' => 'juliana.lima@empresa.com.br',   'role' => 'profissional',  'status' => 'ativo',    'ultimo' => 'Há 1 dia',      'iniciais' => 'JL', 'cor' => '#10b981'],
+    ['nome' => 'Fernanda Rocha',     'email' => 'fernanda.rocha@empresa.com.br', 'role' => 'recepcionista', 'status' => 'ativo',    'ultimo' => 'Há 3 horas',    'iniciais' => 'FR', 'cor' => '#f59e0b'],
+    ['nome' => 'Roberto Alves',      'email' => 'roberto.alves@empresa.com.br',  'role' => 'recepcionista', 'status' => 'inativo',  'ultimo' => 'Há 5 dias',     'iniciais' => 'RA', 'cor' => '#94a3b8'],
 ];
 
 $pendentes = [
@@ -89,7 +89,7 @@ $roleLabels = [
                     <th>Perfil</th>
                     <th>Status</th>
                     <th>Último acesso</th>
-                    <th>Sessões (mês)</th>
+                    <th>Atendimentos (mês)</th>
                     <th></th>
                 </tr>
             </thead>
@@ -152,7 +152,7 @@ $roleLabels = [
                                     {{ $m['status'] === 'ativo' ? 'Desativar acesso' : 'Reativar acesso' }}
                                 </a></li>
                                 <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-person-x"></i> Remover da clínica
+                                    <i class="bi bi-person-x"></i> Remover do negócio
                                 </a></li>
                             </ul>
                         </div>
@@ -218,7 +218,7 @@ $roleLabels = [
     <div class="modal-body" x-data="{ role: 'profissional' }">
         <div class="mb-3">
             <label class="form-label">E-mail do convidado *</label>
-            <input type="email" class="form-control" placeholder="nome@clinica.com.br">
+            <input type="email" class="form-control" placeholder="nome@empresa.com.br">
         </div>
 
         <div class="mb-3">
@@ -259,7 +259,7 @@ $roleLabels = [
                             <span style="font-size:0.65rem;background:#fee2e2;color:#dc2626;border-radius:6px;padding:0.1rem 0.4rem;vertical-align:middle;margin-left:0.4rem;">Acesso total</span>
                         </div>
                         <div style="font-size:0.78rem;color:var(--sabenta-text-muted);line-height:1.5;">
-                            Acesso completo à clínica: agenda de todos, financeiro, equipe, configurações e assinatura.
+                            Acesso completo ao sistema: agenda de todos, financeiro, equipe, configurações e assinatura.
                         </div>
                     </div>
                 </label>
@@ -269,7 +269,7 @@ $roleLabels = [
 
         <div class="mb-1">
             <label class="form-label">Mensagem personalizada <span style="font-size:0.75rem;color:var(--sabenta-text-muted);">(opcional)</span></label>
-            <textarea class="form-control" rows="2" placeholder="Ex: Olá! Estou te convidando para integrar nossa equipe na Clínica Sabenta."></textarea>
+            <textarea class="form-control" rows="2" placeholder="Ex: Olá! Estou te convidando para integrar nossa equipe no Sabenta."></textarea>
         </div>
 
         <div class="mt-3 p-3 rounded-3" style="background:var(--sabenta-primary-light);font-size:0.78rem;color:var(--sabenta-primary);">
@@ -299,7 +299,7 @@ $roleLabels = [
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
     <div class="modal-body">
-        <p style="font-size:0.875rem;font-weight:600;margin-bottom:1rem;" id="editarRoleNome">Dr. Carlos Mendes</p>
+        <p style="font-size:0.875rem;font-weight:600;margin-bottom:1rem;" id="editarRoleNome">Carlos Mendes</p>
         <label class="form-label">Perfil de acesso</label>
         <select class="form-select" x-model="role">
             <option value="profissional">Profissional</option>
@@ -309,7 +309,7 @@ $roleLabels = [
         <template x-if="role === 'admin'">
             <div class="mt-2 p-2 rounded-3" style="background:#fee2e2;font-size:0.78rem;color:#dc2626;" x-transition>
                 <i class="bi bi-exclamation-triangle me-1"></i>
-                Administradores têm acesso total à clínica, incluindo financeiro e assinatura.
+                Administradores têm acesso total ao sistema, incluindo financeiro e assinatura.
             </div>
         </template>
     </div>

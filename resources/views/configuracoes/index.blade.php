@@ -39,7 +39,7 @@
     {{-- Horários --}}
     <div class="tab-pane fade show active" id="tabHorarios">
     <div class="card-body">
-    <p style="font-size:.875rem;color:var(--sabenta-text-muted);margin-bottom:1.25rem;">Configure os dias e horários em que você atende pacientes.</p>
+    <p style="font-size:.875rem;color:var(--sabenta-text-muted);margin-bottom:1.25rem;">Configure os dias e horários em que você atende clientes.</p>
     @php
     $dias = [
         ['Segunda-feira','08:00','18:00','60',true],
@@ -91,10 +91,10 @@
     </div>
     @php
     $servicos = [
-        ['Consulta Individual','50 min','R$ 200,00','Sim',true],
-        ['Consulta em Dupla','90 min','R$ 400,00','Sim',true],
+        ['Atendimento Individual','50 min','R$ 200,00','Sim',true],
+        ['Atendimento em Dupla','90 min','R$ 400,00','Sim',true],
         ['Avaliação Inicial','60 min','R$ 350,00','Não',true],
-        ['Consulta Online','45 min','R$ 180,00','Sim',false],
+        ['Atendimento Online','45 min','R$ 180,00','Sim',false],
     ];
     @endphp
     <table class="sabenta-table">
@@ -132,11 +132,11 @@
             <option>48 horas antes</option>
             <option>72 horas antes</option>
         </select>
-        <div class="form-text">Pacientes não poderão cancelar com menos antecedência que o definido.</div>
+        <div class="form-text">Clientes não poderão cancelar com menos antecedência que o definido.</div>
     </div>
     <div class="mb-4">
         <label class="form-label">Política de cancelamento</label>
-        <textarea class="form-control" rows="6" style="font-size:.9rem;line-height:1.7;">Cancelamentos devem ser realizados com no mínimo 24 horas de antecedência. Cancelamentos com menos de 24 horas ou ausências sem aviso podem estar sujeitos à cobrança de 50% do valor da sessão, a critério do profissional.
+        <textarea class="form-control" rows="6" style="font-size:.9rem;line-height:1.7;">Cancelamentos devem ser realizados com no mínimo 24 horas de antecedência. Cancelamentos com menos de 24 horas ou ausências sem aviso podem estar sujeitos à cobrança de 50% do valor do atendimento, a critério do profissional.
 
 Para reagendamentos, entre em contato por WhatsApp.</textarea>
         <div class="form-text">Esta política será exibida na sua página pública de agendamento.</div>
@@ -159,17 +159,17 @@ Para reagendamentos, entre em contato por WhatsApp.</textarea>
         <div class="col-md-8">
             <div class="row g-3">
                 <div class="col-12"><label class="form-label">Nome completo</label>
-                <input type="text" class="form-control" value="Dra. Ana Souza"></div>
+                <input type="text" class="form-control" value="Ana Souza"></div>
                 <div class="col-md-6"><label class="form-label">E-mail</label>
-                <input type="email" class="form-control" value="ana.souza@psicologia.com.br"></div>
+                <input type="email" class="form-control" value="ana.souza@empresa.com.br"></div>
                 <div class="col-md-6"><label class="form-label">WhatsApp</label>
                 <input type="tel" class="form-control" value="(11) 99999-8888"></div>
-                <div class="col-md-6"><label class="form-label">CRP</label>
-                <input type="text" class="form-control" placeholder="CRP 06/123456"></div>
-                <div class="col-md-6"><label class="form-label">Especialidade</label>
-                <input type="text" class="form-control" value="Psicóloga Clínica"></div>
+                <div class="col-md-6"><label class="form-label">Registro profissional</label>
+                <input type="text" class="form-control" placeholder="Ex: CRE 123456, OAB 123456..."></div>
+                <div class="col-md-6"><label class="form-label">Área de atuação</label>
+                <input type="text" class="form-control" value="Profissional autônoma"></div>
                 <div class="col-12"><label class="form-label">Bio profissional</label>
-                <textarea class="form-control" rows="3" style="font-size:.9rem;">Psicóloga clínica com 8 anos de experiência, especializada em terapia cognitivo-comportamental e psicodinâmica. Atendo adultos e casais.</textarea></div>
+                <textarea class="form-control" rows="3" style="font-size:.9rem;">Profissional com ampla experiência na área. Atendo de forma presencial e online com foco na qualidade e na satisfação de cada cliente.</textarea></div>
                 <div class="col-12"><button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar dados</button></div>
             </div>
         </div>
@@ -252,8 +252,8 @@ Para reagendamentos, entre em contato por WhatsApp.</textarea>
             ['Painel (visão geral)',              true,  true,  true],
             ['Agenda — visualizar todas',         true,  false, true],
             ['Agenda — visualizar própria',       true,  true,  true],
-            ['Agenda — criar/editar sessões',     true,  true,  true],
-            ['Pacientes — cadastrar/editar',      true,  true,  true],
+            ['Agenda — criar/editar atendimentos', true,  true,  true],
+            ['Clientes — cadastrar/editar',       true,  true,  true],
             ['Clientes — observações',             true,  true,  false],
             ['Financeiro — visualizar tudo',      true,  false, false],
             ['Financeiro — visualizar próprio',   true,  true,  false],
@@ -304,7 +304,7 @@ Para reagendamentos, entre em contato por WhatsApp.</textarea>
 
         <div class="mt-4 p-3 rounded-3" style="background:var(--sabenta-primary-light);font-size:0.8125rem;color:var(--sabenta-primary);">
             <i class="bi bi-info-circle me-1"></i>
-            As permissões acima se aplicam aos planos <strong>Clínica Pequena</strong> e <strong>Clínica Média</strong>.
+            As permissões acima se aplicam aos planos <strong>Equipe Pequena</strong> e <strong>Equipe Grande</strong>.
             No plano Solo, existe apenas um único usuário com acesso total.
             <a href="{{ route('planos') }}" class="ms-1">Ver planos</a>.
         </div>
@@ -322,7 +322,7 @@ Para reagendamentos, entre em contato por WhatsApp.</textarea>
 <div class="modal-body">
 <div class="row g-3">
     <div class="col-12"><label class="form-label">Nome do serviço</label>
-    <input type="text" class="form-control" placeholder="Ex: Consulta Individual"></div>
+    <input type="text" class="form-control" placeholder="Ex: Atendimento Individual"></div>
     <div class="col-md-6"><label class="form-label">Duração padrão</label>
     <select class="form-select"><option>30 min</option><option>45 min</option><option selected>50 min</option><option>60 min</option><option>90 min</option></select></div>
     <div class="col-md-6"><label class="form-label">Valor padrão</label>

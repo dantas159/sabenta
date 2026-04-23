@@ -110,16 +110,16 @@
 
             <div class="privacy-section" id="criptografia">
                 <h2><i class="bi bi-lock-fill"></i> Criptografia</h2>
-                <p>Todos os dados transmitidos entre seu navegador e nossos servidores são protegidos com TLS 1.3. Os dados armazenados (informações de contato de pacientes, dados de pagamento da assinatura) são criptografados em repouso.</p>
+                <p>Todos os dados transmitidos entre seu navegador e nossos servidores são protegidos com TLS 1.3. Os dados armazenados (informações de contato de clientes, dados de pagamento da assinatura) são criptografados em repouso.</p>
                 <div class="privacy-highlight">
                     <i class="bi bi-shield-check me-2"></i>
-                    Os dados de contato dos seus pacientes são armazenados de forma segura — apenas você e sua equipe têm acesso.
+                    Os dados de contato dos seus clientes são armazenados de forma segura — apenas você e sua equipe têm acesso.
                 </div>
             </div>
 
             <div class="privacy-section" id="isolamento">
                 <h2><i class="bi bi-diagram-3"></i> Isolamento de dados</h2>
-                <p>Cada clínica ou profissional opera em um ambiente de dados completamente isolado. Não existe compartilhamento de dados entre diferentes contas — nem para fins de análise interna.</p>
+                <p>Cada conta ou profissional opera em um ambiente de dados completamente isolado. Não existe compartilhamento de dados entre diferentes contas — nem para fins de análise interna.</p>
                 <ul>
                     <li>Bancos de dados particionados por tenant</li>
                     <li>Logs de acesso auditáveis</li>
@@ -131,7 +131,7 @@
                 <p>Coletamos apenas o mínimo necessário para o funcionamento da plataforma:</p>
                 <ul>
                     <li><strong>Dados do profissional:</strong> nome, e-mail, dados de pagamento da assinatura</li>
-                    <li><strong>Dados dos pacientes:</strong> nome, e-mail e telefone (inseridos pelo profissional para fins de agendamento)</li>
+                    <li><strong>Dados dos clientes:</strong> nome, e-mail e telefone (inseridos pelo profissional para fins de agendamento)</li>
                     <li><strong>Dados de uso:</strong> logs de acesso, IP, navegador — usados exclusivamente para segurança</li>
                 </ul>
                 <p>Não vendemos, trocamos ou compartilhamos seus dados com terceiros para fins comerciais.</p>
@@ -140,7 +140,7 @@
             <div class="privacy-section" id="uso">
                 <h2><i class="bi bi-gear"></i> Como usamos seus dados</h2>
                 <ul>
-                    <li>Exibir e gerenciar agenda de sessões</li>
+                    <li>Exibir e gerenciar agenda de atendimentos</li>
                     <li>Enviar lembretes e confirmações via WhatsApp (apenas com seu consentimento)</li>
                     <li>Processar pagamentos da assinatura</li>
                     <li>Gerar relatórios financeiros dentro da plataforma</li>
@@ -174,9 +174,9 @@
             <div class="privacy-section" id="faq">
                 <h2><i class="bi bi-question-circle"></i> Perguntas frequentes</h2>
                 @foreach([
-                    ['A equipe do Sabenta pode ver os dados dos meus pacientes?','Não. Os dados de seus pacientes ficam isolados na sua conta. Nossa equipe de suporte não acessa informações de pacientes.'],
+                    ['A equipe do Sabenta pode ver os dados dos meus clientes?','Não. Os dados de seus clientes ficam isolados na sua conta. Nossa equipe de suporte não acessa informações de clientes.'],
                     ['O que acontece com meus dados se eu cancelar?','Você pode exportar todos os dados antes de cancelar. Após o cancelamento, os dados são mantidos por 90 dias (para eventual reativação) e então excluídos permanentemente.'],
-                    ['Os dados dos pacientes são compartilhados?','Nunca. Os dados de seus pacientes são de sua responsabilidade e não são acessados por outros profissionais ou pela equipe Sabenta.'],
+                    ['Os dados dos clientes são compartilhados?','Nunca. Os dados de seus clientes são de sua responsabilidade e não são acessados por outros profissionais ou pela equipe Sabenta.'],
                     ['Posso usar o Sabenta com múltiplos clientes simultâneos?','Sim. O sistema suporta múltiplos agendamentos e clientes. Cada pessoa consente com o uso de seus dados no momento do agendamento.'],
                 ] as [$q,$r])
                 <div class="faq-mini">

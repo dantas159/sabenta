@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Sabenta — Agenda online para psicólogos')
+@section('title', 'Sabenta — Agenda online para profissionais')
 
 @push('styles')
 <style>
@@ -146,8 +146,8 @@
                 </div>
                 <h1 class="hero-headline">
                     A agenda que<br>
-                    <span>organiza sua clínica</span><br>
-                    e fideliza pacientes
+                    <span>organiza seu negócio</span><br>
+                    e fideliza clientes
                 </h1>
                 <p class="hero-sub">
                     Agendamento online 24h, lembretes automáticos, gestão financeira e página de perfil profissional — tudo em um só lugar.
@@ -189,7 +189,7 @@
                     </div>
                     @endforeach
                     <div style="text-align:center;margin-top:1rem;font-size:0.7rem;color:rgba(255,255,255,0.3);">
-                        4 sessões hoje · R$ 900,00 estimado
+                        4 atendimentos hoje · R$ 900,00 estimado
                     </div>
                 </div>
             </div>
@@ -237,11 +237,11 @@
         </div>
         <div class="row g-4">
             @foreach([
-                ['bi-calendar-check','#3b82f6','#eff6ff','Agenda online 24/7','Seus pacientes agendam pelo link público. Você recebe notificação e confirma com um toque.'],
+                ['bi-calendar-check','#3b82f6','#eff6ff','Agenda online 24/7','Seus clientes agendam pelo link público. Você recebe notificação e confirma com um toque.'],
                 ['bi-whatsapp','#10b981','#f0fdf4','Lembretes automáticos','Reduza faltas em até 40% com confirmações e lembretes via WhatsApp.'],
-                ['bi-bar-chart-line','#8b5cf6','#faf5ff','Gestão financeira','Controle sessões pagas, pendentes e emita cobranças diretamente pelo WhatsApp.'],
-                ['bi-shield-lock','#f59e0b','#fffbeb','Privacidade total','Dados protegidos, ambiente isolado por clínica e conformidade com a LGPD.'],
-                ['bi-clock-history','#0ea5e9','#f0f9ff','Histórico completo','Visualize todas as sessões realizadas, faltas e pagamentos por paciente em um só lugar.'],
+                ['bi-bar-chart-line','#8b5cf6','#faf5ff','Gestão financeira','Controle atendimentos pagos, pendentes e emita cobranças diretamente pelo WhatsApp.'],
+                ['bi-shield-lock','#f59e0b','#fffbeb','Privacidade total','Dados protegidos, ambiente isolado por conta e conformidade com a LGPD.'],
+                ['bi-clock-history','#0ea5e9','#f0f9ff','Histórico completo','Visualize todos os atendimentos realizados, faltas e pagamentos por cliente em um só lugar.'],
                 ['bi-globe','#f43f5e','#fff1f2','Página de perfil','Link público profissional para divulgar no Instagram, LinkedIn e Google.'],
             ] as [$icon,$cor,$bg,$titulo,$desc])
             <div class="col-md-6 col-lg-4">
@@ -269,8 +269,8 @@
         <div class="row g-4 justify-content-center">
             @foreach([
                 ['1','Crie sua conta','Cadastre-se em 2 minutos, configure sua agenda e personalize sua página de perfil público.'],
-                ['2','Compartilhe seu link','Divulgue seu link de agendamento no Instagram, WhatsApp ou e-mail. Seus pacientes agendam sozinhos.'],
-                ['3','Atenda com tranquilidade','Receba confirmações automáticas, lembretes de sessão e controle tudo pelo painel Sabenta.'],
+                ['2','Compartilhe seu link','Divulgue seu link de agendamento no Instagram, WhatsApp ou e-mail. Seus clientes agendam sozinhos.'],
+                ['3','Atenda com tranquilidade','Receba confirmações automáticas, lembretes de atendimento e controle tudo pelo painel Sabenta.'],
             ] as [$n,$t,$d])
             <div class="col-md-4">
                 <div class="d-flex flex-column align-items-center text-center">
@@ -294,9 +294,9 @@
         </div>
         <div class="row g-4">
             @foreach([
-                ['Fernanda Alves','Psicóloga · São Paulo','FA','#3b82f6','Reduzi as faltas em quase metade depois que comecei a usar os lembretes do Sabenta. Minha agenda está cheia e organizada.'],
-                ['Carlos Mendes','Terapeuta · Rio de Janeiro','CM','#10b981','A parte financeira é incrível. Antes eu controlava tudo em planilha, agora vejo tudo no painel em segundos.'],
-                ['Juliana Costa','Psicóloga · Belo Horizonte','JC','#8b5cf6','Meus pacientes adoram poder agendar pelo link. Recebi muitas mensagens dizendo que o processo é simples e moderno.'],
+                ['Fernanda Alves','Profissional autônoma · São Paulo','FA','#3b82f6','Reduzi as faltas em quase metade depois que comecei a usar os lembretes do Sabenta. Minha agenda está cheia e organizada.'],
+                ['Carlos Mendes','Prestador de serviços · Rio de Janeiro','CM','#10b981','A parte financeira é incrível. Antes eu controlava tudo em planilha, agora vejo tudo no painel em segundos.'],
+                ['Juliana Costa','Profissional autônoma · Belo Horizonte','JC','#8b5cf6','Meus clientes adoram poder agendar pelo link. Recebi muitas mensagens dizendo que o processo é simples e moderno.'],
             ] as [$nome,$cargo,$init,$cor,$texto])
             <div class="col-md-4">
                 <div class="testimonial-card">
@@ -320,7 +320,7 @@
 <section class="cta-section">
     <div class="container text-center">
         <h2 style="font-family:var(--font-heading);font-size:2.25rem;font-weight:900;margin-bottom:1rem;letter-spacing:-0.02em;">
-            Pronto para organizar sua clínica?
+            Pronto para organizar seu negócio?
         </h2>
         <p style="color:rgba(255,255,255,0.65);font-size:1rem;max-width:420px;margin:0 auto 2.25rem;">
             Comece grátis hoje. Sem cartão de crédito, sem burocracia.

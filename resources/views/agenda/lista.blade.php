@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 
-<x-page-header titulo="Agenda — Lista" botao="Nova sessão" botaoIcone="plus-lg" botaoTarget="#modalNovaSessaoLista" botaoHref="#" />
+<x-page-header titulo="Agenda — Lista" botao="Novo atendimento" botaoIcone="plus-lg" botaoTarget="#modalNovoAtendimentoLista" botaoHref="#" />
 
 {{-- Filtros --}}
 <div class="sabenta-card mb-3">
@@ -23,7 +23,7 @@
         <input type="date" class="form-control" value="2025-04-30">
     </div>
     <div class="col-md-3">
-        <label class="form-label">Paciente</label>
+        <label class="form-label">Cliente</label>
         <select class="form-select">
             <option value="">Todos</option>
             <option>Mariana Costa</option><option>Pedro Alves</option>
@@ -42,7 +42,7 @@
         <label class="form-label">Serviço</label>
         <select class="form-select">
             <option value="">Todos</option>
-            <option>Consulta Individual</option><option>Consulta em Dupla</option>
+            <option>Atendimento Individual</option><option>Atendimento em Dupla</option>
             <option>Avaliação Inicial</option>
         </select>
     </div>
@@ -56,27 +56,27 @@
 {{-- Tabela --}}
 <div class="sabenta-card">
 <div class="card-header">
-    <span class="card-header-title">Sessões — Abril 2025</span>
+    <span class="card-header-title">Atendimentos — Abril 2025</span>
     <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-download me-1"></i>Exportar CSV</button>
 </div>
 <div style="overflow-x:auto;">
 @php
 $sessoes = [
-    ['2025-04-07','09:00','Mariana Costa','Consulta Individual','50 min','confirmado','R$ 200','Pix'],
+    ['2025-04-07','09:00','Mariana Costa','Atendimento Individual','50 min','confirmado','R$ 200','Pix'],
     ['2025-04-07','11:00','Pedro Alves','Avaliação Inicial','60 min','realizado','R$ 350','Transferência'],
-    ['2025-04-08','14:00','Fernanda Lima','Consulta Individual','50 min','faltou','R$ 200','—'],
-    ['2025-04-09','09:30','Lucas Mendes','Consulta Individual','50 min','confirmado','R$ 200','Pix'],
-    ['2025-04-10','10:00','Juliana Ferreira','Consulta em Dupla','90 min','pendente','R$ 400','—'],
-    ['2025-04-14','09:00','Mariana Costa','Consulta Individual','50 min','realizado','R$ 200','Pix'],
-    ['2025-04-14','14:30','Rafael Santos','Consulta Individual','50 min','cancelado','R$ 200','—'],
+    ['2025-04-08','14:00','Fernanda Lima','Atendimento Individual','50 min','faltou','R$ 200','—'],
+    ['2025-04-09','09:30','Lucas Mendes','Atendimento Individual','50 min','confirmado','R$ 200','Pix'],
+    ['2025-04-10','10:00','Juliana Ferreira','Atendimento em Dupla','90 min','pendente','R$ 400','—'],
+    ['2025-04-14','09:00','Mariana Costa','Atendimento Individual','50 min','realizado','R$ 200','Pix'],
+    ['2025-04-14','14:30','Rafael Santos','Atendimento Individual','50 min','cancelado','R$ 200','—'],
     ['2025-04-15','11:00','Pedro Alves','Avaliação Inicial','60 min','confirmado','R$ 350','—'],
-    ['2025-04-16','09:30','Lucas Mendes','Consulta Individual','50 min','confirmado','R$ 200','—'],
-    ['2025-04-17','09:00','Mariana Costa','Consulta Individual','50 min','confirmado','R$ 200','—'],
+    ['2025-04-16','09:30','Lucas Mendes','Atendimento Individual','50 min','confirmado','R$ 200','—'],
+    ['2025-04-17','09:00','Mariana Costa','Atendimento Individual','50 min','confirmado','R$ 200','—'],
 ];
 @endphp
 <table class="sabenta-table">
 <thead><tr>
-    <th>Data</th><th>Horário</th><th>Paciente</th><th>Serviço</th><th>Duração</th><th>Status</th><th>Valor</th><th>Pagamento</th><th></th>
+    <th>Data</th><th>Horário</th><th>Cliente</th><th>Serviço</th><th>Duração</th><th>Status</th><th>Valor</th><th>Pagamento</th><th></th>
 </tr></thead>
 <tbody>
 @foreach($sessoes as $s)
@@ -114,7 +114,7 @@ $sessoes = [
 </table>
 </div>
 <div class="card-footer d-flex align-items-center justify-content-between">
-    <span style="font-size:.8125rem;">Exibindo 10 de 47 sessões</span>
+    <span style="font-size:.8125rem;">Exibindo 10 de 47 atendimentos</span>
     <nav><ul class="pagination pagination-sm mb-0">
         <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
         <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -127,17 +127,17 @@ $sessoes = [
 </div>
 </div>
 
-{{-- Modal nova sessão --}}
-<div class="modal fade" id="modalNovaSessaoLista" tabindex="-1">
+{{-- Modal novo atendimento --}}
+<div class="modal fade" id="modalNovoAtendimentoLista" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
-<div class="modal-header"><h5 class="modal-title"><i class="bi bi-calendar-plus me-2" style="color:var(--sabenta-primary);"></i>Nova sessão</h5>
+<div class="modal-header"><h5 class="modal-title"><i class="bi bi-calendar-plus me-2" style="color:var(--sabenta-primary);"></i>Novo atendimento</h5>
 <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
 <div class="modal-body">
 <div class="row g-3">
-    <div class="col-12"><label class="form-label">Paciente</label>
+    <div class="col-12"><label class="form-label">Cliente</label>
     <select class="form-select"><option>Selecionar...</option><option>Mariana Costa</option><option>Pedro Alves</option></select></div>
     <div class="col-12"><label class="form-label">Serviço</label>
-    <select class="form-select"><option>Consulta Individual</option><option>Avaliação Inicial</option></select></div>
+    <select class="form-select"><option>Atendimento Individual</option><option>Avaliação Inicial</option></select></div>
     <div class="col-6"><label class="form-label">Data</label><input type="date" class="form-control"></div>
     <div class="col-6"><label class="form-label">Horário</label><input type="time" class="form-control"></div>
     <div class="col-6"><label class="form-label">Duração</label>
@@ -148,7 +148,7 @@ $sessoes = [
 </div>
 <div class="modal-footer">
     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar sessão</button>
+    <button class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Salvar atendimento</button>
 </div>
 </div></div></div>
 

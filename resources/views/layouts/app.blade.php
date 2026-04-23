@@ -75,12 +75,12 @@
                 </div>
             </div>
 
-            {{-- Pacientes --}}
+            {{-- Clientes --}}
             <a href="{{ route('painel.pacientes.index') }}"
                class="sidebar-nav-item {{ request()->routeIs('painel.pacientes.*') ? 'active' : '' }}"
                @click="sidebarOpen = false">
                 <i class="bi bi-people"></i>
-                <span>Pacientes</span>
+                <span>Clientes</span>
             </a>
 
             {{-- Financeiro --}}
@@ -134,8 +134,8 @@
             <div class="sidebar-user">
                 <div class="sidebar-user__avatar">AS</div>
                 <div class="sidebar-user__info">
-                    <div class="sidebar-user__name">Dra. Ana Souza</div>
-                    <div class="sidebar-user__role">Psicóloga Clínica</div>
+                    <div class="sidebar-user__name">Ana Souza</div>
+                    <div class="sidebar-user__role">Profissional</div>
                 </div>
                 <a href="{{ route('login') }}"
                    class="topbar-action"
@@ -195,9 +195,9 @@
                         <div class="topbar-avatar">AS</div>
                         <div class="d-none d-md-flex flex-column align-items-start" style="line-height: 1.2;">
                             <span style="font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 600; color: var(--sabenta-text);">
-                                Dra. Ana Souza
+                                Ana Souza
                             </span>
-                            <span style="font-size: 0.7rem; color: var(--sabenta-text-muted);">Psicóloga Clínica</span>
+                            <span style="font-size: 0.7rem; color: var(--sabenta-text-muted);">Profissional</span>
                         </div>
                         <i class="bi bi-chevron-down d-none d-md-block"
                            style="font-size: 0.65rem; color: var(--sabenta-text-muted);"></i>

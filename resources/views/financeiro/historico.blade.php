@@ -17,7 +17,7 @@
 <div class="row g-2 align-items-end">
     <div class="col-md-2"><label class="form-label">Data início</label><input type="date" class="form-control" value="2025-01-01"></div>
     <div class="col-md-2"><label class="form-label">Data fim</label><input type="date" class="form-control" value="2025-04-17"></div>
-    <div class="col-md-3"><label class="form-label">Paciente</label>
+    <div class="col-md-3"><label class="form-label">Cliente</label>
     <select class="form-select"><option value="">Todos</option><option>Mariana Costa</option><option>Pedro Alves</option></select></div>
     <div class="col-md-2"><label class="form-label">Forma pagamento</label>
     <select class="form-select"><option value="">Todas</option><option>Pix</option><option>Dinheiro</option><option>Transferência</option></select></div>
@@ -36,20 +36,20 @@
 <div style="overflow-x:auto;">
 @php
 $hist = [
-    ['07/04/2025','07/04/2025','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['07/04/2025','07/04/2025','Mariana Costa','Atendimento Individual','R$ 200','Pix','pago'],
     ['07/04/2025','07/04/2025','Pedro Alves','Avaliação Inicial','R$ 350','Transferência','pago'],
-    ['09/04/2025','09/04/2025','Lucas Mendes','Consulta Individual','R$ 200','Pix','pago'],
-    ['14/04/2025','14/04/2025','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
-    ['08/04/2025','—','Fernanda Lima','Consulta Individual','R$ 200','—','pendente'],
-    ['10/04/2025','—','Juliana Ferreira','Consulta em Dupla','R$ 400','—','pendente'],
+    ['09/04/2025','09/04/2025','Lucas Mendes','Atendimento Individual','R$ 200','Pix','pago'],
+    ['14/04/2025','14/04/2025','Mariana Costa','Atendimento Individual','R$ 200','Pix','pago'],
+    ['08/04/2025','—','Fernanda Lima','Atendimento Individual','R$ 200','—','pendente'],
+    ['10/04/2025','—','Juliana Ferreira','Atendimento em Dupla','R$ 400','—','pendente'],
     ['15/04/2025','—','Pedro Alves','Avaliação Inicial','R$ 350','—','pendente'],
-    ['03/04/2025','—','Fernanda Lima','Consulta Individual','R$ 200','—','pendente'],
-    ['28/03/2025','28/03/2025','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
-    ['27/03/2025','27/03/2025','Lucas Mendes','Consulta Individual','R$ 200','Dinheiro','pago'],
+    ['03/04/2025','—','Fernanda Lima','Atendimento Individual','R$ 200','—','pendente'],
+    ['28/03/2025','28/03/2025','Mariana Costa','Atendimento Individual','R$ 200','Pix','pago'],
+    ['27/03/2025','27/03/2025','Lucas Mendes','Atendimento Individual','R$ 200','Dinheiro','pago'],
 ];
 @endphp
 <table class="sabenta-table">
-<thead><tr><th>Data sessão</th><th>Data pagamento</th><th>Paciente</th><th>Serviço</th><th>Valor</th><th>Forma</th><th>Status</th><th></th></tr></thead>
+<thead><tr><th>Data atendimento</th><th>Data pagamento</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Forma</th><th>Status</th><th></th></tr></thead>
 <tbody>
 @foreach($hist as $h)
 <tr>

@@ -24,7 +24,7 @@
 <div class="row g-3 mb-4">
     <div class="col-6 col-xl-3">
         <x-stat-card
-            titulo="Sessões hoje"
+            titulo="Atendimentos hoje"
             valor="6"
             icone="calendar-check"
             cor="primary"
@@ -34,7 +34,7 @@
     </div>
     <div class="col-6 col-xl-3">
         <x-stat-card
-            titulo="Sessões esta semana"
+            titulo="Atendimentos esta semana"
             valor="23"
             icone="calendar-week"
             cor="purple"
@@ -54,7 +54,7 @@
     </div>
     <div class="col-6 col-xl-3">
         <x-stat-card
-            titulo="Pacientes ativos"
+            titulo="Clientes ativos"
             valor="18"
             icone="people"
             cor="warning"
@@ -65,21 +65,21 @@
 </div>
 
 {{-- ============================================
-     Sessões de hoje + Alertas
+     Atendimentos de hoje + Alertas
      ============================================ --}}
 <div class="row g-3">
 
-    {{-- Sessões de hoje --}}
+    {{-- Atendimentos de hoje --}}
     <div class="col-lg-8">
         <div class="sabenta-card h-100">
             <div class="card-header">
                 <span class="card-header-title">
                     <i class="bi bi-calendar-day me-2" style="color: var(--sabenta-primary);"></i>
-                    Sessões de hoje
+                    Atendimentos de hoje
                 </span>
                 <div class="d-flex align-items-center gap-2">
                     <span class="sabenta-badge badge-confirmado" style="font-size: 0.7rem;">
-                        6 sessões
+                        6 atendimentos
                     </span>
                     <a href="{{ route('painel.agenda.dia') }}"
                        class="btn btn-sm btn-outline-secondary"
@@ -94,7 +94,7 @@
                     <thead>
                         <tr>
                             <th>Horário</th>
-                            <th>Paciente</th>
+                            <th>Cliente</th>
                             <th>Serviço</th>
                             <th>Duração</th>
                             <th>Status</th>
@@ -104,12 +104,12 @@
                     <tbody>
                         @php
                             $sessoes = [
-                                ['hora' => '08:00', 'paciente' => 'Mariana Costa',    'iniciais' => 'MC', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
+                                ['hora' => '08:00', 'paciente' => 'Mariana Costa',    'iniciais' => 'MC', 'servico' => 'Atendimento Individual', 'duracao' => '50 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
                                 ['hora' => '09:00', 'paciente' => 'Pedro Alves',      'iniciais' => 'PA', 'servico' => 'Avaliação Inicial',   'duracao' => '60 min', 'status' => 'realizado', 'cor' => '#1D9E75'],
-                                ['hora' => '10:30', 'paciente' => 'Fernanda Lima',    'iniciais' => 'FL', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
-                                ['hora' => '14:00', 'paciente' => 'Lucas Mendes',     'iniciais' => 'LM', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
-                                ['hora' => '15:30', 'paciente' => 'Juliana Ferreira', 'iniciais' => 'JF', 'servico' => 'Consulta em Dupla',  'duracao' => '90 min', 'status' => 'pendente',  'cor' => '#D97706'],
-                                ['hora' => '17:30', 'paciente' => 'Rafael Santos',    'iniciais' => 'RS', 'servico' => 'Consulta Individual', 'duracao' => '50 min', 'status' => 'faltou',   'cor' => '#DC2626'],
+                                ['hora' => '10:30', 'paciente' => 'Fernanda Lima',    'iniciais' => 'FL', 'servico' => 'Atendimento Individual', 'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
+                                ['hora' => '14:00', 'paciente' => 'Lucas Mendes',     'iniciais' => 'LM', 'servico' => 'Atendimento Individual', 'duracao' => '50 min', 'status' => 'confirmado','cor' => '#1E5BAD'],
+                                ['hora' => '15:30', 'paciente' => 'Juliana Ferreira', 'iniciais' => 'JF', 'servico' => 'Atendimento em Dupla',  'duracao' => '90 min', 'status' => 'pendente',  'cor' => '#D97706'],
+                                ['hora' => '17:30', 'paciente' => 'Rafael Santos',    'iniciais' => 'RS', 'servico' => 'Atendimento Individual', 'duracao' => '50 min', 'status' => 'faltou',   'cor' => '#DC2626'],
                             ];
                         @endphp
 
@@ -159,7 +159,7 @@
             </div>
 
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <span>Próxima sessão às <strong>14:00</strong> — Lucas Mendes</span>
+                <span>Próximo atendimento às <strong>14:00</strong> — Lucas Mendes</span>
                 <a href="{{ route('painel.agenda.dia') }}" class="text-sabenta" style="font-size: 0.8125rem; font-weight: 600;">
                     Ver agenda completa <i class="bi bi-arrow-right"></i>
                 </a>
@@ -182,14 +182,14 @@
                 <x-alert-card
                     tipo="danger"
                     titulo="Rafael Santos faltou"
-                    descricao="Sessão das 17:30 sem confirmação de presença."
+                    descricao="Atendimento das 17:30 sem confirmação de presença."
                     href="{{ route('painel.pacientes.show') }}"
                 />
 
                 <x-alert-card
                     tipo="warning"
-                    titulo="Fernanda Lima sem próxima sessão"
-                    descricao="Última sessão há 14 dias. Nenhuma futura agendada."
+                    titulo="Fernanda Lima sem próximo atendimento"
+                    descricao="Último atendimento há 14 dias. Nenhum futuro agendado."
                     href="{{ route('painel.pacientes.show') }}"
                 />
 
@@ -223,10 +223,10 @@
                     Ações rápidas:
                 </span>
                 <a href="{{ route('painel.agenda.dia') }}" class="btn btn-primary btn-sm">
-                    <i class="bi bi-plus-lg"></i> Nova sessão
+                    <i class="bi bi-plus-lg"></i> Novo atendimento
                 </a>
                 <a href="{{ route('painel.pacientes.index') }}" class="btn btn-outline-secondary btn-sm">
-                    <i class="bi bi-person-plus"></i> Novo paciente
+                    <i class="bi bi-person-plus"></i> Novo cliente
                 </a>
                 <a href="{{ route('painel.financeiro.index') }}" class="btn btn-outline-secondary btn-sm">
                     <i class="bi bi-cash"></i> Registrar pagamento

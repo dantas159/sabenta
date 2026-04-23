@@ -81,7 +81,7 @@
             <div class="col-md-4">
                 <div class="public-footer__brand">Sabenta</div>
                 <p style="color: rgba(255,255,255,0.45); font-size: 0.8rem; line-height: 1.6;">
-                    Plataforma de agendamento para psicólogos e terapeutas.<br>
+                    Plataforma de agendamento para profissionais autônomos.<br>
                     Simples, segura e profissional.
                 </p>
             </div>
@@ -90,7 +90,7 @@
                 <ul class="list-unstyled" style="font-size: 0.8375rem; line-height: 2;">
                     <li><a href="{{ route('planos') }}">Planos e preços</a></li>
                     <li><a href="#">Funcionalidades</a></li>
-                    <li><a href="#">Para psicólogos</a></li>
+                    <li><a href="#">Para profissionais</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md-2">

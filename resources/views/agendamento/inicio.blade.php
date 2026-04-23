@@ -161,14 +161,14 @@
     {{-- Conteúdo --}}
     <div class="sabenta-card p-4 mb-4">
         <h5 style="font-family:var(--font-heading);font-weight:700;margin-bottom:0.25rem;">Escolha o serviço</h5>
-        <p class="text-muted" style="font-size:0.875rem;margin-bottom:1.5rem;">Selecione o tipo de consulta ou sessão</p>
+        <p class="text-muted" style="font-size:0.875rem;margin-bottom:1.5rem;">Selecione o tipo de atendimento</p>
 
         <div class="d-flex flex-column gap-3">
             @php
             $servicos = $servicos ?? [
                 ['id'=>1,'nome'=>'Avaliação Inicial','duracao'=>60,'valor'=>250],
-                ['id'=>2,'nome'=>'Consulta Individual','duracao'=>50,'valor'=>200],
-                ['id'=>3,'nome'=>'Consulta Online','duracao'=>50,'valor'=>180],
+                ['id'=>2,'nome'=>'Atendimento Individual','duracao'=>50,'valor'=>200],
+                ['id'=>3,'nome'=>'Atendimento Online','duracao'=>50,'valor'=>180],
             ];
             @endphp
 

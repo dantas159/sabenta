@@ -44,7 +44,7 @@ O Sabenta é um SaaS de agendamento e gestão financeira para **profissionais au
 | Profissional | Perfil, configurações, disponibilidade |
 | Equipe | Membros adicionais por assentos do plano |
 | Clientes | Cadastro operacional de clientes |
-| Agenda | Sessões, recorrências, bloqueios |
+| Agenda | Atendimentos, recorrências, bloqueios |
 | Financeiro | Transações, pagamentos, histórico |
 | Automações | Mensagens automáticas via WhatsApp |
 | Página Pública | Perfil público e agendamento online |
@@ -65,7 +65,7 @@ O Sabenta é um SaaS de agendamento e gestão financeira para **profissionais au
 
 ### Profissional como tenant
 
-**O Sabenta não possui o conceito de clínica.** A unidade central do sistema é o `profissional`. Cada profissional é um tenant independente — seus dados (clientes, sessões, finanças, automações) são completamente isolados dos demais.
+**O Sabenta não possui o conceito de clínica.** A unidade central do sistema é o `profissional`. Cada profissional é um tenant independente — seus dados (clientes, atendimentos, finanças, automações) são completamente isolados dos demais.
 
 O isolamento é garantido por:
 
@@ -383,12 +383,12 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `usuario_id` | BIGINT UNSIGNED | Não | — | FK → `usuarios.id` (relação 1:1) |
 | `nome_exibicao` | VARCHAR(150) | Não | — | Nome mostrado em telas e na página pública |
 | `especialidade` | VARCHAR(150) | Sim | NULL | Área de atuação (texto livre, definido pelo próprio profissional) |
-| `registro_profissional` | VARCHAR(50) | Sim | NULL | Número de registro no conselho (ex: CRP, CRM, OAB — opcional) |
+| `registro_profissional` | VARCHAR(50) | Sim | NULL | Número de registro profissional (ex: OAB 123456, CREA 123456, CRO 12345 — opcional e livre) |
 | `bio` | TEXT | Sim | NULL | Texto de apresentação para a página pública |
 | `foto_url` | VARCHAR(500) | Sim | NULL | URL da foto de perfil (armazenada em storage externo) |
 | `cor_agenda` | VARCHAR(7) | Sim | NULL | Cor hexadecimal usada para identificar o profissional na agenda |
-| `duracao_padrao_minutos` | SMALLINT UNSIGNED | Não | 50 | Duração padrão de uma sessão em minutos |
-| `valor_padrao` | DECIMAL(10,2) | Sim | NULL | Valor padrão cobrado por sessão |
+| `duracao_padrao_minutos` | SMALLINT UNSIGNED | Não | 50 | Duração padrão de um atendimento em minutos |
+| `valor_padrao` | DECIMAL(10,2) | Sim | NULL | Valor padrão cobrado por atendimento |
 | `fuso_horario` | VARCHAR(50) | Não | `'America/Sao_Paulo'` | Fuso horário para cálculo de horários |
 | `ativo` | TINYINT(1) | Não | 1 | Conta ativa |
 | `criado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
@@ -412,7 +412,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 **Regras de negócio:**
 - Um `usuario` pode ter no máximo **um** `profissional` vinculado. A constraint UNIQUE em `usuario_id` garante isso no banco.
 - O campo `registro_profissional` é de preenchimento opcional e livre — o sistema não valida o formato (CRP, CRM, OAB, etc.).
-- `duracao_padrao_minutos` e `valor_padrao` são usados como valores sugeridos ao criar uma nova sessão sem serviço específico.
+- `duracao_padrao_minutos` e `valor_padrao` são usados como valores sugeridos ao criar um novo atendimento sem serviço específico.
 - O soft delete de um profissional deve encadear soft delete em todas as tabelas filhas (clientes, sessoes, etc.) via job assíncrono, não via CASCADE, para evitar lock em tabelas grandes.
 
 ---
@@ -440,7 +440,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 'secretaria'  → Acessa agenda de todos, cadastra clientes e registra pagamentos.
                 Sem acesso a financeiro consolidado, configurações ou assinatura.
 'assistente'  → Acessa agenda e clientes, mas apenas visualização.
-                Não pode criar, editar ou cancelar sessões.
+                Não pode criar, editar ou cancelar atendimentos.
 'admin'       → Acesso completo à conta, exceto dados de cobrança do Sabenta.
                 Pode gerenciar equipe, configurações e página pública.
 ```
@@ -511,7 +511,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 
 ### 8.1 `clientes`
 
-**Propósito:** Cadastro operacional de clientes do profissional. Contém apenas os dados necessários para agendamento e comunicação. Não armazena nenhum dado de saúde ou prontuário.
+**Propósito:** Cadastro operacional de clientes do profissional. Contém apenas os dados necessários para agendamento e comunicação. Não armazena nenhum dado pessoal sensível além do necessário para contato.
 
 **Nível de sensibilidade:** Sensível (PII — dados de contato)
 
@@ -556,8 +556,8 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `profissional_id` | `profissionais.id` | RESTRICT |
 
 **Regras de negócio:**
-- O campo `observacoes` é destinado exclusivamente a informações operacionais (preferência de horário, local de atendimento, forma de pagamento preferida). Não deve ser utilizado para registrar informações de natureza clínica, de saúde ou de cunho pessoal sensível.
-- Um cliente excluído logicamente (`excluido_em IS NOT NULL`) não aparece em listagens nem pode ter novas sessões criadas, mas seu histórico de sessões e transações é preservado para integridade financeira.
+- O campo `observacoes` é destinado exclusivamente a informações operacionais (preferência de horário, local de atendimento, forma de pagamento preferida). Não deve ser utilizado para registrar informações de caráter confidencial ou pessoal sensível.
+- Um cliente excluído logicamente (`excluido_em IS NOT NULL`) não aparece em listagens nem pode ter novas sessões criadas, mas seu histórico de atendimentos e transações é preservado para integridade financeira.
 - O campo `whatsapp` deve armazenar o número no formato E.164 para garantir compatibilidade com a API do WhatsApp.
 
 ---
@@ -609,7 +609,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 
 ### 9.1 `servicos`
 
-**Propósito:** Tipos de atendimento oferecidos pelo profissional, com duração e valor definidos. Cada sessão pode ou não estar associada a um serviço.
+**Propósito:** Tipos de atendimento oferecidos pelo profissional, com duração e valor definidos. Cada atendimento pode ou não estar associado a um serviço.
 
 **Nível de sensibilidade:** Normal
 
@@ -617,7 +617,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 |---|---|---|---|---|
 | `id` | BIGINT UNSIGNED | Não | AUTO_INCREMENT | Chave primária |
 | `profissional_id` | BIGINT UNSIGNED | Não | — | FK → `profissionais.id` |
-| `nome` | VARCHAR(150) | Não | — | Nome do serviço (ex: "Consulta Individual") |
+| `nome` | VARCHAR(150) | Não | — | Nome do serviço (ex: "Atendimento Individual") |
 | `descricao` | TEXT | Sim | NULL | Descrição exibida na página pública |
 | `duracao_minutos` | SMALLINT UNSIGNED | Não | — | Duração fixa do serviço em minutos |
 | `valor` | DECIMAL(10,2) | Não | — | Valor cobrado |
@@ -652,7 +652,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 |---|---|---|---|---|
 | `id` | BIGINT UNSIGNED | Não | AUTO_INCREMENT | Chave primária |
 | `profissional_id` | BIGINT UNSIGNED | Não | — | FK → `profissionais.id` |
-| `nome` | VARCHAR(100) | Não | — | Nome ou descrição da sala (ex: "Consultório 1", "Online") |
+| `nome` | VARCHAR(100) | Não | — | Nome ou descrição da sala (ex: "Sala 1", "Online") |
 | `descricao` | TEXT | Sim | NULL | Endereço, link de videoconferência ou outros detalhes |
 | `ativo` | TINYINT(1) | Não | 1 | Sala disponível para uso |
 | `criado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
@@ -686,7 +686,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `dia_semana` | TINYINT UNSIGNED | Não | — | 0 = Domingo, 1 = Segunda, ..., 6 = Sábado |
 | `hora_inicio` | TIME | Não | — | Início do período de atendimento |
 | `hora_fim` | TIME | Não | — | Fim do período de atendimento |
-| `intervalo_minutos` | TINYINT UNSIGNED | Não | 60 | Tempo de espaçamento entre sessões consecutivas (não é bloqueio explícito — use `almoco_inicio`/`almoco_fim` para bloquear o almoço) |
+| `intervalo_minutos` | TINYINT UNSIGNED | Não | 60 | Tempo de espaçamento entre atendimentos consecutivos (não é bloqueio explícito — use `almoco_inicio`/`almoco_fim` para bloquear o almoço) |
 | `almoco_inicio` | TIME | Sim | NULL | Início do intervalo de almoço — o SlotCalculator exclui slots dentro deste período |
 | `almoco_fim` | TIME | Sim | NULL | Fim do intervalo de almoço |
 | `ativo` | TINYINT(1) | Não | 1 | Dia de atendimento habilitado |
@@ -770,7 +770,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `id` | BIGINT UNSIGNED | Não | AUTO_INCREMENT | Chave primária |
 | `profissional_id` | BIGINT UNSIGNED | Não | — | FK → `profissionais.id` |
 | `nome` | VARCHAR(150) | Não | — | Nome da política (ex: "Padrão", "Pacote Mensal") |
-| `horas_antecedencia` | TINYINT UNSIGNED | Não | 24 | Mínimo de horas antes da sessão para cancelar sem cobrança |
+| `horas_antecedencia` | TINYINT UNSIGNED | Não | 24 | Mínimo de horas antes do atendimento para cancelar sem cobrança |
 | `cobra_falta` | TINYINT(1) | Não | 0 | Se 1, cobra percentual em caso de falta |
 | `percentual_cobranca` | TINYINT UNSIGNED | Sim | NULL | Percentual do valor cobrado em caso de falta (0–100) |
 | `ativo` | TINYINT(1) | Não | 1 | Política disponível para uso |
@@ -800,7 +800,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 
 ### 9.6 `recorrencias`
 
-**Propósito:** Define a regra de repetição de sessões periódicas. Ao ativar uma recorrência, o sistema cria automaticamente as sessões futuras com base na frequência definida.
+**Propósito:** Define a regra de repetição de atendimentos periódicos. Ao ativar uma recorrência, o sistema cria automaticamente os atendimentos futuros com base na frequência definida.
 
 **Nível de sensibilidade:** Normal
 
@@ -811,15 +811,15 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `cliente_id` | BIGINT UNSIGNED | Não | — | FK → `clientes.id` |
 | `servico_id` | BIGINT UNSIGNED | Sim | NULL | FK → `servicos.id` |
 | `sala_id` | BIGINT UNSIGNED | Sim | NULL | FK → `salas.id` |
-| `politica_cancelamento_id` | BIGINT UNSIGNED | Sim | NULL | FK → `politicas_cancelamento.id` — herdada por todas as sessões geradas por esta recorrência |
+| `politica_cancelamento_id` | BIGINT UNSIGNED | Sim | NULL | FK → `politicas_cancelamento.id` — herdado por todos os atendimentos gerados por esta recorrência |
 | `frequencia` | ENUM | Não | — | Cadência de repetição |
 | `dia_semana` | TINYINT UNSIGNED | Sim | NULL | Dia fixo (0–6), obrigatório para `semanal` e `quinzenal` |
 | `hora_inicio` | TIME | Não | — | Horário fixo de início |
-| `duracao_minutos` | SMALLINT UNSIGNED | Não | — | Duração de cada sessão gerada |
+| `duracao_minutos` | SMALLINT UNSIGNED | Não | — | Duração de cada atendimento gerado |
 | `valor` | DECIMAL(10,2) | Sim | NULL | Valor fixo (se NULL, usa o valor do serviço) |
-| `inicia_em` | DATE | Não | — | Data da primeira sessão da série |
-| `termina_em` | DATE | Sim | NULL | Data da última sessão (NULL = sem data de fim) |
-| `total_sessoes` | SMALLINT UNSIGNED | Sim | NULL | Alternativa a `termina_em` — limita pelo número de sessões |
+| `inicia_em` | DATE | Não | — | Data do primeiro atendimento da série |
+| `termina_em` | DATE | Sim | NULL | Data do último atendimento (NULL = sem data de fim) |
+| `total_sessoes` | SMALLINT UNSIGNED | Sim | NULL | Alternativa a `termina_em` — limita pelo número de atendimentos |
 | `ativo` | TINYINT(1) | Não | 1 | Recorrência ativa (gera novas sessões) |
 | `criado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
 | `atualizado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
@@ -857,10 +857,10 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `politica_cancelamento_id` | `politicas_cancelamento.id` | SET NULL |
 
 **Regras de negócio:**
-- O job `GerarSessoesDaRecorrencia` roda diariamente e cria sessões com até 60 dias de antecedência.
-- Ao gerar cada sessão, o job copia `politica_cancelamento_id` da recorrência para a sessão. Caso seja NULL, a sessão é criada sem política vinculada.
-- Alterar uma recorrência não modifica sessões já geradas — apenas as futuras ainda não criadas.
-- Cancelar uma recorrência (`ativo = 0`) não cancela sessões já existentes.
+- O job `GerarSessoesDaRecorrencia` roda diariamente e cria atendimentos com até 60 dias de antecedência.
+- Ao gerar cada atendimento, o job copia `politica_cancelamento_id` da recorrência para o atendimento. Caso seja NULL, o atendimento é criado sem política vinculada.
+- Alterar uma recorrência não modifica atendimentos já gerados — apenas os futuros ainda não criados.
+- Cancelar uma recorrência (`ativo = 0`) não cancela atendimentos já existentes.
 
 ---
 
@@ -883,13 +883,13 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `fim_em` | DATETIME | Não | — | Data e hora de fim |
 | `status` | ENUM | Não | `'agendado'` | Estado do agendamento |
 | `status_pagamento` | ENUM | Não | `'pendente'` | Estado do pagamento |
-| `valor` | DECIMAL(10,2) | Sim | NULL | Valor cobrado nesta sessão |
+| `valor` | DECIMAL(10,2) | Sim | NULL | Valor cobrado neste atendimento |
 | `observacoes` | TEXT | Sim | NULL | Observações operacionais (ex: endereço, link de reunião) |
 | `lembrete_enviado` | TINYINT(1) | Não | 0 | Lembrete automático disparado |
 | `confirmacao_enviada` | TINYINT(1) | Não | 0 | Mensagem de confirmação disparada |
 | `cancelado_em` | TIMESTAMP | Sim | NULL | Data do cancelamento |
 | `motivo_cancelamento` | TEXT | Sim | NULL | Razão do cancelamento (texto livre) |
-| `criado_por` | BIGINT UNSIGNED | Sim | NULL | FK → `usuarios.id` (quem criou a sessão) |
+| `criado_por` | BIGINT UNSIGNED | Sim | NULL | FK → `usuarios.id` (quem criou o atendimento) |
 | `criado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
 | `atualizado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
 | `excluido_em` | TIMESTAMP | Sim | NULL | Soft delete |
@@ -897,9 +897,9 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 **Valores do ENUM `status`:**
 
 ```
-'agendado'   → Sessão criada, aguardando confirmação do cliente
+'agendado'   → Atendimento criado, aguardando confirmação do cliente
 'confirmado' → Cliente confirmou presença
-'realizado'  → Sessão ocorreu
+'realizado'  → Atendimento ocorreu
 'faltou'     → Cliente não compareceu sem aviso
 'cancelado'  → Cancelado por qualquer parte
 ```
@@ -909,7 +909,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 ```
 'pendente'     → Pagamento ainda não recebido
 'pago'         → Pagamento confirmado
-'isento'       → Sessão sem cobrança (ex: reposição)
+'isento'       → Atendimento sem cobrança (ex: reposição)
 'reembolsado'  → Valor devolvido ao cliente
 ```
 
@@ -917,7 +917,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 
 | Nome | Definição | Motivo |
 |---|---|---|
-| `chk_sessoes_ordem_horario` | `CHECK (fim_em > inicio_em)` | Impede sessão com fim antes do início |
+| `chk_sessoes_ordem_horario` | `CHECK (fim_em > inicio_em)` | Impede atendimento com fim antes do início |
 
 **Índices:**
 
@@ -944,10 +944,10 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `criado_por` | `usuarios.id` | SET NULL |
 
 **Regras de negócio:**
-- Toda sessão com `status != 'cancelado'` participa da verificação de sobreposição (ver §15).
+- Todo atendimento com `status != 'cancelado'` participa da verificação de sobreposição (ver §15).
 - Ao registrar `status = 'realizado'`, o sistema verifica `status_pagamento` e, se `'pendente'`, pode disparar automação de cobrança.
 - Quando `status = 'faltou'` e a política vinculada tem `cobra_falta = 1`, o sistema calcula o valor de cobrança com base em `politicas_cancelamento.percentual_cobranca` aplicado sobre `sessoes.valor` e gera uma transação do tipo `'recebimento'` automaticamente.
-- Sessões com `excluido_em IS NOT NULL` não aparecem na agenda, mas permanecem no banco para integridade financeira das `transacoes` vinculadas.
+- Atendimentos com `excluido_em IS NOT NULL` não aparecem na agenda, mas permanecem no banco para integridade financeira das `transacoes` vinculadas.
 
 ---
 
@@ -964,7 +964,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `id` | BIGINT UNSIGNED | Não | AUTO_INCREMENT | Chave primária |
 | `profissional_id` | BIGINT UNSIGNED | Não | — | FK → `profissionais.id` |
 | `sessao_id` | BIGINT UNSIGNED | Sim | NULL | FK → `sessoes.id` |
-| `cliente_id` | BIGINT UNSIGNED | Sim | NULL | FK → `clientes.id` (desnormalizado para consultas sem sessão) |
+| `cliente_id` | BIGINT UNSIGNED | Sim | NULL | FK → `clientes.id` (desnormalizado para transações sem atendimento vinculado) |
 | `tipo` | ENUM | Não | — | Natureza da transação |
 | `valor` | DECIMAL(10,2) | Não | — | Valor positivo (o tipo define se é entrada ou saída) |
 | `forma_pagamento` | ENUM | Não | — | Meio de pagamento |
@@ -1009,7 +1009,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 |---|---|---|---|
 | `PRIMARY` | `(id)` | PRIMARY | |
 | `idx_transacoes_profissional_periodo` | `(profissional_id, criado_em, status)` | INDEX | Relatório financeiro por período |
-| `idx_transacoes_sessao` | `(sessao_id)` | INDEX | Pagamentos vinculados a uma sessão |
+| `idx_transacoes_sessao` | `(sessao_id)` | INDEX | Pagamentos vinculados a um atendimento |
 | `idx_transacoes_cliente` | `(cliente_id, criado_em)` | INDEX | Histórico financeiro do cliente |
 
 **Chaves estrangeiras:**
@@ -1083,7 +1083,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 | `nome` | VARCHAR(150) | Não | — | Nome identificador (ex: "Lembrete 48h") |
 | `tipo` | ENUM | Não | — | Gatilho que dispara a automação |
 | `mensagem` | TEXT | Não | — | Template com variáveis `{nome}`, `{data}`, `{hora}`, `{servico}` |
-| `gatilho_horas_antes` | SMALLINT UNSIGNED | Sim | NULL | Horas antes da sessão para o disparo — usado por `lembrete_48h` e similares |
+| `gatilho_horas_antes` | SMALLINT UNSIGNED | Sim | NULL | Horas antes do atendimento para o disparo — usado por `lembrete_48h` e similares |
 | `hora_disparo` | TIME | Sim | NULL | Horário fixo de disparo — obrigatório para `lembrete_dia` (ex: `08:00`) |
 | `ativo` | TINYINT(1) | Não | 1 | Automação habilitada |
 | `criado_em` | TIMESTAMP | Não | CURRENT_TIMESTAMP | |
@@ -1092,11 +1092,11 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 **Valores do ENUM `tipo`:**
 
 ```
-'confirmacao_agendamento'  → Dispara quando uma sessão é criada ou aprovada
-'lembrete_48h'             → Dispara 48h antes da sessão
-'lembrete_dia'             → Dispara no dia da sessão (hora configurada)
-'pos_sessao'               → Dispara após o horário de fim da sessão
-'cobranca'                 → Dispara quando sessão está realizada e pendente de pagamento
+'confirmacao_agendamento'  → Dispara quando um atendimento é criado ou aprovado
+'lembrete_48h'             → Dispara 48h antes do atendimento
+'lembrete_dia'             → Dispara no dia do atendimento (hora configurada)
+'pos_sessao'               → Dispara após o horário de fim do atendimento
+'cobranca'                 → Dispara quando atendimento está realizado e pendente de pagamento
 'aniversario'              → Dispara no aniversário do cliente (requer data de nascimento)
 ```
 
@@ -1115,7 +1115,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 
 **Regras de negócio:**
 - `hora_disparo` é obrigatório quando `tipo = 'lembrete_dia'`. Validar na camada de aplicação antes de salvar.
-- `gatilho_horas_antes` é obrigatório quando `tipo IN ('lembrete_48h')`. Para `lembrete_dia`, o campo é ignorado — o disparo ocorre na `hora_disparo` do dia da sessão.
+- `gatilho_horas_antes` é obrigatório quando `tipo IN ('lembrete_48h')`. Para `lembrete_dia`, o campo é ignorado — o disparo ocorre na `hora_disparo` do dia do atendimento.
 - O tipo `'aniversario'` requer que o cliente tenha `data_nascimento` preenchido em `clientes`. O job de aniversário deve filtrar apenas clientes com esse campo não nulo.
 
 ---
@@ -1244,7 +1244,7 @@ As tabelas a seguir são gerenciadas pelo framework e não fazem parte do domín
 
 ```
 'pendente'   → Aguardando resposta do profissional
-'aprovado'   → Profissional aprovou e sessão foi criada
+'aprovado'   → Profissional aprovou e atendimento foi criado
 'rejeitado'  → Profissional recusou o horário solicitado
 'expirado'   → Passou o prazo sem resposta
 ```
@@ -1365,7 +1365,7 @@ A proteção contra double-booking opera em duas camadas complementares.
 
 ### Camada 1 — Validação na aplicação
 
-O serviço `VerificadorDeDisponibilidade` executa, antes de salvar qualquer sessão, uma consulta que verifica se o profissional já tem uma sessão ativa que se sobreponha ao intervalo `inicio_em`/`fim_em` solicitado:
+O serviço `VerificadorDeDisponibilidade` executa, antes de salvar qualquer atendimento, uma verificação que confirma se o profissional já tem um atendimento ativo que se sobreponha ao intervalo `inicio_em`/`fim_em` solicitado:
 
 - Condição de sobreposição: `inicio_existente < fim_novo AND fim_existente > inicio_novo`
 - Filtra apenas sessões com `status NOT IN ('cancelado')` e `excluido_em IS NULL`
@@ -1375,7 +1375,7 @@ O serviço `VerificadorDeDisponibilidade` executa, antes de salvar qualquer sess
 A trigger `impedir_sobreposicao_sessao` é executada **BEFORE INSERT** e **BEFORE UPDATE** na tabela `sessoes`. Se encontrar sobreposição, interrompe a operação com erro:
 
 - Código: `SQLSTATE 45000`
-- Mensagem: `"Conflito de horário: já existe uma sessão neste período para este profissional"`
+- Mensagem: `"Conflito de horário: já existe um atendimento neste período para este profissional"`
 
 Essa segunda camada garante a proteção mesmo que a validação da aplicação seja contornada (jobs assíncronos, race condition entre requisições simultâneas).
 
@@ -1397,21 +1397,21 @@ O índice `idx_sessoes_sobreposicao (profissional_id, inicio_em, fim_em, status,
 ### Clientes
 
 - Um cliente está sempre vinculado a um único profissional (`profissional_id`). Não há clientes compartilhados.
-- O campo `observacoes` de clientes e sessões é operacional — destinado a informações de logística (endereço, link, preferência de horário). Nunca deve conter dados de saúde.
+- O campo `observacoes` de clientes e atendimentos é operacional — destinado a informações de logística (endereço, link, preferência de horário). Não deve conter informações pessoais sensíveis.
 - A exclusão de um cliente é sempre lógica. Clientes com sessões ou transações vinculadas não podem ser excluídos definitivamente enquanto esses registros existirem.
 
 ### Agenda
 
-- Toda sessão criada passa pela verificação de sobreposição (camada de aplicação + trigger).
-- Sessões recorrentes são geradas com até 60 dias de antecedência pelo job `GerarSessoesDaRecorrencia`.
+- Todo atendimento criado passa pela verificação de sobreposição (camada de aplicação + trigger).
+- Atendimentos recorrentes são gerados com até 60 dias de antecedência pelo job `GerarSessoesDaRecorrencia`.
 - Alterar ou cancelar uma recorrência não afeta sessões já geradas.
-- Um bloqueio de agenda tem precedência sobre qualquer sessão — o `SlotCalculator` exclui períodos bloqueados antes de calcular disponibilidade.
+- Um bloqueio de agenda tem precedência sobre qualquer atendimento — o `SlotCalculator` exclui períodos bloqueados antes de calcular disponibilidade.
 
 ### Financeiro
 
 - `transacoes` é append-only. Nenhuma transação é editada após criação.
 - Estornos criam uma nova transação do tipo `'estorno'` com `origem_id` apontando para a transação original.
-- O `status_pagamento` de uma sessão é atualizado automaticamente quando uma transação com `status = 'confirmado'` é registrada para aquela sessão.
+- O `status_pagamento` de um atendimento é atualizado automaticamente quando uma transação com `status = 'confirmado'` é registrada para aquele atendimento.
 
 ### Automações
 
@@ -1484,7 +1484,7 @@ Controla quais blocos aparecem na página pública do profissional.
 Lista de tags de especialidade ou área de atuação exibidas na página pública.
 
 ```json
-["Ansiedade", "Relacionamentos", "Autoconhecimento", "Online"]
+["Presencial", "Online", "Individual", "Consultoria"]
 ```
 
 - Array de strings.
@@ -1499,8 +1499,8 @@ Lista de tags de especialidade ou área de atuação exibidas na página públic
 | Dado | Retenção | Após o prazo |
 |---|---|---|
 | Dados do profissional e clientes | Enquanto a conta estiver ativa | Excluídos definitivamente 30 dias após cancelamento |
-| Sessões e histórico financeiro | Enquanto a conta estiver ativa | Excluídos definitivamente 30 dias após cancelamento |
-| Solicitações de agendamento aprovadas | Conforme a sessão vinculada | — |
+| Atendimentos e histórico financeiro | Enquanto a conta estiver ativa | Excluídos definitivamente 30 dias após cancelamento |
+| Solicitações de agendamento aprovadas | Conforme o atendimento vinculado | — |
 | Solicitações de agendamento expiradas/rejeitadas | 90 dias após `criado_em` | Excluídas definitivamente por job semanal |
 | Logs de automação | 90 dias após `criado_em` | Excluídos definitivamente por job semanal |
 | Logs de auditoria | 1 ano após `criado_em` | Excluídos definitivamente por job mensal |
@@ -1574,10 +1574,10 @@ A ordem abaixo respeita todas as dependências de chaves estrangeiras:
 | **Soft delete** | Exclusão lógica via campo `excluido_em`. O registro permanece no banco mas é invisível às queries normais. |
 | **Append-only** | Tabela na qual registros nunca são editados após inserção. Alterações são representadas por novos registros. |
 | **Estorno** | Transação do tipo `'estorno'` que referencia uma transação original via `origem_id`. Nunca cancela a transação original. |
-| **Slot** | Intervalo de tempo disponível para agendamento, calculado a partir dos horários de atendimento menos as sessões já existentes e bloqueios. |
+| **Slot** | Intervalo de tempo disponível para agendamento, calculado a partir dos horários de atendimento menos os atendimentos já existentes e bloqueios. |
 | **SlotCalculator** | Componente da aplicação responsável por calcular os slots disponíveis cruzando `horarios_atendimento`, `sessoes` e `bloqueios_agenda`. |
-| **Recorrência** | Regra de repetição de sessões com frequência fixa (semanal, quinzenal, mensal). Gera sessões individuais automaticamente. |
-| **Double-booking** | Situação em que duas sessões são agendadas no mesmo horário para o mesmo profissional. Prevenida por trigger e validação na aplicação. |
+| **Recorrência** | Regra de repetição de atendimentos com frequência fixa (semanal, quinzenal, mensal). Gera atendimentos individualmente de forma automática. |
+| **Double-booking** | Situação em que dois atendimentos são agendados no mesmo horário para o mesmo profissional. Prevenida por trigger e validação na aplicação. |
 | **Global Scope** | Filtro automático do Eloquent que injeta `profissional_id` em todas as queries de tabelas de domínio, garantindo isolamento de dados entre profissionais. |
 | **Tenant** | O profissional autônomo — unidade de isolamento de dados no Sabenta. Cada profissional opera em seu próprio espaço de dados independente. |
 | **E.164** | Formato internacional de número de telefone (ex: `+5511999999999`). Usado para garantir compatibilidade com APIs de WhatsApp. |

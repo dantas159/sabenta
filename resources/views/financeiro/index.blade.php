@@ -32,10 +32,10 @@
         <x-stat-card titulo="Receita realizada" valor="R$ 3.400" icone="cash-coin" cor="success" delta="+8% vs mês anterior" :deltaUp="true"/>
     </div>
     <div class="col-6 col-xl-3">
-        <x-stat-card titulo="A receber" valor="R$ 800" icone="clock" cor="warning" delta="4 sessões pendentes" :deltaUp="false"/>
+        <x-stat-card titulo="A receber" valor="R$ 800" icone="clock" cor="warning" delta="4 atendimentos pendentes" :deltaUp="false"/>
     </div>
     <div class="col-6 col-xl-3">
-        <x-stat-card titulo="Sessões realizadas" valor="17" icone="calendar-check" cor="primary"/>
+        <x-stat-card titulo="Atendimentos realizados" valor="17" icone="calendar-check" cor="primary"/>
     </div>
     <div class="col-6 col-xl-3">
         <x-stat-card titulo="Ticket médio" valor="R$ 200" icone="graph-up" cor="purple" delta="+R$ 12 vs mês anterior" :deltaUp="true"/>
@@ -52,10 +52,10 @@
 </div>
 </div>
 
-{{-- Tabela de sessões --}}
+{{-- Tabela de atendimentos --}}
 <div class="sabenta-card">
 <div class="card-header">
-    <span class="card-header-title">Sessões do período</span>
+    <span class="card-header-title">Atendimentos do período</span>
     <div class="d-flex gap-2">
         <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-download me-1"></i>Exportar</button>
         <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalPagamento">
@@ -66,18 +66,18 @@
 <div style="overflow-x:auto;">
 @php
 $sessoes = [
-    ['07/04','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['07/04','Mariana Costa','Atendimento Individual','R$ 200','Pix','pago'],
     ['07/04','Pedro Alves','Avaliação Inicial','R$ 350','Transferência','pago'],
-    ['08/04','Fernanda Lima','Consulta Individual','R$ 200','—','pendente'],
-    ['09/04','Lucas Mendes','Consulta Individual','R$ 200','Pix','pago'],
-    ['10/04','Juliana Ferreira','Consulta em Dupla','R$ 400','—','pendente'],
-    ['14/04','Mariana Costa','Consulta Individual','R$ 200','Pix','pago'],
+    ['08/04','Fernanda Lima','Atendimento Individual','R$ 200','—','pendente'],
+    ['09/04','Lucas Mendes','Atendimento Individual','R$ 200','Pix','pago'],
+    ['10/04','Juliana Ferreira','Atendimento em Dupla','R$ 400','—','pendente'],
+    ['14/04','Mariana Costa','Atendimento Individual','R$ 200','Pix','pago'],
     ['15/04','Pedro Alves','Avaliação Inicial','R$ 350','—','pendente'],
-    ['16/04','Lucas Mendes','Consulta Individual','R$ 200','Pix','pago'],
+    ['16/04','Lucas Mendes','Atendimento Individual','R$ 200','Pix','pago'],
 ];
 @endphp
 <table class="sabenta-table">
-<thead><tr><th>Data</th><th>Paciente</th><th>Serviço</th><th>Valor</th><th>Pagamento</th><th>Status</th><th></th></tr></thead>
+<thead><tr><th>Data</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Pagamento</th><th>Status</th><th></th></tr></thead>
 <tbody>
 @foreach($sessoes as $s)
 <tr>
@@ -108,7 +108,7 @@ $sessoes = [
 </div>
 <div class="card-footer d-flex justify-content-between align-items-center">
     <span style="font-size:.875rem;font-weight:600;">Total do período: <span style="color:var(--status-confirmado);">R$ 3.400 recebidos</span> + <span style="color:var(--status-pendente);">R$ 800 pendentes</span></span>
-    <span style="font-size:.8rem;color:var(--sabenta-text-muted);">8 de 17 sessões exibidas</span>
+    <span style="font-size:.8rem;color:var(--sabenta-text-muted);">8 de 17 atendimentos exibidos</span>
 </div>
 </div>
 
@@ -122,7 +122,7 @@ $sessoes = [
 </div>
 <div class="modal-body">
 <div class="p-3 mb-3 rounded-3" style="background:var(--sabenta-bg);">
-    <div style="font-size:.875rem;font-weight:600;">Fernanda Lima — Consulta Individual</div>
+    <div style="font-size:.875rem;font-weight:600;">Fernanda Lima — Atendimento Individual</div>
     <div style="font-size:.8rem;color:var(--sabenta-text-muted);margin-top:.2rem;">08/04/2025 · 50 min · Valor: R$ 200,00</div>
 </div>
 <div class="row g-3">
@@ -162,7 +162,7 @@ $sessoes = [
     <h5 class="modal-title"><i class="bi bi-send me-2" style="color:var(--sabenta-primary);"></i>Enviar cobrança por WhatsApp</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
-<div class="modal-body" x-data="{ msg: 'Olá Fernanda! Passando para lembrar sobre o valor de R$ 200,00 referente à consulta do dia 08/04. Quando puder, pode realizar o pagamento via Pix: 11.222.333/0001-44. Qualquer dúvida, fico à disposição! 😊 — Dra. Ana' }">
+<div class="modal-body" x-data="{ msg: 'Olá Fernanda! Passando para lembrar sobre o valor de R$ 200,00 referente ao atendimento do dia 08/04. Quando puder, pode realizar o pagamento via Pix: 11.222.333/0001-44. Qualquer dúvida, fico à disposição! 😊 — Ana' }">
     <div class="row g-3">
         <div class="col-md-6">
             <label class="form-label">Mensagem de cobrança</label>

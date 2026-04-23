@@ -82,10 +82,10 @@
                 </div>
                 <div class="mb-3"><label class="form-label">Nome exibido</label>
                 <input type="text" class="form-control" value="Dra. Ana Souza"></div>
-                <div class="mb-3"><label class="form-label">Especialidade</label>
-                <input type="text" class="form-control" value="Psicóloga Clínica · CRP 06/123456"></div>
+                <div class="mb-3"><label class="form-label">Especialidade / Área de atuação</label>
+                <input type="text" class="form-control" value="Profissional autônoma · 8 anos de experiência"></div>
                 <div><label class="form-label">Bio (exibida na página)</label>
-                <textarea class="form-control" rows="4" style="font-size:.875rem;line-height:1.65;">Psicóloga clínica com 8 anos de experiência. Atendo adultos e casais com foco em TCC e abordagem psicodinâmica.</textarea></div>
+                <textarea class="form-control" rows="4" style="font-size:.875rem;line-height:1.65;">Profissional com ampla experiência na área. Atendo de forma presencial e online com foco na qualidade e na satisfação de cada cliente.</textarea></div>
             </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
             <div id="colEsp" class="accordion-collapse collapse">
             <div class="accordion-body" style="padding:1rem 1.375rem;">
                 <div class="d-flex flex-wrap gap-2 mb-3">
-                    @foreach(['Ansiedade','Depressão','TCC','Relacionamentos','Autoestima','Luto','Trauma','Burnout'] as $tag)
+                    @foreach(['Presencial','Online','Individual','Em grupo','Consultoria','Coaching','Mensal','Avulso'] as $tag)
                     <span class="sabenta-badge badge-realizado" style="cursor:pointer;user-select:none;font-size:.8rem;">{{ $tag }} <i class="bi bi-x-sm ms-1"></i></span>
                     @endforeach
                 </div>
@@ -152,7 +152,7 @@
         <div class="sabenta-card">
         <div class="card-header"><span class="card-header-title"><i class="bi bi-eye me-2" style="color:var(--sabenta-primary);"></i>Seções visíveis</span></div>
         <div class="card-body">
-        @foreach([['Sobre mim','Texto de apresentação'],['Especialidades','Tags com suas áreas de atuação'],['Tipos de sessão','Serviços e valores'],['Calendário','Horários disponíveis para agendar'],['Política de cancelamento','Suas regras de cancelamento']] as $sec)
+        @foreach([['Sobre mim','Texto de apresentação'],['Especialidades','Tags com suas áreas de atuação'],['Tipos de atendimento','Serviços e valores'],['Calendário','Horários disponíveis para agendar'],['Política de cancelamento','Suas regras de cancelamento']] as $sec)
         <div class="d-flex align-items-center justify-content-between py-2" style="border-bottom:1px solid var(--sabenta-border);">
             <div><div style="font-size:.875rem;font-weight:600;">{{ $sec[0] }}</div>
             <div style="font-size:.78rem;color:var(--sabenta-text-muted);">{{ $sec[1] }}</div></div>
@@ -178,16 +178,16 @@
             <div style="height:6px;background:var(--sabenta-primary);"></div>
             <div style="padding:2rem 1.5rem;text-align:center;background:linear-gradient(135deg,rgba(30,91,173,.05) 0%,rgba(99,179,245,.06) 100%);">
                 <div class="sabenta-avatar mx-auto mb-2" style="width:72px;height:72px;font-size:1.375rem;border-radius:50%;">AS</div>
-                <h3 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:800;color:var(--sabenta-text);margin-bottom:.3rem;">Dra. Ana Souza</h3>
-                <p style="font-size:.8rem;color:var(--sabenta-text-muted);margin-bottom:1rem;">Psicóloga Clínica · CRP 06/123456</p>
-                <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check me-1"></i>Agendar consulta</a>
+                <h3 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:800;color:var(--sabenta-text);margin-bottom:.3rem;">Ana Souza</h3>
+                <p style="font-size:.8rem;color:var(--sabenta-text-muted);margin-bottom:1rem;">Profissional autônoma · 8 anos de experiência</p>
+                <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check me-1"></i>Agendar atendimento</a>
             </div>
             <div style="padding:1.25rem 1.5rem;">
                 <h4 style="font-family:var(--font-heading);font-size:.875rem;font-weight:700;color:var(--sabenta-text);margin-bottom:.5rem;">Sobre mim</h4>
-                <p style="font-size:.8rem;color:var(--sabenta-text-muted);line-height:1.6;">Psicóloga clínica com 8 anos de experiência. Atendo adultos e casais com foco em TCC e abordagem psicodinâmica.</p>
+                <p style="font-size:.8rem;color:var(--sabenta-text-muted);line-height:1.6;">Profissional com ampla experiência na área. Atendo de forma presencial e online com foco na qualidade e na satisfação de cada cliente.</p>
                 <h4 style="font-family:var(--font-heading);font-size:.875rem;font-weight:700;color:var(--sabenta-text);margin:.75rem 0 .5rem;">Especialidades</h4>
                 <div class="d-flex flex-wrap gap-1">
-                    @foreach(['Ansiedade','Depressão','TCC','Relacionamentos','Autoestima'] as $t)
+                    @foreach(['Presencial','Online','Individual','Em grupo','Consultoria'] as $t)
                     <span style="background:rgba(30,91,173,.08);color:var(--sabenta-primary);padding:.2rem .7rem;border-radius:20px;font-size:.7rem;font-weight:600;">{{ $t }}</span>
                     @endforeach
                 </div>
