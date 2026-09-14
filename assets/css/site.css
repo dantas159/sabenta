@@ -1,0 +1,71 @@
+/* Sabenta — landing page overrides on top of assets/css/styles.css (design system tokens). */
+
+:root {
+  --color-bg: #f4f6f8;
+  --color-surface: #e8edf3;
+  --color-text: #183054;
+  --color-accent: #2360c9;
+  --color-accent-2: #2360c9;
+  --color-divider: color-mix(in srgb, #183054 18%, transparent);
+
+  --color-accent-100: #eaf2fe;
+  --color-accent-200: #d2e4fd;
+  --color-accent-300: #aecdf9;
+  --color-accent-400: #7fb2f4;
+  --color-accent-500: #3c84f0;
+  --color-accent-600: #2360c9;
+  --color-accent-700: #1c4c9f;
+  --color-accent-800: #1b3c71;
+  --color-accent-900: #183054;
+
+  --color-accent-2-100: #eaf2fe;
+  --color-accent-2-200: #d2e4fd;
+  --color-accent-2-300: #aecdf9;
+  --color-accent-2-400: #7fb2f4;
+  --color-accent-2-500: #3c84f0;
+  --color-accent-2-600: #2360c9;
+  --color-accent-2-700: #1c4c9f;
+  --color-accent-2-800: #1b3c71;
+  --color-accent-2-900: #183054;
+
+  --color-neutral-100: #f5f7f9;
+  --color-neutral-200: #e7ebf0;
+  --color-neutral-300: #d3d9e1;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent); }
+
+/* Scroll-reveal: JS (assets/js/site.js) adds .js-reveal to <body> and .is-in
+   per element as it enters the viewport; without JS everything stays visible. */
+[data-reveal] { transition: opacity .75s cubic-bezier(.2,.7,.2,1), transform .75s cubic-bezier(.2,.7,.2,1); }
+body.js-reveal [data-reveal] { opacity: 0; transform: translateY(18px); }
+body.js-reveal [data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) { [data-desk] { display: none !important; } }
+@media (min-width: 901px) { [data-mob] { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+@keyframes sb-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.72); } }
+@keyframes sb-dash { to { stroke-dashoffset: -28; } }
+
+/* Hover states (converted from the Design Canvas' style-hover shorthand into real CSS). */
+.nav-link-hover:hover,
+.footer-link-hover:hover { color: var(--color-accent); }
+
+.hdr-cta-hover:hover { transform: translateY(-1px); }
+
+.hero-cta-hover:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.problem-card-hover:hover { background: var(--color-accent-100); }
+
+.project-card-hover:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+
+.contact-cta-white-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.28); }
+
+.contact-cta-ghost-hover:hover { background: color-mix(in srgb, #ffffff 12%, transparent); }

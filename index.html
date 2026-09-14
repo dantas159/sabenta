@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabenta — Sites, sistemas e automações sob medida para empresas | Itabuna, Bahia</title>
+<meta name="description" content="A Sabenta desenvolve sites profissionais, sistemas personalizados e automações de processos para empresas de Itabuna e do Sul da Bahia. Menos trabalho manual, mais tecnologia trabalhando pelo seu negócio.">
+<meta name="keywords" content="desenvolvimento de sistemas, criação de sites, automação de processos, desenvolvimento de software, sistemas personalizados, desenvolvimento de sites para empresas, Itabuna, Bahia">
+<link rel="canonical" href="https://dantas159.github.io/sabenta/">
+<meta property="og:title" content="Sabenta — Tecnologia sob medida para o seu negócio">
+<meta property="og:description" content="Sites, sistemas e automações desenvolvidos a partir do jeito que a sua empresa realmente trabalha.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dantas159.github.io/sabenta/">
+<link rel="icon" href="assets/sabenta-logo.png" type="image/png">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Sabenta","description":"Desenvolvimento de sites, sistemas personalizados e automação de processos para empresas.","areaServed":"Itabuna e Sul da Bahia","address":{"@type":"PostalAddress","addressLocality":"Itabuna","addressRegion":"BA","addressCountry":"BR"},"telephone":"+55 79 9680-6341","email":"sabentadev@gmail.com","knowsAbout":["desenvolvimento de sistemas","criação de sites","automação de processos","integração de sistemas"]}
+</script>
+</head>
+<body>
+
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);overflow-x:hidden">
+
+<header id="site-header" style="position:fixed;top:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--color-bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s">
+  <div style="max-width:1280px;margin:0 auto;padding:14px clamp(16px,4vw,36px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
+    <a href="#topo" aria-label="Sabenta — início" style="display:flex;align-items:center;flex:none">
+      <img src="assets/sabenta-logo.png" alt="Sabenta" style="height:34px;width:auto">
+    </a>
+    <nav data-desk aria-label="Navegação principal" style="display:flex;align-items:center;gap:clamp(14px,2vw,30px);margin-left:auto">
+      <a href="#solucoes" class="nav-link-hover" style="font-family:var(--font-heading);font-size:16px;letter-spacing:.01em;text-decoration:none;color:var(--color-text);transition:color .2s">Soluções</a>
+      <a href="#metodo" class="nav-link-hover" style="font-family:var(--font-heading);font-size:16px;letter-spacing:.01em;text-decoration:none;color:var(--color-text);transition:color .2s">Como funciona</a>
+      <a href="#projetos" class="nav-link-hover" style="font-family:var(--font-heading);font-size:16px;letter-spacing:.01em;text-decoration:none;color:var(--color-text);transition:color .2s">Projetos</a>
+      <a href="#sobre" class="nav-link-hover" style="font-family:var(--font-heading);font-size:16px;letter-spacing:.01em;text-decoration:none;color:var(--color-text);transition:color .2s">Sobre</a>
+      <a href="#contato" class="nav-link-hover" style="font-family:var(--font-heading);font-size:16px;letter-spacing:.01em;text-decoration:none;color:var(--color-text);transition:color .2s">Contato</a>
+    </nav>
+    <a class="btn btn-primary blueprint hdr-cta-hover" data-desk href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" style="flex:none;font-size:15px;padding:10px 18px;transition:background .2s,transform .2s">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      Falar com a Sabenta
+    </a>
+    <div data-mob style="margin-left:auto;display:flex;align-items:center;gap:10px">
+      <a class="btn btn-primary" href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" style="font-size:15px;padding:11px 16px;min-height:44px">WhatsApp</a>
+      <button type="button" id="menu-toggle-btn" aria-label="Abrir menu" style="width:44px;height:44px;display:grid;place-items:center;gap:5px;background:transparent;border:1px solid var(--color-divider);cursor:pointer;color:var(--color-text)">
+        <span style="display:block;width:18px;height:1.5px;background:currentColor"></span>
+        <span style="display:block;width:18px;height:1.5px;background:currentColor"></span>
+        <span style="display:block;width:18px;height:1.5px;background:currentColor"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" style="display:none;border-top:1px solid var(--color-divider);background:var(--color-bg);padding:12px clamp(16px,4vw,36px) 24px;flex-direction:column;gap:2px">
+    <a href="#solucoes" style="font-family:var(--font-heading);font-size:22px;padding:12px 0;text-decoration:none;color:var(--color-text);border-bottom:1px solid var(--color-divider)">Soluções</a>
+    <a href="#metodo" style="font-family:var(--font-heading);font-size:22px;padding:12px 0;text-decoration:none;color:var(--color-text);border-bottom:1px solid var(--color-divider)">Como funciona</a>
+    <a href="#projetos" style="font-family:var(--font-heading);font-size:22px;padding:12px 0;text-decoration:none;color:var(--color-text);border-bottom:1px solid var(--color-divider)">Projetos</a>
+    <a href="#sobre" style="font-family:var(--font-heading);font-size:22px;padding:12px 0;text-decoration:none;color:var(--color-text);border-bottom:1px solid var(--color-divider)">Sobre</a>
+    <a href="#contato" style="font-family:var(--font-heading);font-size:22px;padding:12px 0;text-decoration:none;color:var(--color-text)">Contato</a>
+  </div>
+</header>
+
+<main id="topo">
+
+  <section aria-labelledby="hero-titulo" style="position:relative;padding:clamp(104px,14vw,150px) clamp(16px,4vw,36px) clamp(56px,7vw,96px);background-image:linear-gradient(color-mix(in srgb,#183054 5%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,#183054 5%,transparent) 1px,transparent 1px);background-size:64px 64px;background-position:center top">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,5vw,72px);align-items:center">
+      <div>
+        <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px;display:flex;align-items:center;gap:10px">
+          <span style="width:26px;height:1px;background:var(--color-accent);display:block"></span>
+          Tecnologia sob medida · Itabuna, Bahia
+        </p>
+        <h1 id="hero-titulo" style="font-size:clamp(38px,6.2vw,66px);line-height:1.02;letter-spacing:-.025em;margin:0 0 22px;max-width:16ch;text-wrap:balance">O que hoje é trabalho manual na sua empresa pode virar <span style="color:var(--color-accent-700)">sistema</span>.</h1>
+        <p style="font-size:clamp(16px,1.9vw,19px);line-height:1.6;max-width:52ch;margin:0 0 32px;color:color-mix(in srgb,var(--color-text) 78%,transparent)">A Sabenta desenvolve sites, sistemas e automações sob medida para empresas que querem operar de forma mais organizada — sem depender de planilha solta, papel e retrabalho.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px">
+          <a class="btn btn-primary blueprint hero-cta-hover" href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" style="font-size:17px;padding:16px 26px;min-height:52px;transition:background .2s,transform .2s,box-shadow .2s">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            Quero conversar sobre meu projeto
+          </a>
+          <a class="btn btn-secondary" href="#solucoes" style="font-size:17px;padding:16px 26px;min-height:52px;transition:background .2s">Conhecer soluções</a>
+        </div>
+        <dl style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px 28px;margin:0;padding-top:26px;border-top:1px solid var(--color-divider)">
+          <div>
+            <dt style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:4px">Escopo fechado</dt>
+            <dd style="margin:0;font-size:14px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 72%,transparent)">Você sabe o que será entregue antes de começar.</dd>
+          </div>
+          <div>
+            <dt style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:4px">Conversa direta</dt>
+            <dd style="margin:0;font-size:14px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 72%,transparent)">Sem intermediário e sem jargão técnico.</dd>
+          </div>
+          <div>
+            <dt style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:4px">Feito sob medida</dt>
+            <dd style="margin:0;font-size:14px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 72%,transparent)">Nada de sistema engessado de prateleira.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure style="margin:0;position:relative">
+        <div class="blueprint" style="padding:0;background:color-mix(in srgb,#ffffff 72%,var(--color-bg));box-shadow:var(--shadow-md)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--color-divider)">
+            <span style="width:9px;height:9px;background:var(--color-accent-500);display:block;animation:sb-pulse 2.6s ease-in-out infinite"></span>
+            <span style="font-family:var(--font-heading);font-size:14px;letter-spacing:.06em;text-transform:uppercase">Painel operacional</span>
+            <span style="margin-left:auto;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Exemplo</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+            <div style="padding:16px;border-right:1px solid var(--color-divider)">
+              <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent);margin-bottom:6px">Pedidos hoje</div>
+              <div style="font-family:var(--font-heading);font-size:clamp(26px,3.4vw,34px);line-height:1">38</div>
+            </div>
+            <div style="padding:16px;border-right:1px solid var(--color-divider)">
+              <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent);margin-bottom:6px">Tempo por pedido</div>
+              <div style="font-family:var(--font-heading);font-size:clamp(26px,3.4vw,34px);line-height:1">4<span style="font-size:.5em;margin-left:2px">min</span></div>
+            </div>
+            <div style="padding:16px">
+              <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent);margin-bottom:6px">Em atraso</div>
+              <div style="font-family:var(--font-heading);font-size:clamp(26px,3.4vw,34px);line-height:1;color:var(--color-accent-700)">2</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:6px;height:96px;padding:0 16px 16px;border-top:1px solid var(--color-divider);padding-top:18px">
+            <div style="flex:1;height:38%;background:var(--color-accent-300)"></div>
+            <div style="flex:1;height:54%;background:var(--color-accent-300)"></div>
+            <div style="flex:1;height:44%;background:var(--color-accent-300)"></div>
+            <div style="flex:1;height:72%;background:var(--color-accent-400)"></div>
+            <div style="flex:1;height:63%;background:var(--color-accent-400)"></div>
+            <div style="flex:1;height:88%;background:var(--color-accent-600)"></div>
+            <div style="flex:1;height:96%;background:var(--color-accent-600)"></div>
+          </div>
+          <div style="border-top:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid color-mix(in srgb,#183054 8%,transparent)">
+              <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.06em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px">#1042</span>
+              <span style="font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ordem de serviço · Instalação</span>
+              <span class="tag tag-accent" style="flex:none">Concluído</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid color-mix(in srgb,#183054 8%,transparent)">
+              <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.06em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px">#1043</span>
+              <span style="font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Orçamento enviado ao cliente</span>
+              <span class="tag tag-outline" style="flex:none">Aguardando</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:11px 16px">
+              <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.06em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px">#1044</span>
+              <span style="font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Agendamento confirmado</span>
+              <span class="tag tag-neutral" style="flex:none">Hoje, 14h</span>
+            </div>
+          </div>
+        </div>
+        <div class="blueprint" style="background:var(--color-bg);padding:12px 16px;display:inline-flex;align-items:center;gap:10px;margin-top:-18px;margin-left:clamp(12px,3vw,32px);box-shadow:var(--shadow-sm);position:relative;z-index:2">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span style="width:7px;height:7px;background:var(--color-accent-500);display:block;flex:none;animation:sb-pulse 1.8s ease-in-out infinite"></span>
+          <span style="font-family:var(--font-heading);font-size:14px;letter-spacing:.04em">Automação: WhatsApp → sistema → relatório</span>
+        </div>
+        <figcaption style="margin-top:14px;font-size:12px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Composição ilustrativa de um painel de gestão. Cada sistema da Sabenta é desenhado a partir da operação real da empresa.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="problema" aria-labelledby="problema-titulo" data-reveal style="padding:clamp(56px,8vw,112px) clamp(16px,4vw,36px);border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,4vw,64px);align-items:start;margin-bottom:clamp(36px,4vw,56px)">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 18px">01 — O diagnóstico</p>
+          <h2 id="problema-titulo" style="font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:-.02em;margin:0;max-width:20ch;text-wrap:balance">Seu negócio não precisa se adaptar à tecnologia. A tecnologia precisa se adaptar ao seu negócio.</h2>
+        </div>
+        <p style="font-size:clamp(15px,1.7vw,18px);line-height:1.65;margin:0;align-self:end;max-width:46ch;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Quase toda empresa convive com processos que funcionam “no jeitinho”. Eles não param a operação — mas consomem horas, geram erro e travam o crescimento. Reconhece algum destes?</p>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+        <li class="problem-card-hover" style="background:var(--color-bg);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:8px;transition:background .25s">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">/01</span>
+          <h3 style="font-size:20px;margin:0">Tudo passa por alguém</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Processos manuais que dependem de uma pessoa lembrar, anotar e repassar.</p>
+        </li>
+        <li class="problem-card-hover" style="background:var(--color-bg);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:8px;transition:background .25s">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">/02</span>
+          <h3 style="font-size:20px;margin:0">Informação espalhada</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Parte na planilha, parte no WhatsApp, parte no caderno. Ninguém tem o número certo.</p>
+        </li>
+        <li class="problem-card-hover" style="background:var(--color-bg);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:8px;transition:background .25s">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">/03</span>
+          <h3 style="font-size:20px;margin:0">Tarefa repetitiva todo dia</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Copiar, colar, conferir e reenviar — todo dia, pela mesma pessoa, no mesmo horário.</p>
+        </li>
+        <li class="problem-card-hover" style="background:var(--color-bg);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:8px;transition:background .25s">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">/04</span>
+          <h3 style="font-size:20px;margin:0">Sistema que não serve</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Você paga mensalidade por um programa que faz metade do que precisa — e obriga a empresa a mudar o jeito de trabalhar.</p>
+        </li>
+        <li class="problem-card-hover" style="background:var(--color-bg);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:8px;transition:background .25s">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">/05</span>
+          <h3 style="font-size:20px;margin:0">Site que não convence</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Desatualizado, lento no celular ou inexistente. O cliente pesquisa, não encontra e procura o concorrente.</p>
+        </li>
+        <li class="problem-card-hover" style="background:var(--color-bg);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:8px;transition:background .25s">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">/06</span>
+          <h3 style="font-size:20px;margin:0">Nenhum sistema conversa</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">A mesma informação é digitada três vezes, em três lugares diferentes.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="solucoes" aria-labelledby="solucoes-titulo" style="padding:clamp(56px,8vw,112px) clamp(16px,4vw,36px);border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div data-reveal style="margin-bottom:clamp(40px,5vw,72px);max-width:62ch">
+        <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 18px">02 — Soluções</p>
+        <h2 id="solucoes-titulo" style="font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance">Três frentes. Uma decisão: parar de perder tempo.</h2>
+        <p style="font-size:clamp(15px,1.7vw,18px);line-height:1.65;margin:0;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Cada projeto começa pelo problema, não pela ferramenta. Por isso a entrega pode ser um site, um sistema, uma automação — ou os três conversando entre si.</p>
+      </div>
+
+      <article data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(28px,4vw,56px) 0;border-top:1px solid var(--color-divider)">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:clamp(40px,6vw,72px);line-height:1;color:var(--color-accent-300);margin:0 0 8px">01</p>
+          <h3 style="font-size:clamp(24px,3vw,34px);margin:0 0 14px">Sites profissionais</h3>
+          <p style="font-size:16.5px;line-height:1.65;margin:0 0 20px;max-width:48ch;color:color-mix(in srgb,var(--color-text) 80%,transparent)">Uma presença digital que transmite confiança e transforma visitante em contato. Rápido no celular, encontrável no Google e com um caminho claro até o WhatsApp.</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+            <li class="tag tag-accent">Sites institucionais</li>
+            <li class="tag tag-accent">Landing pages</li>
+            <li class="tag tag-accent">Catálogos online</li>
+            <li class="tag tag-accent">SEO local</li>
+          </ul>
+        </div>
+        <div class="blueprint" style="background:color-mix(in srgb,#ffffff 65%,var(--color-bg));padding:0">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--color-divider)">
+            <span style="width:8px;height:8px;border:1px solid var(--color-divider);display:block"></span>
+            <span style="width:8px;height:8px;border:1px solid var(--color-divider);display:block"></span>
+            <span style="flex:1;height:18px;border:1px solid var(--color-divider);margin-left:6px"></span>
+          </div>
+          <div style="padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:12px">
+            <div style="height:10px;width:34%;background:var(--color-accent-200)"></div>
+            <div style="height:22px;width:82%;background:var(--color-accent-600)"></div>
+            <div style="height:22px;width:58%;background:var(--color-accent-600)"></div>
+            <div style="height:8px;width:90%;background:var(--color-neutral-300)"></div>
+            <div style="height:8px;width:76%;background:var(--color-neutral-300)"></div>
+            <div style="display:flex;gap:10px;margin-top:6px">
+              <div style="height:36px;width:150px;background:var(--color-accent-600)"></div>
+              <div style="height:36px;width:110px;border:1px solid var(--color-divider)"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px">
+              <div style="height:54px;border:1px solid var(--color-divider)"></div>
+              <div style="height:54px;border:1px solid var(--color-divider)"></div>
+              <div style="height:54px;border:1px solid var(--color-divider)"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(28px,4vw,56px) 0;border-top:1px solid var(--color-divider)">
+        <div class="blueprint" style="background:color-mix(in srgb,#ffffff 65%,var(--color-bg));padding:0;order:0">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex">
+            <div style="width:56px;border-right:1px solid var(--color-divider);padding:14px 0;display:flex;flex-direction:column;align-items:center;gap:14px">
+              <span style="width:18px;height:18px;background:var(--color-accent-600);display:block"></span>
+              <span style="width:18px;height:18px;border:1px solid var(--color-divider);display:block"></span>
+              <span style="width:18px;height:18px;border:1px solid var(--color-divider);display:block"></span>
+              <span style="width:18px;height:18px;border:1px solid var(--color-divider);display:block"></span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="padding:12px 16px;border-bottom:1px solid var(--color-divider);font-family:var(--font-heading);font-size:14px;letter-spacing:.06em;text-transform:uppercase">Clientes · 1.284 registros</div>
+              <table class="table" style="font-size:13px">
+                <thead>
+                  <tr><th style="padding:8px 16px">Cliente</th><th style="padding:8px 16px">Etapa</th><th style="padding:8px 16px">Valor</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td style="padding:10px 16px">Mercado Central</td><td style="padding:10px 16px"><span class="tag tag-accent">Em execução</span></td><td style="padding:10px 16px">R$ 2.400</td></tr>
+                  <tr><td style="padding:10px 16px">Clínica Vida</td><td style="padding:10px 16px"><span class="tag tag-outline">Orçamento</span></td><td style="padding:10px 16px">R$ 890</td></tr>
+                  <tr><td style="padding:10px 16px">Auto Peças Sul</td><td style="padding:10px 16px"><span class="tag tag-neutral">Concluído</span></td><td style="padding:10px 16px">R$ 5.150</td></tr>
+                  <tr><td style="padding:10px 16px">Padaria Ideal</td><td style="padding:10px 16px"><span class="tag tag-accent">Em execução</span></td><td style="padding:10px 16px">R$ 1.300</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-family:var(--font-heading);font-size:clamp(40px,6vw,72px);line-height:1;color:var(--color-accent-300);margin:0 0 8px">02</p>
+          <h3 style="font-size:clamp(24px,3vw,34px);margin:0 0 14px">Sistemas personalizados</h3>
+          <p style="font-size:16.5px;line-height:1.65;margin:0 0 20px;max-width:48ch;color:color-mix(in srgb,var(--color-text) 80%,transparent)">Um sistema desenhado a partir da forma como a sua empresa realmente trabalha — com os campos, as etapas e as regras que fazem sentido para o seu negócio. Acessível do computador ou do celular.</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+            <li class="tag tag-accent">Gestão de clientes</li>
+            <li class="tag tag-accent">Ordens de serviço</li>
+            <li class="tag tag-accent">Agendamentos</li>
+            <li class="tag tag-accent">Painéis e relatórios</li>
+          </ul>
+        </div>
+      </article>
+
+      <article data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(28px,4vw,56px) 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:clamp(40px,6vw,72px);line-height:1;color:var(--color-accent-300);margin:0 0 8px">03</p>
+          <h3 style="font-size:clamp(24px,3vw,34px);margin:0 0 14px">Automações e integrações</h3>
+          <p style="font-size:16.5px;line-height:1.65;margin:0 0 20px;max-width:48ch;color:color-mix(in srgb,var(--color-text) 80%,transparent)">Tarefas repetitivas passam a acontecer sozinhas, e as ferramentas que você já usa começam a conversar entre si. Sua equipe deixa de digitar a mesma coisa em três lugares.</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+            <li class="tag tag-accent">WhatsApp</li>
+            <li class="tag tag-accent">Planilhas</li>
+            <li class="tag tag-accent">Emissão de documentos</li>
+            <li class="tag tag-accent">APIs e integrações</li>
+          </ul>
+        </div>
+        <div class="blueprint" style="background:color-mix(in srgb,#ffffff 65%,var(--color-bg));padding:clamp(20px,3vw,32px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:.1em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px;flex:none">Gatilho</span>
+              <div style="flex:1;border:1px solid var(--color-divider);padding:12px 14px;font-size:14px;background:var(--color-bg)">Cliente manda mensagem no WhatsApp</div>
+            </div>
+            <div style="height:26px;width:1px;background:var(--color-divider);margin-left:70px"></div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:.1em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px;flex:none">Ação</span>
+              <div style="flex:1;border:1px solid var(--color-accent);padding:12px 14px;font-size:14px;background:var(--color-accent-100);display:flex;align-items:center;gap:10px">
+                <span style="width:7px;height:7px;background:var(--color-accent-500);display:block;flex:none;animation:sb-pulse 2s ease-in-out infinite"></span>
+                Cadastro criado automaticamente no sistema
+              </div>
+            </div>
+            <div style="height:26px;width:1px;background:var(--color-divider);margin-left:70px"></div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:.1em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px;flex:none">Ação</span>
+              <div style="flex:1;border:1px solid var(--color-divider);padding:12px 14px;font-size:14px;background:var(--color-bg)">Equipe recebe a tarefa já organizada</div>
+            </div>
+            <div style="height:26px;width:1px;background:var(--color-divider);margin-left:70px"></div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:.1em;color:color-mix(in srgb,var(--color-text) 74%,transparent);width:56px;flex:none">Fim</span>
+              <div style="flex:1;border:1px solid var(--color-divider);padding:12px 14px;font-size:14px;background:var(--color-bg)">Relatório atualizado sem ninguém digitar</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="metodo" aria-labelledby="metodo-titulo" data-reveal style="padding:clamp(56px,8vw,112px) clamp(16px,4vw,36px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(36px,4vw,56px)">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 18px">03 — Como trabalhamos</p>
+          <h2 id="metodo-titulo" style="font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:-.02em;margin:0;max-width:18ch;text-wrap:balance">Antes de escrever código, entendemos o problema.</h2>
+        </div>
+        <p style="font-size:clamp(15px,1.7vw,18px);line-height:1.65;margin:0;max-width:46ch;color:color-mix(in srgb,var(--color-text) 78%,transparent)">A maior parte do desperdício em projetos de tecnologia vem de construir a coisa errada com muita competência. Por isso começamos ouvindo.</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+        <li style="background:var(--color-bg);padding:clamp(22px,2.8vw,32px);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--font-heading);font-size:clamp(34px,4vw,48px);line-height:1;color:var(--color-accent-300)">01</span>
+          <h3 style="font-size:21px;margin:0">Entendemos</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Conversamos sobre a operação, vemos onde o tempo se perde e identificamos o problema real — não o sintoma.</p>
+        </li>
+        <li style="background:var(--color-bg);padding:clamp(22px,2.8vw,32px);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--font-heading);font-size:clamp(34px,4vw,48px);line-height:1;color:var(--color-accent-300)">02</span>
+          <h3 style="font-size:21px;margin:0">Planejamos</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Definimos a solução, o escopo, o prazo e o investimento. Você aprova sabendo exatamente o que vem pela frente.</p>
+        </li>
+        <li style="background:var(--color-bg);padding:clamp(22px,2.8vw,32px);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--font-heading);font-size:clamp(34px,4vw,48px);line-height:1;color:var(--color-accent-300)">03</span>
+          <h3 style="font-size:21px;margin:0">Desenvolvemos</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Construímos em etapas, com entregas que você acompanha e testa antes de entrar em operação.</p>
+        </li>
+        <li style="background:var(--color-bg);padding:clamp(22px,2.8vw,32px);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--font-heading);font-size:clamp(34px,4vw,48px);line-height:1;color:var(--color-accent-300)">04</span>
+          <h3 style="font-size:21px;margin:0">Evoluímos</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Acompanhamos o uso e ajustamos a solução conforme a empresa cresce e a rotina muda.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="projetos" aria-labelledby="projetos-titulo" data-reveal style="padding:clamp(56px,8vw,112px) clamp(16px,4vw,36px);border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;margin-bottom:clamp(32px,4vw,52px)">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 18px">04 — Projetos</p>
+          <h2 id="projetos-titulo" style="font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:-.02em;margin:0;max-width:18ch;text-wrap:balance">O tipo de solução que construímos.</h2>
+        </div>
+        <p style="font-size:14px;line-height:1.55;margin:0;max-width:34ch;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Projetos demonstrativos, criados para mostrar escopo e abordagem. Os primeiros cases de clientes entram aqui conforme forem publicados.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,2.4vw,28px)">
+        <article class="blueprint project-card-hover" style="padding:0;display:flex;flex-direction:column;background:var(--color-bg);transition:box-shadow .3s,transform .3s">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="height:180px;border-bottom:1px solid var(--color-divider);padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;background:color-mix(in srgb,#ffffff 55%,var(--color-bg))">
+            <div style="display:flex;gap:6px;align-items:flex-end;height:74px">
+              <div style="flex:1;height:40%;background:var(--color-accent-200)"></div>
+              <div style="flex:1;height:66%;background:var(--color-accent-300)"></div>
+              <div style="flex:1;height:52%;background:var(--color-accent-200)"></div>
+              <div style="flex:1;height:84%;background:var(--color-accent-500)"></div>
+              <div style="flex:1;height:70%;background:var(--color-accent-300)"></div>
+            </div>
+            <div style="height:1px;background:var(--color-divider)"></div>
+            <div style="display:flex;gap:8px"><span style="height:8px;width:52px;background:var(--color-neutral-300);display:block"></span><span style="height:8px;width:32px;background:var(--color-neutral-300);display:block"></span></div>
+          </div>
+          <div style="padding:clamp(20px,2.4vw,26px);display:flex;flex-direction:column;gap:10px;flex:1">
+            <span class="tag tag-outline" style="align-self:flex-start">Projeto demonstrativo</span>
+            <h3 style="font-size:23px;margin:0">Sistema de gestão</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Uma solução para centralizar clientes, serviços e faturamento em um único lugar, com painel de acompanhamento da operação.</p>
+          </div>
+        </article>
+        <article class="blueprint project-card-hover" style="padding:0;display:flex;flex-direction:column;background:var(--color-bg);transition:box-shadow .3s,transform .3s">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="height:180px;border-bottom:1px solid var(--color-divider);padding:20px;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(3,1fr);gap:5px;background:color-mix(in srgb,#ffffff 55%,var(--color-bg))">
+            <span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider);background:var(--color-accent-500)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider);background:var(--color-accent-200)"></span><span style="border:1px solid var(--color-divider)"></span>
+            <span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider);background:var(--color-accent-200)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider);background:var(--color-accent-500)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span>
+            <span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider);background:var(--color-accent-300)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider)"></span><span style="border:1px solid var(--color-divider);background:var(--color-accent-200)"></span>
+          </div>
+          <div style="padding:clamp(20px,2.4vw,26px);display:flex;flex-direction:column;gap:10px;flex:1">
+            <span class="tag tag-outline" style="align-self:flex-start">Projeto demonstrativo</span>
+            <h3 style="font-size:23px;margin:0">Plataforma de agendamento</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Agenda online com confirmação automática por mensagem, controle de horários por profissional e histórico de atendimento.</p>
+          </div>
+        </article>
+        <article class="blueprint project-card-hover" style="padding:0;display:flex;flex-direction:column;background:var(--color-bg);transition:box-shadow .3s,transform .3s">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="height:180px;border-bottom:1px solid var(--color-divider);padding:20px;display:flex;flex-direction:column;justify-content:center;gap:12px;background:color-mix(in srgb,#ffffff 55%,var(--color-bg))">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="width:14px;height:14px;background:var(--color-accent-600);display:block;flex:none"></span>
+              <span style="flex:1;height:1px;background:var(--color-divider)"></span>
+              <span style="width:14px;height:14px;border:1px solid var(--color-accent);display:block;flex:none"></span>
+              <span style="flex:1;height:1px;background:var(--color-divider)"></span>
+              <span style="width:14px;height:14px;background:var(--color-accent-300);display:block;flex:none"></span>
+            </div>
+            <div style="height:8px;width:70%;background:var(--color-neutral-300)"></div>
+            <div style="height:8px;width:48%;background:var(--color-neutral-300)"></div>
+            <div style="height:8px;width:58%;background:var(--color-accent-200)"></div>
+          </div>
+          <div style="padding:clamp(20px,2.4vw,26px);display:flex;flex-direction:column;gap:10px;flex:1">
+            <span class="tag tag-outline" style="align-self:flex-start">Projeto demonstrativo</span>
+            <h3 style="font-size:23px;margin:0">Automação de processos</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Rotina que recebe pedidos, organiza os dados, dispara as mensagens e atualiza o relatório sem intervenção manual.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" aria-labelledby="sobre-titulo" data-reveal style="padding:clamp(56px,8vw,112px) clamp(16px,4vw,36px);border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,80px);align-items:start">
+      <div>
+        <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 18px">05 — Sobre</p>
+        <h2 id="sobre-titulo" style="font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:-.02em;margin:0 0 20px;max-width:18ch;text-wrap:balance">Tecnologia explicada na língua do seu negócio.</h2>
+        <p style="font-size:16.5px;line-height:1.7;margin:0 0 16px;max-width:52ch;color:color-mix(in srgb,var(--color-text) 82%,transparent)">A Sabenta nasceu para tornar a tecnologia acessível a empresas que precisam de soluções práticas e bem-feitas — e que nem sempre encontram quem traduza isso sem complicar.</p>
+        <p style="font-size:16.5px;line-height:1.7;margin:0 0 28px;max-width:52ch;color:color-mix(in srgb,var(--color-text) 82%,transparent)">Trabalhamos perto do cliente: entendemos a rotina, mostramos as opções em linguagem clara e construímos o que resolve. Sem pacote fechado, sem promessa vaga e sem você precisar aprender a falar “de TI”.</p>
+        <a class="btn btn-secondary" href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" style="font-size:16px;padding:14px 22px;min-height:48px">Conversar com a Sabenta</a>
+      </div>
+      <div class="blueprint" style="padding:clamp(24px,3vw,36px);background:color-mix(in srgb,#ffffff 55%,var(--color-bg))">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <h3 style="font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 20px;color:var(--color-accent-700)">Atendimento</h3>
+        <dl style="margin:0;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:18px;border-bottom:1px solid var(--color-divider)">
+            <dt style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Base</dt>
+            <dd style="margin:0;font-family:var(--font-heading);font-size:24px">Itabuna — Bahia</dd>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:18px;border-bottom:1px solid var(--color-divider)">
+            <dt style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Região atendida</dt>
+            <dd style="margin:0;font-size:15.5px;line-height:1.5">Itabuna, Ilhéus e todo o Sul da Bahia — presencial quando o projeto pede.</dd>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <dt style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Demais regiões</dt>
+            <dd style="margin:0;font-size:15.5px;line-height:1.5">Projetos conduzidos remotamente para empresas de todo o Brasil.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" aria-labelledby="contato-titulo" data-reveal style="background:var(--color-accent-900);color:#eef3fa;padding:clamp(64px,9vw,128px) clamp(16px,4vw,36px);background-image:linear-gradient(color-mix(in srgb,#ffffff 6%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,#ffffff 6%,transparent) 1px,transparent 1px);background-size:64px 64px">
+    <div style="max-width:900px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center">
+      <p style="font-family:var(--font-heading);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-400);margin:0 0 22px">06 — Vamos conversar</p>
+      <h2 id="contato-titulo" style="font-size:clamp(30px,5.2vw,58px);line-height:1.04;letter-spacing:-.02em;margin:0 0 20px;max-width:20ch;color:#ffffff;text-wrap:balance">Tem um processo que poderia ser muito melhor?</h2>
+      <p style="font-size:clamp(16px,1.9vw,19px);line-height:1.65;margin:0 0 36px;max-width:56ch;color:#c9d8ec">Conte para a Sabenta o que sua empresa precisa. A gente entende o problema, explica as opções em português claro e propõe a melhor solução — sem compromisso.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+        <a class="btn blueprint contact-cta-white-hover" href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" style="background:#ffffff;color:var(--color-accent-900);border-color:#ffffff;font-size:17px;padding:17px 28px;min-height:54px;transition:transform .2s,box-shadow .2s">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          Falar com a Sabenta no WhatsApp
+        </a>
+        <a class="btn contact-cta-ghost-hover" href="mailto:sabentadev@gmail.com?subject=Projeto%20%E2%80%94%20contato%20pelo%20site" style="color:#eef3fa;border-color:color-mix(in srgb,#ffffff 35%,transparent);font-size:17px;padding:17px 28px;min-height:54px;transition:background .2s">Enviar e-mail</a>
+      </div>
+      <p style="margin:30px 0 0;font-size:14px;color:#9fb4cf">Resposta no mesmo dia útil · Itabuna, Bahia</p>
+    </div>
+  </section>
+
+</main>
+
+<footer style="padding:clamp(44px,6vw,72px) clamp(16px,4vw,36px) 32px;border-top:1px solid var(--color-divider)">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,56px);padding-bottom:36px;border-bottom:1px solid var(--color-divider)">
+      <div style="max-width:34ch">
+        <img src="assets/sabenta-logo.png" alt="Sabenta" style="height:32px;width:auto;margin-bottom:16px">
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 72%,transparent)">Sites, sistemas e automações sob medida para empresas que querem trabalhar de forma mais inteligente.</p>
+      </div>
+      <nav aria-label="Rodapé — páginas" style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Navegação</h2>
+        <a href="#solucoes" class="footer-link-hover" style="font-size:15px;text-decoration:none;color:var(--color-text)">Soluções</a>
+        <a href="#metodo" class="footer-link-hover" style="font-size:15px;text-decoration:none;color:var(--color-text)">Como funciona</a>
+        <a href="#projetos" class="footer-link-hover" style="font-size:15px;text-decoration:none;color:var(--color-text)">Projetos</a>
+        <a href="#sobre" class="footer-link-hover" style="font-size:15px;text-decoration:none;color:var(--color-text)">Sobre</a>
+      </nav>
+      <nav aria-label="Rodapé — serviços" style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Serviços</h2>
+        <span style="font-size:15px">Criação de sites para empresas</span>
+        <span style="font-size:15px">Desenvolvimento de sistemas</span>
+        <span style="font-size:15px">Automação de processos</span>
+        <span style="font-size:15px">Integração entre sistemas</span>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;color:color-mix(in srgb,var(--color-text) 74%,transparent)">Contato</h2>
+        <a href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="footer-link-hover" style="font-size:15px;text-decoration:none;color:var(--color-text)">WhatsApp +55 79 9680-6341</a>
+        <a href="mailto:sabentadev@gmail.com?subject=Projeto%20%E2%80%94%20contato%20pelo%20site" class="footer-link-hover" style="font-size:15px;text-decoration:none;color:var(--color-text)">sabentadev@gmail.com</a>
+        <span style="font-size:15px;color:color-mix(in srgb,var(--color-text) 72%,transparent)">Itabuna — Bahia, Brasil</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:22px;font-size:13px;color:color-mix(in srgb,var(--color-text) 74%,transparent)">
+      <span>© 2026 Sabenta. Todos os direitos reservados.</span>
+      <span>Desenvolvimento de sites, sistemas e automações · Itabuna, Bahia</span>
+    </div>
+  </div>
+</footer>
+
+<a id="floating-cta" class="btn btn-primary" href="https://wa.me/557996806341?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Sabenta%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" aria-label="Falar com a Sabenta no WhatsApp" style="position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:70;min-height:54px;padding:14px 22px;font-size:16px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .35s,transform .35s">Falar no WhatsApp</a>
+
+</div>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
